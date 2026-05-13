@@ -1,0 +1,38 @@
+{
+  "preset": "original",
+  "seed": 1,
+  "train_scenarios": [
+    "10m_vs_11m",
+    "27m_vs_30m",
+    "2c_vs_64zg",
+    "2s3z",
+    "2s_vs_1sc",
+    "3s5z",
+    "3s5z_vs_3s6z",
+    "3s_vs_5z",
+    "bane_vs_bane",
+    "mmm"
+  ],
+  "eval_scenarios": [
+    "corridor",
+    "mmm2"
+  ],
+  "datasets": {
+    "train": [
+      "../data/original/10m_vs_11m.npz",
+      "../data/original/27m_vs_30m.npz",
+      "../data/original/2c_vs_64zg.npz",
+      "../data/original/2s3z.npz",
+      "../data/original/2s_vs_1sc.npz",
+      "../data/original/3s5z.npz",
+      "../data/original/3s5z_vs_3s6z.npz",
+      "../data/original/3s_vs_5z.npz",
+      "../data/original/bane_vs_bane.npz",
+      "../data/original/mmm.npz"
+    ],
+    "eval": [
+      "../data/original/corridor.npz",
+      "../data/original/mmm2.npz"
+    ]
+  }
+}
