@@ -1,0 +1,8 @@
+{"epoch": 1, "step": 1, "total_loss": 1.3291443586349487, "pred_loss": 1.2894384860992432, "sigreg_loss": 3.9705827236175537}
+{"epoch": 1, "step": 2, "total_loss": 1.0238330364227295, "pred_loss": 0.9878736734390259, "sigreg_loss": 3.5959367752075195}
+{"epoch": 1, "step": 3, "total_loss": 0.7910850644111633, "pred_loss": 0.7517822980880737, "sigreg_loss": 3.9302749633789062}
+{"epoch": 1, "step": 4, "total_loss": 0.6617012619972229, "pred_loss": 0.6270827651023865, "sigreg_loss": 3.4618520736694336}
+{"epoch": 2, "step": 5, "total_loss": 0.5774235129356384, "pred_loss": 0.5428378582000732, "sigreg_loss": 3.4585647583007812}
+{"epoch": 2, "step": 6, "total_loss": 0.46771591901779175, "pred_loss": 0.4423052668571472, "sigreg_loss": 2.5410642623901367}
+{"epoch": 2, "step": 7, "total_loss": 0.4119281470775604, "pred_loss": 0.3879099488258362, "sigreg_loss": 2.401820421218872}
+{"epoch": 2, "step": 8, "total_loss": 0.35490918159484863, "pred_loss": 0.33538639545440674, "sigreg_loss": 1.952280044555664}

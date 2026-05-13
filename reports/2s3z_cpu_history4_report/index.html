@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SMAC-JEPA 2s3z CPU Report</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #1d252c;
+      background: #f6f7f9;
+    }
+    main {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+    h1, h2, h3 { margin: 0 0 12px; }
+    h1 { font-size: 34px; }
+    h2 { margin-top: 32px; font-size: 24px; }
+    p { line-height: 1.55; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 22px 0;
+    }
+    .metric {
+      background: #ffffff;
+      border: 1px solid #dce1e7;
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .metric strong { display: block; font-size: 22px; margin-top: 4px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #ffffff;
+      border: 1px solid #dce1e7;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 12px 0 22px;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid #e7ebef;
+      font-size: 14px;
+    }
+    th { background: #eef2f5; }
+    tr:last-child td { border-bottom: 0; }
+    .plot {
+      background: #ffffff;
+      border: 1px solid #dce1e7;
+      border-radius: 8px;
+      padding: 14px;
+      margin: 14px 0 20px;
+    }
+    figcaption { font-weight: 700; margin-bottom: 8px; }
+    svg { width: 100%; height: auto; display: block; }
+    .axis { stroke: #7b8794; stroke-width: 1; }
+    .series { fill: none; stroke: #2563eb; stroke-width: 3; }
+    circle { fill: #2563eb; }
+    .tick { fill: #5f6b76; font-size: 12px; }
+    .end { text-anchor: end; }
+    code { background: #e8edf2; padding: 2px 5px; border-radius: 4px; }
+    ol { background: #ffffff; border: 1px solid #dce1e7; border-radius: 8px; padding: 18px 24px 18px 42px; }
+    li { margin: 8px 0; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>SMAC-JEPA 2s3z CPU Report</h1>
+    <p>Run directory: <code>runs/2s3z_cpu_history4</code></p>
+    <section class="summary">
+      <div class="metric">Trainable params<strong>85,824</strong></div>
+      <div class="metric">Valid windows<strong>4,484</strong></div>
+      <div class="metric">Eval MSE<strong>0.000371154</strong></div>
+      <div class="metric">Context length<strong>4</strong></div>
+    </section>
+
+    <h2>Model</h2>
+    <p>The encoder maps each SMACLite global-state observation to a latent. The predictor conditions on the sequence of joint actions taken from the previous states in the context window, combines those action-history embeddings with observation latents, and predicts the next latent sequence.</p>
+    <table><thead><tr><th>component</th><th>params</th></tr></thead><tbody><tr><td>State encoder</td><td>24128</td></tr><tr><td>Predictor</td><td>61696</td></tr><tr><td>Action encoder</td><td>15680</td></tr><tr><td>Attention block</td><td>33472</td></tr><tr><td>Total trainable</td><td>85824</td></tr></tbody></table>
+    <table><thead><tr><th>field</th><th>value</th></tr></thead><tbody><tr><td>context_len</td><td>4</td></tr><tr><td>latent_dim</td><td>64</td></tr><tr><td>hidden_dim</td><td>128</td></tr><tr><td>action_dim</td><td>64</td></tr><tr><td>num_heads</td><td>2</td></tr></tbody></table>
+
+    <h2>Dataset</h2>
+    <table><thead><tr><th>field</th><th>value</th></tr></thead><tbody><tr><td>dataset</td><td>data/2s3z_random.npz</td></tr><tr><td>episodes</td><td>100</td></tr><tr><td>max_steps</td><td>120</td></tr><tr><td>valid_steps</td><td>4484</td></tr><tr><td>state_dim</td><td>120</td></tr><tr><td>n_agents</td><td>5</td></tr><tr><td>n_actions</td><td>11</td></tr></tbody></table>
+
+    <h2>Training Loss</h2>
+    <table><thead><tr><th>point</th><th>step</th><th>total_loss</th><th>pred_loss</th></tr></thead><tbody><tr><td>First batch</td><td>1</td><td>1.344061</td><td>1.334363</td></tr><tr><td>Last batch</td><td>655</td><td>0.009981</td><td>0.000429</td></tr></tbody></table>
+    <table><thead><tr><th>epoch</th><th>avg_total_loss</th><th>avg_pred_loss</th><th>avg_sigreg_loss</th></tr></thead><tbody><tr><td>1</td><td>0.053226</td><td>0.044146</td><td>0.907946</td></tr><tr><td>2</td><td>0.010968</td><td>0.001485</td><td>0.948297</td></tr><tr><td>3</td><td>0.010358</td><td>0.000807</td><td>0.955160</td></tr><tr><td>4</td><td>0.010103</td><td>0.000541</td><td>0.956285</td></tr><tr><td>5</td><td>0.009942</td><td>0.000409</td><td>0.953365</td></tr></tbody></table>
+    <figure class="plot"><figcaption>Average Total Loss Per Epoch</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" role="img">
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #1f2933; }
+    .axis { stroke: #7b8794; stroke-width: 1; }
+    .series { fill: none; stroke: #2563eb; stroke-width: 3; }
+    circle { fill: #2563eb; }
+    .tick { fill: #5f6b76; font-size: 12px; }
+  </style>
+  <title>Average Total Loss Per Epoch</title>
+  <text x="70" y="24" font-size="18" font-weight="700">Average Total Loss Per Epoch</text>
+  <line class="axis" x1="70" y1="266" x2="874" y2="266" />
+  <line class="axis" x1="70" y1="42" x2="70" y2="266" />
+  <text class="tick" x="70" y="304">1</text>
+  <text class="tick" x="852" y="304">5</text>
+  <text class="tick" x="10" y="266">0.009942</text>
+  <text class="tick" x="10" y="46">0.05323</text>
+  <polyline class="series" points="70.00,42.00 271.00,260.69 472.00,263.85 673.00,265.17 874.00,266.00" />
+  <circle cx="70.00" cy="42.00" r="3"><title>epoch=1, total_loss=0.0532259</title></circle>
+<circle cx="271.00" cy="260.69" r="3"><title>epoch=2, total_loss=0.0109678</title></circle>
+<circle cx="472.00" cy="263.85" r="3"><title>epoch=3, total_loss=0.0103582</title></circle>
+<circle cx="673.00" cy="265.17" r="3"><title>epoch=4, total_loss=0.0101034</title></circle>
+<circle cx="874.00" cy="266.00" r="3"><title>epoch=5, total_loss=0.00994221</title></circle>
+</svg>
+</figure>
+    <figure class="plot"><figcaption>Average Prediction Loss Per Epoch</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" role="img">
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #1f2933; }
+    .axis { stroke: #7b8794; stroke-width: 1; }
+    .series { fill: none; stroke: #2563eb; stroke-width: 3; }
+    circle { fill: #2563eb; }
+    .tick { fill: #5f6b76; font-size: 12px; }
+  </style>
+  <title>Average Prediction Loss Per Epoch</title>
+  <text x="70" y="24" font-size="18" font-weight="700">Average Prediction Loss Per Epoch</text>
+  <line class="axis" x1="70" y1="266" x2="874" y2="266" />
+  <line class="axis" x1="70" y1="42" x2="70" y2="266" />
+  <text class="tick" x="70" y="304">1</text>
+  <text class="tick" x="852" y="304">5</text>
+  <text class="tick" x="10" y="266">0.0004086</text>
+  <text class="tick" x="10" y="46">0.04415</text>
+  <polyline class="series" points="70.00,42.00 271.00,260.49 472.00,263.96 673.00,265.32 874.00,266.00" />
+  <circle cx="70.00" cy="42.00" r="3"><title>epoch=1, pred_loss=0.0441464</title></circle>
+<circle cx="271.00" cy="260.49" r="3"><title>epoch=2, pred_loss=0.00148478</title></circle>
+<circle cx="472.00" cy="263.96" r="3"><title>epoch=3, pred_loss=0.000806594</title></circle>
+<circle cx="673.00" cy="265.32" r="3"><title>epoch=4, pred_loss=0.000540544</title></circle>
+<circle cx="874.00" cy="266.00" r="3"><title>epoch=5, pred_loss=0.000408565</title></circle>
+</svg>
+</figure>
+    <figure class="plot"><figcaption>Prediction Loss Per Training Step</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" role="img">
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #1f2933; }
+    .axis { stroke: #7b8794; stroke-width: 1; }
+    .series { fill: none; stroke: #2563eb; stroke-width: 3; }
+    circle { fill: #2563eb; }
+    .tick { fill: #5f6b76; font-size: 12px; }
+  </style>
+  <title>Prediction Loss Per Training Step</title>
+  <text x="70" y="24" font-size="18" font-weight="700">Prediction Loss Per Training Step</text>
+  <line class="axis" x1="70" y1="266" x2="874" y2="266" />
+  <line class="axis" x1="70" y1="42" x2="70" y2="266" />
+  <text class="tick" x="70" y="304">1</text>
+  <text class="tick" x="852" y="304">655</text>
+  <text class="tick" x="10" y="266">0.0003137</text>
+  <text class="tick" x="10" y="46">1.334</text>
+  <polyline class="series" points="70.00,42.00 71.23,115.25 72.46,159.44 73.69,185.17 74.92,202.48 76.15,217.78 77.38,228.43 78.61,236.50 79.83,242.32 81.06,248.22 82.29,250.74 83.52,253.67 84.75,255.26 85.98,257.26 87.21,258.81 88.44,259.48 89.67,260.56 90.90,260.71 92.13,261.06 93.36,261.12 94.59,261.28 95.82,261.72 97.05,262.13 98.28,262.00 99.50,262.34 100.73,262.76 101.96,263.22 103.19,263.44 104.42,263.83 105.65,263.86 106.88,264.15 108.11,264.22 109.34,264.32 110.57,264.38 111.80,264.52 113.03,264.67 114.26,264.58 115.49,264.59 116.72,264.62 117.94,264.58 119.17,264.70 120.40,264.69 121.63,264.77 122.86,264.81 124.09,264.86 125.32,264.93 126.55,265.08 127.78,265.09 129.01,265.05 130.24,265.04 131.47,265.18 132.70,265.20 133.93,265.25 135.16,265.27 136.39,265.17 137.61,265.11 138.84,265.13 140.07,265.30 141.30,265.21 142.53,265.28 143.76,265.38 144.99,265.29 146.22,265.33 147.45,265.32 148.68,265.34 149.91,265.35 151.14,265.40 152.37,265.42 153.60,265.32 154.83,265.43 156.06,265.46 157.28,265.44 158.51,265.38 159.74,265.47 160.97,265.46 162.20,265.40 163.43,265.36 164.66,265.49 165.89,265.44 167.12,265.48 168.35,265.51 169.58,265.51 170.81,265.52 172.04,265.50 173.27,265.49 174.50,265.52 175.72,265.48 176.95,265.52 178.18,265.52 179.41,265.55 180.64,265.50 181.87,265.54 183.10,265.55 184.33,265.55 185.56,265.59 186.79,265.52 188.02,265.58 189.25,265.51 190.48,265.60 191.71,265.61 192.94,265.59 194.17,265.57 195.39,265.55 196.62,265.57 197.85,265.60 199.08,265.60 200.31,265.63 201.54,265.62 202.77,265.56 204.00,265.65 205.23,265.59 206.46,265.61 207.69,265.63 208.92,265.64 210.15,265.65 211.38,265.58 212.61,265.67 213.83,265.58 215.06,265.67 216.29,265.66 217.52,265.66 218.75,265.71 219.98,265.66 221.21,265.68 222.44,265.70 223.67,265.65 224.90,265.65 226.13,265.69 227.36,265.70 228.59,265.66 229.82,265.66 231.05,265.69 232.28,265.69 233.50,265.70 234.73,265.69 235.96,265.69 237.19,265.73 238.42,265.68 239.65,265.73 240.88,265.67 242.11,265.73 243.34,265.70 244.57,265.71 245.80,265.72 247.03,265.73 248.26,265.74 249.49,265.72 250.72,265.71 251.94,265.74 253.17,265.72 254.40,265.75 255.63,265.74 256.86,265.73 258.09,265.76 259.32,265.72 260.55,265.74 261.78,265.74 263.01,265.76 264.24,265.74 265.47,265.75 266.70,265.73 267.93,265.77 269.16,265.77 270.39,265.78 271.61,265.73 272.84,265.79 274.07,265.76 275.30,265.77 276.53,265.75 277.76,265.77 278.99,265.77 280.22,265.74 281.45,265.78 282.68,265.76 283.91,265.77 285.14,265.75 286.37,265.80 287.60,265.80 288.83,265.81 290.06,265.79 291.28,265.80 292.51,265.81 293.74,265.81 294.97,265.78 296.20,265.80 297.43,265.80 298.66,265.80 299.89,265.79 301.12,265.83 302.35,265.82 303.58,265.83 304.81,265.80 306.04,265.83 307.27,265.83 308.50,265.80 309.72,265.79 310.95,265.82 312.18,265.81 313.41,265.80 314.64,265.84 315.87,265.77 317.10,265.81 318.33,265.81 319.56,265.83 320.79,265.83 322.02,265.81 323.25,265.84 324.48,265.83 325.71,265.83 326.94,265.84 328.17,265.79 329.39,265.80 330.62,265.83 331.85,265.84 333.08,265.84 334.31,265.84 335.54,265.84 336.77,265.86 338.00,265.83 339.23,265.85 340.46,265.87 341.69,265.84 342.92,265.86 344.15,265.84 345.38,265.86 346.61,265.84 347.83,265.85 349.06,265.84 350.29,265.87 351.52,265.85 352.75,265.84 353.98,265.84 355.21,265.87 356.44,265.87 357.67,265.82 358.90,265.83 360.13,265.85 361.36,265.87 362.59,265.88 363.82,265.87 365.05,265.87 366.28,265.87 367.50,265.85 368.73,265.88 369.96,265.86 371.19,265.90 372.42,265.87 373.65,265.88 374.88,265.88 376.11,265.87 377.34,265.87 378.57,265.86 379.80,265.86 381.03,265.87 382.26,265.87 383.49,265.86 384.72,265.89 385.94,265.89 387.17,265.87 388.40,265.88 389.63,265.87 390.86,265.87 392.09,265.86 393.32,265.86 394.55,265.87 395.78,265.90 397.01,265.88 398.24,265.90 399.47,265.91 400.70,265.89 401.93,265.89 403.16,265.89 404.39,265.87 405.61,265.90 406.84,265.89 408.07,265.89 409.30,265.90 410.53,265.89 411.76,265.88 412.99,265.89 414.22,265.90 415.45,265.89 416.68,265.88 417.91,265.90 419.14,265.92 420.37,265.92 421.60,265.90 422.83,265.88 424.06,265.89 425.28,265.88 426.51,265.90 427.74,265.91 428.97,265.89 430.20,265.88 431.43,265.89 432.66,265.91 433.89,265.90 435.12,265.90 436.35,265.90 437.58,265.91 438.81,265.88 440.04,265.90 441.27,265.90 442.50,265.91 443.72,265.93 444.95,265.90 446.18,265.91 447.41,265.92 448.64,265.92 449.87,265.91 451.10,265.90 452.33,265.92 453.56,265.90 454.79,265.92 456.02,265.90 457.25,265.93 458.48,265.90 459.71,265.92 460.94,265.91 462.17,265.87 463.39,265.92 464.62,265.93 465.85,265.92 467.08,265.92 468.31,265.92 469.54,265.92 470.77,265.91 472.00,265.93 473.23,265.91 474.46,265.93 475.69,265.93 476.92,265.93 478.15,265.93 479.38,265.92 480.61,265.91 481.83,265.93 483.06,265.93 484.29,265.92 485.52,265.90 486.75,265.93 487.98,265.93 489.21,265.93 490.44,265.93 491.67,265.92 492.90,265.92 494.13,265.92 495.36,265.92 496.59,265.91 497.82,265.95 499.05,265.93 500.28,265.94 501.50,265.94 502.73,265.92 503.96,265.94 505.19,265.94 506.42,265.93 507.65,265.93 508.88,265.92 510.11,265.95 511.34,265.95 512.57,265.92 513.80,265.94 515.03,265.92 516.26,265.94 517.49,265.94 518.72,265.93 519.94,265.93 521.17,265.94 522.40,265.94 523.63,265.94 524.86,265.94 526.09,265.94 527.32,265.91 528.55,265.94 529.78,265.94 531.01,265.95 532.24,265.94 533.47,265.95 534.70,265.95 535.93,265.93 537.16,265.95 538.39,265.95 539.61,265.95 540.84,265.94 542.07,265.94 543.30,265.95 544.53,265.95 545.76,265.95 546.99,265.95 548.22,265.95 549.45,265.95 550.68,265.93 551.91,265.96 553.14,265.95 554.37,265.95 555.60,265.95 556.83,265.95 558.06,265.95 559.28,265.94 560.51,265.93 561.74,265.95 562.97,265.93 564.20,265.95 565.43,265.95 566.66,265.95 567.89,265.96 569.12,265.96 570.35,265.96 571.58,265.96 572.81,265.95 574.04,265.95 575.27,265.95 576.50,265.96 577.72,265.94 578.95,265.95 580.18,265.95 581.41,265.94 582.64,265.93 583.87,265.95 585.10,265.96 586.33,265.95 587.56,265.95 588.79,265.96 590.02,265.94 591.25,265.95 592.48,265.96 593.71,265.95 594.94,265.95 596.17,265.95 597.39,265.95 598.62,265.95 599.85,265.96 601.08,265.95 602.31,265.95 603.54,265.96 604.77,265.97 606.00,265.96 607.23,265.96 608.46,265.96 609.69,265.94 610.92,265.97 612.15,265.96 613.38,265.95 614.61,265.96 615.83,265.96 617.06,265.96 618.29,265.96 619.52,265.95 620.75,265.96 621.98,265.95 623.21,265.96 624.44,265.97 625.67,265.96 626.90,265.96 628.13,265.96 629.36,265.96 630.59,265.96 631.82,265.98 633.05,265.95 634.28,265.97 635.50,265.96 636.73,265.96 637.96,265.96 639.19,265.96 640.42,265.97 641.65,265.97 642.88,265.97 644.11,265.97 645.34,265.97 646.57,265.96 647.80,265.97 649.03,265.96 650.26,265.96 651.49,265.97 652.72,265.97 653.94,265.97 655.17,265.97 656.40,265.97 657.63,265.96 658.86,265.96 660.09,265.97 661.32,265.98 662.55,265.96 663.78,265.96 665.01,265.97 666.24,265.97 667.47,265.98 668.70,265.97 669.93,265.97 671.16,265.96 672.39,265.98 673.61,265.96 674.84,265.97 676.07,265.98 677.30,265.96 678.53,265.97 679.76,265.97 680.99,265.97 682.22,265.97 683.45,265.96 684.68,265.97 685.91,265.96 687.14,265.97 688.37,265.97 689.60,265.97 690.83,265.97 692.06,265.98 693.28,265.98 694.51,265.97 695.74,265.97 696.97,265.98 698.20,265.98 699.43,265.98 700.66,265.98 701.89,265.98 703.12,265.98 704.35,265.98 705.58,265.97 706.81,265.98 708.04,265.98 709.27,265.98 710.50,265.97 711.72,265.97 712.95,265.98 714.18,265.98 715.41,265.97 716.64,265.98 717.87,265.97 719.10,265.97 720.33,265.98 721.56,265.97 722.79,265.98 724.02,265.98 725.25,265.99 726.48,265.98 727.71,265.97 728.94,265.98 730.17,265.98 731.39,265.97 732.62,265.98 733.85,265.98 735.08,265.97 736.31,265.97 737.54,265.98 738.77,265.98 740.00,265.97 741.23,265.98 742.46,265.98 743.69,265.97 744.92,265.97 746.15,265.97 747.38,265.98 748.61,265.99 749.83,265.98 751.06,265.99 752.29,265.97 753.52,265.97 754.75,265.98 755.98,265.98 757.21,265.99 758.44,265.98 759.67,265.98 760.90,265.97 762.13,265.99 763.36,265.98 764.59,265.98 765.82,265.98 767.05,265.99 768.28,265.98 769.50,265.99 770.73,265.99 771.96,265.99 773.19,265.99 774.42,265.97 775.65,265.99 776.88,265.98 778.11,265.98 779.34,265.98 780.57,265.99 781.80,265.99 783.03,265.98 784.26,265.99 785.49,265.98 786.72,266.00 787.94,265.98 789.17,265.98 790.40,265.99 791.63,266.00 792.86,265.98 794.09,265.98 795.32,265.98 796.55,265.99 797.78,265.99 799.01,266.00 800.24,265.99 801.47,265.99 802.70,265.99 803.93,265.98 805.16,265.98 806.39,265.98 807.61,265.99 808.84,265.98 810.07,265.99 811.30,265.98 812.53,265.98 813.76,265.98 814.99,265.98 816.22,265.99 817.45,265.98 818.68,265.98 819.91,265.99 821.14,265.99 822.37,265.98 823.60,265.99 824.83,266.00 826.06,265.98 827.28,265.98 828.51,265.99 829.74,266.00 830.97,265.99 832.20,265.99 833.43,265.99 834.66,265.99 835.89,265.99 837.12,265.99 838.35,265.98 839.58,266.00 840.81,265.99 842.04,265.99 843.27,265.99 844.50,265.98 845.72,265.99 846.95,265.99 848.18,266.00 849.41,265.99 850.64,265.98 851.87,266.00 853.10,265.99 854.33,265.98 855.56,265.99 856.79,265.98 858.02,265.99 859.25,265.98 860.48,265.99 861.71,265.98 862.94,265.99 864.17,265.99 865.39,265.99 866.62,265.98 867.85,265.99 869.08,265.99 870.31,265.99 871.54,265.99 872.77,265.99 874.00,265.98" />
+  <circle cx="70.00" cy="42.00" r="3"><title>step=1, pred_loss=1.33436</title></circle>
+<circle cx="71.23" cy="115.25" r="3"><title>step=2, pred_loss=0.898133</title></circle>
+<circle cx="72.46" cy="159.44" r="3"><title>step=3, pred_loss=0.634945</title></circle>
+<circle cx="73.69" cy="185.17" r="3"><title>step=4, pred_loss=0.481696</title></circle>
+<circle cx="74.92" cy="202.48" r="3"><title>step=5, pred_loss=0.378641</title></circle>
+<circle cx="76.15" cy="217.78" r="3"><title>step=6, pred_loss=0.287471</title></circle>
+<circle cx="77.38" cy="228.43" r="3"><title>step=7, pred_loss=0.224037</title></circle>
+<circle cx="78.61" cy="236.50" r="3"><title>step=8, pred_loss=0.176033</title></circle>
+<circle cx="79.83" cy="242.32" r="3"><title>step=9, pred_loss=0.141335</title></circle>
+<circle cx="81.06" cy="248.22" r="3"><title>step=10, pred_loss=0.106175</title></circle>
+<circle cx="82.29" cy="250.74" r="3"><title>step=11, pred_loss=0.0912127</title></circle>
+<circle cx="83.52" cy="253.67" r="3"><title>step=12, pred_loss=0.0737307</title></circle>
+<circle cx="84.75" cy="255.26" r="3"><title>step=13, pred_loss=0.06427</title></circle>
+<circle cx="85.98" cy="257.26" r="3"><title>step=14, pred_loss=0.0523593</title></circle>
+<circle cx="87.21" cy="258.81" r="3"><title>step=15, pred_loss=0.0431324</title></circle>
+<circle cx="88.44" cy="259.48" r="3"><title>step=16, pred_loss=0.0391572</title></circle>
+<circle cx="89.67" cy="260.56" r="3"><title>step=17, pred_loss=0.0327358</title></circle>
+<circle cx="90.90" cy="260.71" r="3"><title>step=18, pred_loss=0.0318152</title></circle>
+<circle cx="92.13" cy="261.06" r="3"><title>step=19, pred_loss=0.029756</title></circle>
+<circle cx="93.36" cy="261.12" r="3"><title>step=20, pred_loss=0.0293942</title></circle>
+<circle cx="94.59" cy="261.28" r="3"><title>step=21, pred_loss=0.028422</title></circle>
+<circle cx="95.82" cy="261.72" r="3"><title>step=22, pred_loss=0.0258131</title></circle>
+<circle cx="97.05" cy="262.13" r="3"><title>step=23, pred_loss=0.0233373</title></circle>
+<circle cx="98.28" cy="262.00" r="3"><title>step=24, pred_loss=0.024123</title></circle>
+<circle cx="99.50" cy="262.34" r="3"><title>step=25, pred_loss=0.0221031</title></circle>
+<circle cx="100.73" cy="262.76" r="3"><title>step=26, pred_loss=0.0196092</title></circle>
+<circle cx="101.96" cy="263.22" r="3"><title>step=27, pred_loss=0.0168979</title></circle>
+<circle cx="103.19" cy="263.44" r="3"><title>step=28, pred_loss=0.0155459</title></circle>
+<circle cx="104.42" cy="263.83" r="3"><title>step=29, pred_loss=0.0132283</title></circle>
+<circle cx="105.65" cy="263.86" r="3"><title>step=30, pred_loss=0.0130477</title></circle>
+<circle cx="106.88" cy="264.15" r="3"><title>step=31, pred_loss=0.0113314</title></circle>
+<circle cx="108.11" cy="264.22" r="3"><title>step=32, pred_loss=0.0108988</title></circle>
+<circle cx="109.34" cy="264.32" r="3"><title>step=33, pred_loss=0.0102993</title></circle>
+<circle cx="110.57" cy="264.38" r="3"><title>step=34, pred_loss=0.0099781</title></circle>
+<circle cx="111.80" cy="264.52" r="3"><title>step=35, pred_loss=0.00912144</title></circle>
+<circle cx="113.03" cy="264.67" r="3"><title>step=36, pred_loss=0.00824662</title></circle>
+<circle cx="114.26" cy="264.58" r="3"><title>step=37, pred_loss=0.00879797</title></circle>
+<circle cx="115.49" cy="264.59" r="3"><title>step=38, pred_loss=0.00871336</title></circle>
+<circle cx="116.72" cy="264.62" r="3"><title>step=39, pred_loss=0.00855445</title></circle>
+<circle cx="117.94" cy="264.58" r="3"><title>step=40, pred_loss=0.00878105</title></circle>
+<circle cx="119.17" cy="264.70" r="3"><title>step=41, pred_loss=0.00806667</title></circle>
+<circle cx="120.40" cy="264.69" r="3"><title>step=42, pred_loss=0.00809343</title></circle>
+<circle cx="121.63" cy="264.77" r="3"><title>step=43, pred_loss=0.00765838</title></circle>
+<circle cx="122.86" cy="264.81" r="3"><title>step=44, pred_loss=0.00742646</title></circle>
+<circle cx="124.09" cy="264.86" r="3"><title>step=45, pred_loss=0.00710033</title></circle>
+<circle cx="125.32" cy="264.93" r="3"><title>step=46, pred_loss=0.00670944</title></circle>
+<circle cx="126.55" cy="265.08" r="3"><title>step=47, pred_loss=0.0057954</title></circle>
+<circle cx="127.78" cy="265.09" r="3"><title>step=48, pred_loss=0.0057315</title></circle>
+<circle cx="129.01" cy="265.05" r="3"><title>step=49, pred_loss=0.00596448</title></circle>
+<circle cx="130.24" cy="265.04" r="3"><title>step=50, pred_loss=0.00601021</title></circle>
+<circle cx="131.47" cy="265.18" r="3"><title>step=51, pred_loss=0.00517323</title></circle>
+<circle cx="132.70" cy="265.20" r="3"><title>step=52, pred_loss=0.00506251</title></circle>
+<circle cx="133.93" cy="265.25" r="3"><title>step=53, pred_loss=0.00480432</title></circle>
+<circle cx="135.16" cy="265.27" r="3"><title>step=54, pred_loss=0.00466423</title></circle>
+<circle cx="136.39" cy="265.17" r="3"><title>step=55, pred_loss=0.00524226</title></circle>
+<circle cx="137.61" cy="265.11" r="3"><title>step=56, pred_loss=0.00563507</title></circle>
+<circle cx="138.84" cy="265.13" r="3"><title>step=57, pred_loss=0.00551115</title></circle>
+<circle cx="140.07" cy="265.30" r="3"><title>step=58, pred_loss=0.00446959</title></circle>
+<circle cx="141.30" cy="265.21" r="3"><title>step=59, pred_loss=0.00503535</title></circle>
+<circle cx="142.53" cy="265.28" r="3"><title>step=60, pred_loss=0.00461182</title></circle>
+<circle cx="143.76" cy="265.38" r="3"><title>step=61, pred_loss=0.00401631</title></circle>
+<circle cx="144.99" cy="265.29" r="3"><title>step=62, pred_loss=0.00455534</title></circle>
+<circle cx="146.22" cy="265.33" r="3"><title>step=63, pred_loss=0.00428195</title></circle>
+<circle cx="147.45" cy="265.32" r="3"><title>step=64, pred_loss=0.0043603</title></circle>
+<circle cx="148.68" cy="265.34" r="3"><title>step=65, pred_loss=0.00423498</title></circle>
+<circle cx="149.91" cy="265.35" r="3"><title>step=66, pred_loss=0.00416821</title></circle>
+<circle cx="151.14" cy="265.40" r="3"><title>step=67, pred_loss=0.00387745</title></circle>
+<circle cx="152.37" cy="265.42" r="3"><title>step=68, pred_loss=0.00373952</title></circle>
+<circle cx="153.60" cy="265.32" r="3"><title>step=69, pred_loss=0.0043757</title></circle>
+<circle cx="154.83" cy="265.43" r="3"><title>step=70, pred_loss=0.00370213</title></circle>
+<circle cx="156.06" cy="265.46" r="3"><title>step=71, pred_loss=0.00353867</title></circle>
+<circle cx="157.28" cy="265.44" r="3"><title>step=72, pred_loss=0.00364357</title></circle>
+<circle cx="158.51" cy="265.38" r="3"><title>step=73, pred_loss=0.00402526</title></circle>
+<circle cx="159.74" cy="265.47" r="3"><title>step=74, pred_loss=0.00346797</title></circle>
+<circle cx="160.97" cy="265.46" r="3"><title>step=75, pred_loss=0.00355619</title></circle>
+<circle cx="162.20" cy="265.40" r="3"><title>step=76, pred_loss=0.00388077</title></circle>
+<circle cx="163.43" cy="265.36" r="3"><title>step=77, pred_loss=0.00412773</title></circle>
+<circle cx="164.66" cy="265.49" r="3"><title>step=78, pred_loss=0.00332971</title></circle>
+<circle cx="165.89" cy="265.44" r="3"><title>step=79, pred_loss=0.00362387</title></circle>
+<circle cx="167.12" cy="265.48" r="3"><title>step=80, pred_loss=0.00342376</title></circle>
+<circle cx="168.35" cy="265.51" r="3"><title>step=81, pred_loss=0.00325529</title></circle>
+<circle cx="169.58" cy="265.51" r="3"><title>step=82, pred_loss=0.00322769</title></circle>
+<circle cx="170.81" cy="265.52" r="3"><title>step=83, pred_loss=0.00316383</title></circle>
+<circle cx="172.04" cy="265.50" r="3"><title>step=84, pred_loss=0.00327678</title></circle>
+<circle cx="173.27" cy="265.49" r="3"><title>step=85, pred_loss=0.0033293</title></circle>
+<circle cx="174.50" cy="265.52" r="3"><title>step=86, pred_loss=0.00319724</title></circle>
+<circle cx="175.72" cy="265.48" r="3"><title>step=87, pred_loss=0.0034103</title></circle>
+<circle cx="176.95" cy="265.52" r="3"><title>step=88, pred_loss=0.00318446</title></circle>
+<circle cx="178.18" cy="265.52" r="3"><title>step=89, pred_loss=0.00318898</title></circle>
+<circle cx="179.41" cy="265.55" r="3"><title>step=90, pred_loss=0.00297464</title></circle>
+<circle cx="180.64" cy="265.50" r="3"><title>step=91, pred_loss=0.00330942</title></circle>
+<circle cx="181.87" cy="265.54" r="3"><title>step=92, pred_loss=0.00304832</title></circle>
+<circle cx="183.10" cy="265.55" r="3"><title>step=93, pred_loss=0.00300549</title></circle>
+<circle cx="184.33" cy="265.55" r="3"><title>step=94, pred_loss=0.00301779</title></circle>
+<circle cx="185.56" cy="265.59" r="3"><title>step=95, pred_loss=0.00276208</title></circle>
+<circle cx="186.79" cy="265.52" r="3"><title>step=96, pred_loss=0.00316074</title></circle>
+<circle cx="188.02" cy="265.58" r="3"><title>step=97, pred_loss=0.00280031</title></circle>
+<circle cx="189.25" cy="265.51" r="3"><title>step=98, pred_loss=0.00325407</title></circle>
+<circle cx="190.48" cy="265.60" r="3"><title>step=99, pred_loss=0.00270284</title></circle>
+<circle cx="191.71" cy="265.61" r="3"><title>step=100, pred_loss=0.00265798</title></circle>
+<circle cx="192.94" cy="265.59" r="3"><title>step=101, pred_loss=0.00276842</title></circle>
+<circle cx="194.17" cy="265.57" r="3"><title>step=102, pred_loss=0.00287548</title></circle>
+<circle cx="195.39" cy="265.55" r="3"><title>step=103, pred_loss=0.00297989</title></circle>
+<circle cx="196.62" cy="265.57" r="3"><title>step=104, pred_loss=0.00286177</title></circle>
+<circle cx="197.85" cy="265.60" r="3"><title>step=105, pred_loss=0.00267944</title></circle>
+<circle cx="199.08" cy="265.60" r="3"><title>step=106, pred_loss=0.0027156</title></circle>
+<circle cx="200.31" cy="265.63" r="3"><title>step=107, pred_loss=0.00252705</title></circle>
+<circle cx="201.54" cy="265.62" r="3"><title>step=108, pred_loss=0.00256916</title></circle>
+<circle cx="202.77" cy="265.56" r="3"><title>step=109, pred_loss=0.00292783</title></circle>
+<circle cx="204.00" cy="265.65" r="3"><title>step=110, pred_loss=0.00240867</title></circle>
+<circle cx="205.23" cy="265.59" r="3"><title>step=111, pred_loss=0.00275037</title></circle>
+<circle cx="206.46" cy="265.61" r="3"><title>step=112, pred_loss=0.00264009</title></circle>
+<circle cx="207.69" cy="265.63" r="3"><title>step=113, pred_loss=0.00251463</title></circle>
+<circle cx="208.92" cy="265.64" r="3"><title>step=114, pred_loss=0.00244521</title></circle>
+<circle cx="210.15" cy="265.65" r="3"><title>step=115, pred_loss=0.00242382</title></circle>
+<circle cx="211.38" cy="265.58" r="3"><title>step=116, pred_loss=0.00284057</title></circle>
+<circle cx="212.61" cy="265.67" r="3"><title>step=117, pred_loss=0.00229226</title></circle>
+<circle cx="213.83" cy="265.58" r="3"><title>step=118, pred_loss=0.00284443</title></circle>
+<circle cx="215.06" cy="265.67" r="3"><title>step=119, pred_loss=0.00229052</title></circle>
+<circle cx="216.29" cy="265.66" r="3"><title>step=120, pred_loss=0.00234418</title></circle>
+<circle cx="217.52" cy="265.66" r="3"><title>step=121, pred_loss=0.00231665</title></circle>
+<circle cx="218.75" cy="265.71" r="3"><title>step=122, pred_loss=0.00202419</title></circle>
+<circle cx="219.98" cy="265.66" r="3"><title>step=123, pred_loss=0.00236298</title></circle>
+<circle cx="221.21" cy="265.68" r="3"><title>step=124, pred_loss=0.00220659</title></circle>
+<circle cx="222.44" cy="265.70" r="3"><title>step=125, pred_loss=0.0020753</title></circle>
+<circle cx="223.67" cy="265.65" r="3"><title>step=126, pred_loss=0.00238653</title></circle>
+<circle cx="224.90" cy="265.65" r="3"><title>step=127, pred_loss=0.00238572</title></circle>
+<circle cx="226.13" cy="265.69" r="3"><title>step=128, pred_loss=0.00214019</title></circle>
+<circle cx="227.36" cy="265.70" r="3"><title>step=129, pred_loss=0.00207298</title></circle>
+<circle cx="228.59" cy="265.66" r="3"><title>step=130, pred_loss=0.00231392</title></circle>
+<circle cx="229.82" cy="265.66" r="3"><title>step=131, pred_loss=0.00233094</title></circle>
+<circle cx="231.05" cy="265.69" r="3"><title>step=132, pred_loss=0.00215136</title></circle>
+<circle cx="232.28" cy="265.69" r="3"><title>step=133, pred_loss=0.00213295</title></circle>
+<circle cx="233.50" cy="265.70" r="3"><title>step=134, pred_loss=0.00211029</title></circle>
+<circle cx="234.73" cy="265.69" r="3"><title>step=135, pred_loss=0.00217708</title></circle>
+<circle cx="235.96" cy="265.69" r="3"><title>step=136, pred_loss=0.0021434</title></circle>
+<circle cx="237.19" cy="265.73" r="3"><title>step=137, pred_loss=0.00191281</title></circle>
+<circle cx="238.42" cy="265.68" r="3"><title>step=138, pred_loss=0.00223547</title></circle>
+<circle cx="239.65" cy="265.73" r="3"><title>step=139, pred_loss=0.00193906</title></circle>
+<circle cx="240.88" cy="265.67" r="3"><title>step=140, pred_loss=0.00227196</title></circle>
+<circle cx="242.11" cy="265.73" r="3"><title>step=141, pred_loss=0.00193127</title></circle>
+<circle cx="243.34" cy="265.70" r="3"><title>step=142, pred_loss=0.00212915</title></circle>
+<circle cx="244.57" cy="265.71" r="3"><title>step=143, pred_loss=0.00206845</title></circle>
+<circle cx="245.80" cy="265.72" r="3"><title>step=144, pred_loss=0.00197645</title></circle>
+<circle cx="247.03" cy="265.73" r="3"><title>step=145, pred_loss=0.0019132</title></circle>
+<circle cx="248.26" cy="265.74" r="3"><title>step=146, pred_loss=0.00187991</title></circle>
+<circle cx="249.49" cy="265.72" r="3"><title>step=147, pred_loss=0.00200247</title></circle>
+<circle cx="250.72" cy="265.71" r="3"><title>step=148, pred_loss=0.00204421</title></circle>
+<circle cx="251.94" cy="265.74" r="3"><title>step=149, pred_loss=0.00188454</title></circle>
+<circle cx="253.17" cy="265.72" r="3"><title>step=150, pred_loss=0.00197066</title></circle>
+<circle cx="254.40" cy="265.75" r="3"><title>step=151, pred_loss=0.00182165</title></circle>
+<circle cx="255.63" cy="265.74" r="3"><title>step=152, pred_loss=0.00188582</title></circle>
+<circle cx="256.86" cy="265.73" r="3"><title>step=153, pred_loss=0.00191422</title></circle>
+<circle cx="258.09" cy="265.76" r="3"><title>step=154, pred_loss=0.00175335</title></circle>
+<circle cx="259.32" cy="265.72" r="3"><title>step=155, pred_loss=0.00199284</title></circle>
+<circle cx="260.55" cy="265.74" r="3"><title>step=156, pred_loss=0.0018487</title></circle>
+<circle cx="261.78" cy="265.74" r="3"><title>step=157, pred_loss=0.00184085</title></circle>
+<circle cx="263.01" cy="265.76" r="3"><title>step=158, pred_loss=0.00175667</title></circle>
+<circle cx="264.24" cy="265.74" r="3"><title>step=159, pred_loss=0.0018834</title></circle>
+<circle cx="265.47" cy="265.75" r="3"><title>step=160, pred_loss=0.00180629</title></circle>
+<circle cx="266.70" cy="265.73" r="3"><title>step=161, pred_loss=0.0019408</title></circle>
+<circle cx="267.93" cy="265.77" r="3"><title>step=162, pred_loss=0.00169203</title></circle>
+<circle cx="269.16" cy="265.77" r="3"><title>step=163, pred_loss=0.00167821</title></circle>
+<circle cx="270.39" cy="265.78" r="3"><title>step=164, pred_loss=0.0015983</title></circle>
+<circle cx="271.61" cy="265.73" r="3"><title>step=165, pred_loss=0.00191782</title></circle>
+<circle cx="272.84" cy="265.79" r="3"><title>step=166, pred_loss=0.00157969</title></circle>
+<circle cx="274.07" cy="265.76" r="3"><title>step=167, pred_loss=0.00177138</title></circle>
+<circle cx="275.30" cy="265.77" r="3"><title>step=168, pred_loss=0.0016777</title></circle>
+<circle cx="276.53" cy="265.75" r="3"><title>step=169, pred_loss=0.00182837</title></circle>
+<circle cx="277.76" cy="265.77" r="3"><title>step=170, pred_loss=0.00167014</title></circle>
+<circle cx="278.99" cy="265.77" r="3"><title>step=171, pred_loss=0.00165867</title></circle>
+<circle cx="280.22" cy="265.74" r="3"><title>step=172, pred_loss=0.00184918</title></circle>
+<circle cx="281.45" cy="265.78" r="3"><title>step=173, pred_loss=0.00160584</title></circle>
+<circle cx="282.68" cy="265.76" r="3"><title>step=174, pred_loss=0.00175185</title></circle>
+<circle cx="283.91" cy="265.77" r="3"><title>step=175, pred_loss=0.0016912</title></circle>
+<circle cx="285.14" cy="265.75" r="3"><title>step=176, pred_loss=0.00177539</title></circle>
+<circle cx="286.37" cy="265.80" r="3"><title>step=177, pred_loss=0.00150291</title></circle>
+<circle cx="287.60" cy="265.80" r="3"><title>step=178, pred_loss=0.00147518</title></circle>
+<circle cx="288.83" cy="265.81" r="3"><title>step=179, pred_loss=0.00145115</title></circle>
+<circle cx="290.06" cy="265.79" r="3"><title>step=180, pred_loss=0.00158603</title></circle>
+<circle cx="291.28" cy="265.80" r="3"><title>step=181, pred_loss=0.00148243</title></circle>
+<circle cx="292.51" cy="265.81" r="3"><title>step=182, pred_loss=0.0014632</title></circle>
+<circle cx="293.74" cy="265.81" r="3"><title>step=183, pred_loss=0.00144692</title></circle>
+<circle cx="294.97" cy="265.78" r="3"><title>step=184, pred_loss=0.00163197</title></circle>
+<circle cx="296.20" cy="265.80" r="3"><title>step=185, pred_loss=0.00150818</title></circle>
+<circle cx="297.43" cy="265.80" r="3"><title>step=186, pred_loss=0.00152436</title></circle>
+<circle cx="298.66" cy="265.80" r="3"><title>step=187, pred_loss=0.00150732</title></circle>
+<circle cx="299.89" cy="265.79" r="3"><title>step=188, pred_loss=0.00156609</title></circle>
+<circle cx="301.12" cy="265.83" r="3"><title>step=189, pred_loss=0.00133948</title></circle>
+<circle cx="302.35" cy="265.82" r="3"><title>step=190, pred_loss=0.0013873</title></circle>
+<circle cx="303.58" cy="265.83" r="3"><title>step=191, pred_loss=0.001337</title></circle>
+<circle cx="304.81" cy="265.80" r="3"><title>step=192, pred_loss=0.00152558</title></circle>
+<circle cx="306.04" cy="265.83" r="3"><title>step=193, pred_loss=0.00132549</title></circle>
+<circle cx="307.27" cy="265.83" r="3"><title>step=194, pred_loss=0.00135249</title></circle>
+<circle cx="308.50" cy="265.80" r="3"><title>step=195, pred_loss=0.0014814</title></circle>
+<circle cx="309.72" cy="265.79" r="3"><title>step=196, pred_loss=0.00155117</title></circle>
+<circle cx="310.95" cy="265.82" r="3"><title>step=197, pred_loss=0.00138732</title></circle>
+<circle cx="312.18" cy="265.81" r="3"><title>step=198, pred_loss=0.00147427</title></circle>
+<circle cx="313.41" cy="265.80" r="3"><title>step=199, pred_loss=0.00152073</title></circle>
+<circle cx="314.64" cy="265.84" r="3"><title>step=200, pred_loss=0.00123774</title></circle>
+<circle cx="315.87" cy="265.77" r="3"><title>step=201, pred_loss=0.00169042</title></circle>
+<circle cx="317.10" cy="265.81" r="3"><title>step=202, pred_loss=0.00142428</title></circle>
+<circle cx="318.33" cy="265.81" r="3"><title>step=203, pred_loss=0.00143961</title></circle>
+<circle cx="319.56" cy="265.83" r="3"><title>step=204, pred_loss=0.00133547</title></circle>
+<circle cx="320.79" cy="265.83" r="3"><title>step=205, pred_loss=0.0013158</title></circle>
+<circle cx="322.02" cy="265.81" r="3"><title>step=206, pred_loss=0.00144953</title></circle>
+<circle cx="323.25" cy="265.84" r="3"><title>step=207, pred_loss=0.00124489</title></circle>
+<circle cx="324.48" cy="265.83" r="3"><title>step=208, pred_loss=0.00134071</title></circle>
+<circle cx="325.71" cy="265.83" r="3"><title>step=209, pred_loss=0.00130055</title></circle>
+<circle cx="326.94" cy="265.84" r="3"><title>step=210, pred_loss=0.00126739</title></circle>
+<circle cx="328.17" cy="265.79" r="3"><title>step=211, pred_loss=0.00154205</title></circle>
+<circle cx="329.39" cy="265.80" r="3"><title>step=212, pred_loss=0.00147762</title></circle>
+<circle cx="330.62" cy="265.83" r="3"><title>step=213, pred_loss=0.00133857</title></circle>
+<circle cx="331.85" cy="265.84" r="3"><title>step=214, pred_loss=0.00129128</title></circle>
+<circle cx="333.08" cy="265.84" r="3"><title>step=215, pred_loss=0.00127588</title></circle>
+<circle cx="334.31" cy="265.84" r="3"><title>step=216, pred_loss=0.0012628</title></circle>
+<circle cx="335.54" cy="265.84" r="3"><title>step=217, pred_loss=0.00126507</title></circle>
+<circle cx="336.77" cy="265.86" r="3"><title>step=218, pred_loss=0.00116391</title></circle>
+<circle cx="338.00" cy="265.83" r="3"><title>step=219, pred_loss=0.00130857</title></circle>
+<circle cx="339.23" cy="265.85" r="3"><title>step=220, pred_loss=0.00123313</title></circle>
+<circle cx="340.46" cy="265.87" r="3"><title>step=221, pred_loss=0.00111323</title></circle>
+<circle cx="341.69" cy="265.84" r="3"><title>step=222, pred_loss=0.00124082</title></circle>
+<circle cx="342.92" cy="265.86" r="3"><title>step=223, pred_loss=0.00116712</title></circle>
+<circle cx="344.15" cy="265.84" r="3"><title>step=224, pred_loss=0.00125343</title></circle>
+<circle cx="345.38" cy="265.86" r="3"><title>step=225, pred_loss=0.00114312</title></circle>
+<circle cx="346.61" cy="265.84" r="3"><title>step=226, pred_loss=0.00124654</title></circle>
+<circle cx="347.83" cy="265.85" r="3"><title>step=227, pred_loss=0.00121013</title></circle>
+<circle cx="349.06" cy="265.84" r="3"><title>step=228, pred_loss=0.00125221</title></circle>
+<circle cx="350.29" cy="265.87" r="3"><title>step=229, pred_loss=0.00109837</title></circle>
+<circle cx="351.52" cy="265.85" r="3"><title>step=230, pred_loss=0.00122476</title></circle>
+<circle cx="352.75" cy="265.84" r="3"><title>step=231, pred_loss=0.00127224</title></circle>
+<circle cx="353.98" cy="265.84" r="3"><title>step=232, pred_loss=0.00124075</title></circle>
+<circle cx="355.21" cy="265.87" r="3"><title>step=233, pred_loss=0.00108188</title></circle>
+<circle cx="356.44" cy="265.87" r="3"><title>step=234, pred_loss=0.00111543</title></circle>
+<circle cx="357.67" cy="265.82" r="3"><title>step=235, pred_loss=0.00136414</title></circle>
+<circle cx="358.90" cy="265.83" r="3"><title>step=236, pred_loss=0.00130864</title></circle>
+<circle cx="360.13" cy="265.85" r="3"><title>step=237, pred_loss=0.00121307</title></circle>
+<circle cx="361.36" cy="265.87" r="3"><title>step=238, pred_loss=0.00111187</title></circle>
+<circle cx="362.59" cy="265.88" r="3"><title>step=239, pred_loss=0.00101609</title></circle>
+<circle cx="363.82" cy="265.87" r="3"><title>step=240, pred_loss=0.00111374</title></circle>
+<circle cx="365.05" cy="265.87" r="3"><title>step=241, pred_loss=0.00108235</title></circle>
+<circle cx="366.28" cy="265.87" r="3"><title>step=242, pred_loss=0.00108226</title></circle>
+<circle cx="367.50" cy="265.85" r="3"><title>step=243, pred_loss=0.00120105</title></circle>
+<circle cx="368.73" cy="265.88" r="3"><title>step=244, pred_loss=0.0010203</title></circle>
+<circle cx="369.96" cy="265.86" r="3"><title>step=245, pred_loss=0.00111934</title></circle>
+<circle cx="371.19" cy="265.90" r="3"><title>step=246, pred_loss=0.000937302</title></circle>
+<circle cx="372.42" cy="265.87" r="3"><title>step=247, pred_loss=0.00109683</title></circle>
+<circle cx="373.65" cy="265.88" r="3"><title>step=248, pred_loss=0.00105271</title></circle>
+<circle cx="374.88" cy="265.88" r="3"><title>step=249, pred_loss=0.00100709</title></circle>
+<circle cx="376.11" cy="265.87" r="3"><title>step=250, pred_loss=0.00107654</title></circle>
+<circle cx="377.34" cy="265.87" r="3"><title>step=251, pred_loss=0.00109153</title></circle>
+<circle cx="378.57" cy="265.86" r="3"><title>step=252, pred_loss=0.00113343</title></circle>
+<circle cx="379.80" cy="265.86" r="3"><title>step=253, pred_loss=0.00112088</title></circle>
+<circle cx="381.03" cy="265.87" r="3"><title>step=254, pred_loss=0.00111663</title></circle>
+<circle cx="382.26" cy="265.87" r="3"><title>step=255, pred_loss=0.00107698</title></circle>
+<circle cx="383.49" cy="265.86" r="3"><title>step=256, pred_loss=0.0011602</title></circle>
+<circle cx="384.72" cy="265.89" r="3"><title>step=257, pred_loss=0.000993819</title></circle>
+<circle cx="385.94" cy="265.89" r="3"><title>step=258, pred_loss=0.000994345</title></circle>
+<circle cx="387.17" cy="265.87" r="3"><title>step=259, pred_loss=0.00110455</title></circle>
+<circle cx="388.40" cy="265.88" r="3"><title>step=260, pred_loss=0.00101874</title></circle>
+<circle cx="389.63" cy="265.87" r="3"><title>step=261, pred_loss=0.00105939</title></circle>
+<circle cx="390.86" cy="265.87" r="3"><title>step=262, pred_loss=0.00107382</title></circle>
+<circle cx="392.09" cy="265.86" r="3"><title>step=263, pred_loss=0.00113298</title></circle>
+<circle cx="393.32" cy="265.86" r="3"><title>step=264, pred_loss=0.00112424</title></circle>
+<circle cx="394.55" cy="265.87" r="3"><title>step=265, pred_loss=0.0010651</title></circle>
+<circle cx="395.78" cy="265.90" r="3"><title>step=266, pred_loss=0.000934148</title></circle>
+<circle cx="397.01" cy="265.88" r="3"><title>step=267, pred_loss=0.00103864</title></circle>
+<circle cx="398.24" cy="265.90" r="3"><title>step=268, pred_loss=0.000934877</title></circle>
+<circle cx="399.47" cy="265.91" r="3"><title>step=269, pred_loss=0.000837612</title></circle>
+<circle cx="400.70" cy="265.89" r="3"><title>step=270, pred_loss=0.000988659</title></circle>
+<circle cx="401.93" cy="265.89" r="3"><title>step=271, pred_loss=0.000955023</title></circle>
+<circle cx="403.16" cy="265.89" r="3"><title>step=272, pred_loss=0.000959971</title></circle>
+<circle cx="404.39" cy="265.87" r="3"><title>step=273, pred_loss=0.00108262</title></circle>
+<circle cx="405.61" cy="265.90" r="3"><title>step=274, pred_loss=0.000909574</title></circle>
+<circle cx="406.84" cy="265.89" r="3"><title>step=275, pred_loss=0.000955387</title></circle>
+<circle cx="408.07" cy="265.89" r="3"><title>step=276, pred_loss=0.000986663</title></circle>
+<circle cx="409.30" cy="265.90" r="3"><title>step=277, pred_loss=0.000880402</title></circle>
+<circle cx="410.53" cy="265.89" r="3"><title>step=278, pred_loss=0.000961214</title></circle>
+<circle cx="411.76" cy="265.88" r="3"><title>step=279, pred_loss=0.00103064</title></circle>
+<circle cx="412.99" cy="265.89" r="3"><title>step=280, pred_loss=0.00095695</title></circle>
+<circle cx="414.22" cy="265.90" r="3"><title>step=281, pred_loss=0.000916086</title></circle>
+<circle cx="415.45" cy="265.89" r="3"><title>step=282, pred_loss=0.000947476</title></circle>
+<circle cx="416.68" cy="265.88" r="3"><title>step=283, pred_loss=0.00103157</title></circle>
+<circle cx="417.91" cy="265.90" r="3"><title>step=284, pred_loss=0.000933152</title></circle>
+<circle cx="419.14" cy="265.92" r="3"><title>step=285, pred_loss=0.000811614</title></circle>
+<circle cx="420.37" cy="265.92" r="3"><title>step=286, pred_loss=0.000816045</title></circle>
+<circle cx="421.60" cy="265.90" r="3"><title>step=287, pred_loss=0.000903318</title></circle>
+<circle cx="422.83" cy="265.88" r="3"><title>step=288, pred_loss=0.00102886</title></circle>
+<circle cx="424.06" cy="265.89" r="3"><title>step=289, pred_loss=0.00097274</title></circle>
+<circle cx="425.28" cy="265.88" r="3"><title>step=290, pred_loss=0.00100143</title></circle>
+<circle cx="426.51" cy="265.90" r="3"><title>step=291, pred_loss=0.000917136</title></circle>
+<circle cx="427.74" cy="265.91" r="3"><title>step=292, pred_loss=0.000878245</title></circle>
+<circle cx="428.97" cy="265.89" r="3"><title>step=293, pred_loss=0.000972247</title></circle>
+<circle cx="430.20" cy="265.88" r="3"><title>step=294, pred_loss=0.00104455</title></circle>
+<circle cx="431.43" cy="265.89" r="3"><title>step=295, pred_loss=0.000962033</title></circle>
+<circle cx="432.66" cy="265.91" r="3"><title>step=296, pred_loss=0.000877253</title></circle>
+<circle cx="433.89" cy="265.90" r="3"><title>step=297, pred_loss=0.000937155</title></circle>
+<circle cx="435.12" cy="265.90" r="3"><title>step=298, pred_loss=0.000882933</title></circle>
+<circle cx="436.35" cy="265.90" r="3"><title>step=299, pred_loss=0.000931042</title></circle>
+<circle cx="437.58" cy="265.91" r="3"><title>step=300, pred_loss=0.000875474</title></circle>
+<circle cx="438.81" cy="265.88" r="3"><title>step=301, pred_loss=0.0010041</title></circle>
+<circle cx="440.04" cy="265.90" r="3"><title>step=302, pred_loss=0.000913998</title></circle>
+<circle cx="441.27" cy="265.90" r="3"><title>step=303, pred_loss=0.000910858</title></circle>
+<circle cx="442.50" cy="265.91" r="3"><title>step=304, pred_loss=0.000860915</title></circle>
+<circle cx="443.72" cy="265.93" r="3"><title>step=305, pred_loss=0.000753303</title></circle>
+<circle cx="444.95" cy="265.90" r="3"><title>step=306, pred_loss=0.000900843</title></circle>
+<circle cx="446.18" cy="265.91" r="3"><title>step=307, pred_loss=0.000821341</title></circle>
+<circle cx="447.41" cy="265.92" r="3"><title>step=308, pred_loss=0.000812432</title></circle>
+<circle cx="448.64" cy="265.92" r="3"><title>step=309, pred_loss=0.000776487</title></circle>
+<circle cx="449.87" cy="265.91" r="3"><title>step=310, pred_loss=0.000827477</title></circle>
+<circle cx="451.10" cy="265.90" r="3"><title>step=311, pred_loss=0.000896328</title></circle>
+<circle cx="452.33" cy="265.92" r="3"><title>step=312, pred_loss=0.000784544</title></circle>
+<circle cx="453.56" cy="265.90" r="3"><title>step=313, pred_loss=0.000936181</title></circle>
+<circle cx="454.79" cy="265.92" r="3"><title>step=314, pred_loss=0.00077878</title></circle>
+<circle cx="456.02" cy="265.90" r="3"><title>step=315, pred_loss=0.000890333</title></circle>
+<circle cx="457.25" cy="265.93" r="3"><title>step=316, pred_loss=0.000735613</title></circle>
+<circle cx="458.48" cy="265.90" r="3"><title>step=317, pred_loss=0.000890646</title></circle>
+<circle cx="459.71" cy="265.92" r="3"><title>step=318, pred_loss=0.00080335</title></circle>
+<circle cx="460.94" cy="265.91" r="3"><title>step=319, pred_loss=0.000822356</title></circle>
+<circle cx="462.17" cy="265.87" r="3"><title>step=320, pred_loss=0.00108207</title></circle>
+<circle cx="463.39" cy="265.92" r="3"><title>step=321, pred_loss=0.000799932</title></circle>
+<circle cx="464.62" cy="265.93" r="3"><title>step=322, pred_loss=0.000733114</title></circle>
+<circle cx="465.85" cy="265.92" r="3"><title>step=323, pred_loss=0.000783995</title></circle>
+<circle cx="467.08" cy="265.92" r="3"><title>step=324, pred_loss=0.000803033</title></circle>
+<circle cx="468.31" cy="265.92" r="3"><title>step=325, pred_loss=0.000765129</title></circle>
+<circle cx="469.54" cy="265.92" r="3"><title>step=326, pred_loss=0.000814893</title></circle>
+<circle cx="470.77" cy="265.91" r="3"><title>step=327, pred_loss=0.00083957</title></circle>
+<circle cx="472.00" cy="265.93" r="3"><title>step=328, pred_loss=0.000712671</title></circle>
+<circle cx="473.23" cy="265.91" r="3"><title>step=329, pred_loss=0.000828519</title></circle>
+<circle cx="474.46" cy="265.93" r="3"><title>step=330, pred_loss=0.000722886</title></circle>
+<circle cx="475.69" cy="265.93" r="3"><title>step=331, pred_loss=0.000715881</title></circle>
+<circle cx="476.92" cy="265.93" r="3"><title>step=332, pred_loss=0.000723743</title></circle>
+<circle cx="478.15" cy="265.93" r="3"><title>step=333, pred_loss=0.000754496</title></circle>
+<circle cx="479.38" cy="265.92" r="3"><title>step=334, pred_loss=0.00081168</title></circle>
+<circle cx="480.61" cy="265.91" r="3"><title>step=335, pred_loss=0.000833595</title></circle>
+<circle cx="481.83" cy="265.93" r="3"><title>step=336, pred_loss=0.000735826</title></circle>
+<circle cx="483.06" cy="265.93" r="3"><title>step=337, pred_loss=0.000731057</title></circle>
+<circle cx="484.29" cy="265.92" r="3"><title>step=338, pred_loss=0.000763347</title></circle>
+<circle cx="485.52" cy="265.90" r="3"><title>step=339, pred_loss=0.000911372</title></circle>
+<circle cx="486.75" cy="265.93" r="3"><title>step=340, pred_loss=0.000717983</title></circle>
+<circle cx="487.98" cy="265.93" r="3"><title>step=341, pred_loss=0.000742537</title></circle>
+<circle cx="489.21" cy="265.93" r="3"><title>step=342, pred_loss=0.000723218</title></circle>
+<circle cx="490.44" cy="265.93" r="3"><title>step=343, pred_loss=0.000726631</title></circle>
+<circle cx="491.67" cy="265.92" r="3"><title>step=344, pred_loss=0.000808998</title></circle>
+<circle cx="492.90" cy="265.92" r="3"><title>step=345, pred_loss=0.000764742</title></circle>
+<circle cx="494.13" cy="265.92" r="3"><title>step=346, pred_loss=0.000772101</title></circle>
+<circle cx="495.36" cy="265.92" r="3"><title>step=347, pred_loss=0.000783522</title></circle>
+<circle cx="496.59" cy="265.91" r="3"><title>step=348, pred_loss=0.000840062</title></circle>
+<circle cx="497.82" cy="265.95" r="3"><title>step=349, pred_loss=0.000640837</title></circle>
+<circle cx="499.05" cy="265.93" r="3"><title>step=350, pred_loss=0.000711378</title></circle>
+<circle cx="500.28" cy="265.94" r="3"><title>step=351, pred_loss=0.000699617</title></circle>
+<circle cx="501.50" cy="265.94" r="3"><title>step=352, pred_loss=0.000662916</title></circle>
+<circle cx="502.73" cy="265.92" r="3"><title>step=353, pred_loss=0.000791029</title></circle>
+<circle cx="503.96" cy="265.94" r="3"><title>step=354, pred_loss=0.000661828</title></circle>
+<circle cx="505.19" cy="265.94" r="3"><title>step=355, pred_loss=0.000669205</title></circle>
+<circle cx="506.42" cy="265.93" r="3"><title>step=356, pred_loss=0.000730956</title></circle>
+<circle cx="507.65" cy="265.93" r="3"><title>step=357, pred_loss=0.000756977</title></circle>
+<circle cx="508.88" cy="265.92" r="3"><title>step=358, pred_loss=0.00081738</title></circle>
+<circle cx="510.11" cy="265.95" r="3"><title>step=359, pred_loss=0.000633072</title></circle>
+<circle cx="511.34" cy="265.95" r="3"><title>step=360, pred_loss=0.00063593</title></circle>
+<circle cx="512.57" cy="265.92" r="3"><title>step=361, pred_loss=0.000790751</title></circle>
+<circle cx="513.80" cy="265.94" r="3"><title>step=362, pred_loss=0.000673424</title></circle>
+<circle cx="515.03" cy="265.92" r="3"><title>step=363, pred_loss=0.000768201</title></circle>
+<circle cx="516.26" cy="265.94" r="3"><title>step=364, pred_loss=0.000677425</title></circle>
+<circle cx="517.49" cy="265.94" r="3"><title>step=365, pred_loss=0.000667213</title></circle>
+<circle cx="518.72" cy="265.93" r="3"><title>step=366, pred_loss=0.000755337</title></circle>
+<circle cx="519.94" cy="265.93" r="3"><title>step=367, pred_loss=0.000724333</title></circle>
+<circle cx="521.17" cy="265.94" r="3"><title>step=368, pred_loss=0.000644756</title></circle>
+<circle cx="522.40" cy="265.94" r="3"><title>step=369, pred_loss=0.0006589</title></circle>
+<circle cx="523.63" cy="265.94" r="3"><title>step=370, pred_loss=0.000655236</title></circle>
+<circle cx="524.86" cy="265.94" r="3"><title>step=371, pred_loss=0.000661354</title></circle>
+<circle cx="526.09" cy="265.94" r="3"><title>step=372, pred_loss=0.000668386</title></circle>
+<circle cx="527.32" cy="265.91" r="3"><title>step=373, pred_loss=0.000831758</title></circle>
+<circle cx="528.55" cy="265.94" r="3"><title>step=374, pred_loss=0.000671522</title></circle>
+<circle cx="529.78" cy="265.94" r="3"><title>step=375, pred_loss=0.000685783</title></circle>
+<circle cx="531.01" cy="265.95" r="3"><title>step=376, pred_loss=0.000610415</title></circle>
+<circle cx="532.24" cy="265.94" r="3"><title>step=377, pred_loss=0.000669191</title></circle>
+<circle cx="533.47" cy="265.95" r="3"><title>step=378, pred_loss=0.000638969</title></circle>
+<circle cx="534.70" cy="265.95" r="3"><title>step=379, pred_loss=0.000617915</title></circle>
+<circle cx="535.93" cy="265.93" r="3"><title>step=380, pred_loss=0.000731095</title></circle>
+<circle cx="537.16" cy="265.95" r="3"><title>step=381, pred_loss=0.000616827</title></circle>
+<circle cx="538.39" cy="265.95" r="3"><title>step=382, pred_loss=0.000623395</title></circle>
+<circle cx="539.61" cy="265.95" r="3"><title>step=383, pred_loss=0.00063311</title></circle>
+<circle cx="540.84" cy="265.94" r="3"><title>step=384, pred_loss=0.00069578</title></circle>
+<circle cx="542.07" cy="265.94" r="3"><title>step=385, pred_loss=0.000644525</title></circle>
+<circle cx="543.30" cy="265.95" r="3"><title>step=386, pred_loss=0.000633245</title></circle>
+<circle cx="544.53" cy="265.95" r="3"><title>step=387, pred_loss=0.000588871</title></circle>
+<circle cx="545.76" cy="265.95" r="3"><title>step=388, pred_loss=0.000613379</title></circle>
+<circle cx="546.99" cy="265.95" r="3"><title>step=389, pred_loss=0.000629045</title></circle>
+<circle cx="548.22" cy="265.95" r="3"><title>step=390, pred_loss=0.000635774</title></circle>
+<circle cx="549.45" cy="265.95" r="3"><title>step=391, pred_loss=0.000606147</title></circle>
+<circle cx="550.68" cy="265.93" r="3"><title>step=392, pred_loss=0.000730465</title></circle>
+<circle cx="551.91" cy="265.96" r="3"><title>step=393, pred_loss=0.000558666</title></circle>
+<circle cx="553.14" cy="265.95" r="3"><title>step=394, pred_loss=0.000624967</title></circle>
+<circle cx="554.37" cy="265.95" r="3"><title>step=395, pred_loss=0.000623879</title></circle>
+<circle cx="555.60" cy="265.95" r="3"><title>step=396, pred_loss=0.000627007</title></circle>
+<circle cx="556.83" cy="265.95" r="3"><title>step=397, pred_loss=0.000616674</title></circle>
+<circle cx="558.06" cy="265.95" r="3"><title>step=398, pred_loss=0.000587421</title></circle>
+<circle cx="559.28" cy="265.94" r="3"><title>step=399, pred_loss=0.000674517</title></circle>
+<circle cx="560.51" cy="265.93" r="3"><title>step=400, pred_loss=0.000711769</title></circle>
+<circle cx="561.74" cy="265.95" r="3"><title>step=401, pred_loss=0.000606188</title></circle>
+<circle cx="562.97" cy="265.93" r="3"><title>step=402, pred_loss=0.000707985</title></circle>
+<circle cx="564.20" cy="265.95" r="3"><title>step=403, pred_loss=0.000632502</title></circle>
+<circle cx="565.43" cy="265.95" r="3"><title>step=404, pred_loss=0.000637912</title></circle>
+<circle cx="566.66" cy="265.95" r="3"><title>step=405, pred_loss=0.000627433</title></circle>
+<circle cx="567.89" cy="265.96" r="3"><title>step=406, pred_loss=0.000554126</title></circle>
+<circle cx="569.12" cy="265.96" r="3"><title>step=407, pred_loss=0.000573377</title></circle>
+<circle cx="570.35" cy="265.96" r="3"><title>step=408, pred_loss=0.000538654</title></circle>
+<circle cx="571.58" cy="265.96" r="3"><title>step=409, pred_loss=0.00054329</title></circle>
+<circle cx="572.81" cy="265.95" r="3"><title>step=410, pred_loss=0.000589632</title></circle>
+<circle cx="574.04" cy="265.95" r="3"><title>step=411, pred_loss=0.000608666</title></circle>
+<circle cx="575.27" cy="265.95" r="3"><title>step=412, pred_loss=0.000584311</title></circle>
+<circle cx="576.50" cy="265.96" r="3"><title>step=413, pred_loss=0.000546592</title></circle>
+<circle cx="577.72" cy="265.94" r="3"><title>step=414, pred_loss=0.000643965</title></circle>
+<circle cx="578.95" cy="265.95" r="3"><title>step=415, pred_loss=0.000597289</title></circle>
+<circle cx="580.18" cy="265.95" r="3"><title>step=416, pred_loss=0.000603563</title></circle>
+<circle cx="581.41" cy="265.94" r="3"><title>step=417, pred_loss=0.000664437</title></circle>
+<circle cx="582.64" cy="265.93" r="3"><title>step=418, pred_loss=0.000702713</title></circle>
+<circle cx="583.87" cy="265.95" r="3"><title>step=419, pred_loss=0.000606692</title></circle>
+<circle cx="585.10" cy="265.96" r="3"><title>step=420, pred_loss=0.00057978</title></circle>
+<circle cx="586.33" cy="265.95" r="3"><title>step=421, pred_loss=0.000587332</title></circle>
+<circle cx="587.56" cy="265.95" r="3"><title>step=422, pred_loss=0.000593165</title></circle>
+<circle cx="588.79" cy="265.96" r="3"><title>step=423, pred_loss=0.000560519</title></circle>
+<circle cx="590.02" cy="265.94" r="3"><title>step=424, pred_loss=0.000643774</title></circle>
+<circle cx="591.25" cy="265.95" r="3"><title>step=425, pred_loss=0.000585624</title></circle>
+<circle cx="592.48" cy="265.96" r="3"><title>step=426, pred_loss=0.000557359</title></circle>
+<circle cx="593.71" cy="265.95" r="3"><title>step=427, pred_loss=0.000627256</title></circle>
+<circle cx="594.94" cy="265.95" r="3"><title>step=428, pred_loss=0.00059554</title></circle>
+<circle cx="596.17" cy="265.95" r="3"><title>step=429, pred_loss=0.000628882</title></circle>
+<circle cx="597.39" cy="265.95" r="3"><title>step=430, pred_loss=0.000584246</title></circle>
+<circle cx="598.62" cy="265.95" r="3"><title>step=431, pred_loss=0.000593007</title></circle>
+<circle cx="599.85" cy="265.96" r="3"><title>step=432, pred_loss=0.00056102</title></circle>
+<circle cx="601.08" cy="265.95" r="3"><title>step=433, pred_loss=0.000630071</title></circle>
+<circle cx="602.31" cy="265.95" r="3"><title>step=434, pred_loss=0.000630114</title></circle>
+<circle cx="603.54" cy="265.96" r="3"><title>step=435, pred_loss=0.000556836</title></circle>
+<circle cx="604.77" cy="265.97" r="3"><title>step=436, pred_loss=0.000516076</title></circle>
+<circle cx="606.00" cy="265.96" r="3"><title>step=437, pred_loss=0.000571423</title></circle>
+<circle cx="607.23" cy="265.96" r="3"><title>step=438, pred_loss=0.000546557</title></circle>
+<circle cx="608.46" cy="265.96" r="3"><title>step=439, pred_loss=0.000542603</title></circle>
+<circle cx="609.69" cy="265.94" r="3"><title>step=440, pred_loss=0.000680654</title></circle>
+<circle cx="610.92" cy="265.97" r="3"><title>step=441, pred_loss=0.000492667</title></circle>
+<circle cx="612.15" cy="265.96" r="3"><title>step=442, pred_loss=0.000529812</title></circle>
+<circle cx="613.38" cy="265.95" r="3"><title>step=443, pred_loss=0.00060909</title></circle>
+<circle cx="614.61" cy="265.96" r="3"><title>step=444, pred_loss=0.000535099</title></circle>
+<circle cx="615.83" cy="265.96" r="3"><title>step=445, pred_loss=0.000568049</title></circle>
+<circle cx="617.06" cy="265.96" r="3"><title>step=446, pred_loss=0.000560786</title></circle>
+<circle cx="618.29" cy="265.96" r="3"><title>step=447, pred_loss=0.000558686</title></circle>
+<circle cx="619.52" cy="265.95" r="3"><title>step=448, pred_loss=0.000581824</title></circle>
+<circle cx="620.75" cy="265.96" r="3"><title>step=449, pred_loss=0.000525205</title></circle>
+<circle cx="621.98" cy="265.95" r="3"><title>step=450, pred_loss=0.000591707</title></circle>
+<circle cx="623.21" cy="265.96" r="3"><title>step=451, pred_loss=0.000576983</title></circle>
+<circle cx="624.44" cy="265.97" r="3"><title>step=452, pred_loss=0.000482396</title></circle>
+<circle cx="625.67" cy="265.96" r="3"><title>step=453, pred_loss=0.0005779</title></circle>
+<circle cx="626.90" cy="265.96" r="3"><title>step=454, pred_loss=0.000579533</title></circle>
+<circle cx="628.13" cy="265.96" r="3"><title>step=455, pred_loss=0.000549559</title></circle>
+<circle cx="629.36" cy="265.96" r="3"><title>step=456, pred_loss=0.000577335</title></circle>
+<circle cx="630.59" cy="265.96" r="3"><title>step=457, pred_loss=0.000546798</title></circle>
+<circle cx="631.82" cy="265.98" r="3"><title>step=458, pred_loss=0.000452598</title></circle>
+<circle cx="633.05" cy="265.95" r="3"><title>step=459, pred_loss=0.00061866</title></circle>
+<circle cx="634.28" cy="265.97" r="3"><title>step=460, pred_loss=0.000483379</title></circle>
+<circle cx="635.50" cy="265.96" r="3"><title>step=461, pred_loss=0.000569316</title></circle>
+<circle cx="636.73" cy="265.96" r="3"><title>step=462, pred_loss=0.000579571</title></circle>
+<circle cx="637.96" cy="265.96" r="3"><title>step=463, pred_loss=0.000544151</title></circle>
+<circle cx="639.19" cy="265.96" r="3"><title>step=464, pred_loss=0.000527051</title></circle>
+<circle cx="640.42" cy="265.97" r="3"><title>step=465, pred_loss=0.000498115</title></circle>
+<circle cx="641.65" cy="265.97" r="3"><title>step=466, pred_loss=0.000480486</title></circle>
+<circle cx="642.88" cy="265.97" r="3"><title>step=467, pred_loss=0.000521222</title></circle>
+<circle cx="644.11" cy="265.97" r="3"><title>step=468, pred_loss=0.00046918</title></circle>
+<circle cx="645.34" cy="265.97" r="3"><title>step=469, pred_loss=0.000515139</title></circle>
+<circle cx="646.57" cy="265.96" r="3"><title>step=470, pred_loss=0.000551589</title></circle>
+<circle cx="647.80" cy="265.97" r="3"><title>step=471, pred_loss=0.00048182</title></circle>
+<circle cx="649.03" cy="265.96" r="3"><title>step=472, pred_loss=0.000547892</title></circle>
+<circle cx="650.26" cy="265.96" r="3"><title>step=473, pred_loss=0.00053337</title></circle>
+<circle cx="651.49" cy="265.97" r="3"><title>step=474, pred_loss=0.000494412</title></circle>
+<circle cx="652.72" cy="265.97" r="3"><title>step=475, pred_loss=0.00049367</title></circle>
+<circle cx="653.94" cy="265.97" r="3"><title>step=476, pred_loss=0.000472479</title></circle>
+<circle cx="655.17" cy="265.97" r="3"><title>step=477, pred_loss=0.000472378</title></circle>
+<circle cx="656.40" cy="265.97" r="3"><title>step=478, pred_loss=0.000475326</title></circle>
+<circle cx="657.63" cy="265.96" r="3"><title>step=479, pred_loss=0.000527606</title></circle>
+<circle cx="658.86" cy="265.96" r="3"><title>step=480, pred_loss=0.000524701</title></circle>
+<circle cx="660.09" cy="265.97" r="3"><title>step=481, pred_loss=0.000498008</title></circle>
+<circle cx="661.32" cy="265.98" r="3"><title>step=482, pred_loss=0.000451824</title></circle>
+<circle cx="662.55" cy="265.96" r="3"><title>step=483, pred_loss=0.000572869</title></circle>
+<circle cx="663.78" cy="265.96" r="3"><title>step=484, pred_loss=0.000549391</title></circle>
+<circle cx="665.01" cy="265.97" r="3"><title>step=485, pred_loss=0.000513753</title></circle>
+<circle cx="666.24" cy="265.97" r="3"><title>step=486, pred_loss=0.000494421</title></circle>
+<circle cx="667.47" cy="265.98" r="3"><title>step=487, pred_loss=0.000457007</title></circle>
+<circle cx="668.70" cy="265.97" r="3"><title>step=488, pred_loss=0.000509164</title></circle>
+<circle cx="669.93" cy="265.97" r="3"><title>step=489, pred_loss=0.00048465</title></circle>
+<circle cx="671.16" cy="265.96" r="3"><title>step=490, pred_loss=0.000536425</title></circle>
+<circle cx="672.39" cy="265.98" r="3"><title>step=491, pred_loss=0.000462603</title></circle>
+<circle cx="673.61" cy="265.96" r="3"><title>step=492, pred_loss=0.000528019</title></circle>
+<circle cx="674.84" cy="265.97" r="3"><title>step=493, pred_loss=0.000500147</title></circle>
+<circle cx="676.07" cy="265.98" r="3"><title>step=494, pred_loss=0.000438857</title></circle>
+<circle cx="677.30" cy="265.96" r="3"><title>step=495, pred_loss=0.000527454</title></circle>
+<circle cx="678.53" cy="265.97" r="3"><title>step=496, pred_loss=0.000494464</title></circle>
+<circle cx="679.76" cy="265.97" r="3"><title>step=497, pred_loss=0.000515262</title></circle>
+<circle cx="680.99" cy="265.97" r="3"><title>step=498, pred_loss=0.000477376</title></circle>
+<circle cx="682.22" cy="265.97" r="3"><title>step=499, pred_loss=0.000478443</title></circle>
+<circle cx="683.45" cy="265.96" r="3"><title>step=500, pred_loss=0.000525555</title></circle>
+<circle cx="684.68" cy="265.97" r="3"><title>step=501, pred_loss=0.000475812</title></circle>
+<circle cx="685.91" cy="265.96" r="3"><title>step=502, pred_loss=0.000538151</title></circle>
+<circle cx="687.14" cy="265.97" r="3"><title>step=503, pred_loss=0.000514418</title></circle>
+<circle cx="688.37" cy="265.97" r="3"><title>step=504, pred_loss=0.000472049</title></circle>
+<circle cx="689.60" cy="265.97" r="3"><title>step=505, pred_loss=0.00050358</title></circle>
+<circle cx="690.83" cy="265.97" r="3"><title>step=506, pred_loss=0.000492105</title></circle>
+<circle cx="692.06" cy="265.98" r="3"><title>step=507, pred_loss=0.000442736</title></circle>
+<circle cx="693.28" cy="265.98" r="3"><title>step=508, pred_loss=0.000449336</title></circle>
+<circle cx="694.51" cy="265.97" r="3"><title>step=509, pred_loss=0.000463631</title></circle>
+<circle cx="695.74" cy="265.97" r="3"><title>step=510, pred_loss=0.000467836</title></circle>
+<circle cx="696.97" cy="265.98" r="3"><title>step=511, pred_loss=0.000462605</title></circle>
+<circle cx="698.20" cy="265.98" r="3"><title>step=512, pred_loss=0.000411858</title></circle>
+<circle cx="699.43" cy="265.98" r="3"><title>step=513, pred_loss=0.000406108</title></circle>
+<circle cx="700.66" cy="265.98" r="3"><title>step=514, pred_loss=0.000460795</title></circle>
+<circle cx="701.89" cy="265.98" r="3"><title>step=515, pred_loss=0.000436694</title></circle>
+<circle cx="703.12" cy="265.98" r="3"><title>step=516, pred_loss=0.000437687</title></circle>
+<circle cx="704.35" cy="265.98" r="3"><title>step=517, pred_loss=0.000452587</title></circle>
+<circle cx="705.58" cy="265.97" r="3"><title>step=518, pred_loss=0.000496635</title></circle>
+<circle cx="706.81" cy="265.98" r="3"><title>step=519, pred_loss=0.00043778</title></circle>
+<circle cx="708.04" cy="265.98" r="3"><title>step=520, pred_loss=0.00046022</title></circle>
+<circle cx="709.27" cy="265.98" r="3"><title>step=521, pred_loss=0.00044263</title></circle>
+<circle cx="710.50" cy="265.97" r="3"><title>step=522, pred_loss=0.00048658</title></circle>
+<circle cx="711.72" cy="265.97" r="3"><title>step=523, pred_loss=0.000487235</title></circle>
+<circle cx="712.95" cy="265.98" r="3"><title>step=524, pred_loss=0.000411554</title></circle>
+<circle cx="714.18" cy="265.98" r="3"><title>step=525, pred_loss=0.000448569</title></circle>
+<circle cx="715.41" cy="265.97" r="3"><title>step=526, pred_loss=0.000508378</title></circle>
+<circle cx="716.64" cy="265.98" r="3"><title>step=527, pred_loss=0.000456968</title></circle>
+<circle cx="717.87" cy="265.97" r="3"><title>step=528, pred_loss=0.00046303</title></circle>
+<circle cx="719.10" cy="265.97" r="3"><title>step=529, pred_loss=0.00047024</title></circle>
+<circle cx="720.33" cy="265.98" r="3"><title>step=530, pred_loss=0.000430193</title></circle>
+<circle cx="721.56" cy="265.97" r="3"><title>step=531, pred_loss=0.000463726</title></circle>
+<circle cx="722.79" cy="265.98" r="3"><title>step=532, pred_loss=0.000455509</title></circle>
+<circle cx="724.02" cy="265.98" r="3"><title>step=533, pred_loss=0.000433908</title></circle>
+<circle cx="725.25" cy="265.99" r="3"><title>step=534, pred_loss=0.000388275</title></circle>
+<circle cx="726.48" cy="265.98" r="3"><title>step=535, pred_loss=0.000455162</title></circle>
+<circle cx="727.71" cy="265.97" r="3"><title>step=536, pred_loss=0.000467353</title></circle>
+<circle cx="728.94" cy="265.98" r="3"><title>step=537, pred_loss=0.000437797</title></circle>
+<circle cx="730.17" cy="265.98" r="3"><title>step=538, pred_loss=0.000419138</title></circle>
+<circle cx="731.39" cy="265.97" r="3"><title>step=539, pred_loss=0.000477507</title></circle>
+<circle cx="732.62" cy="265.98" r="3"><title>step=540, pred_loss=0.000425254</title></circle>
+<circle cx="733.85" cy="265.98" r="3"><title>step=541, pred_loss=0.000429045</title></circle>
+<circle cx="735.08" cy="265.97" r="3"><title>step=542, pred_loss=0.000468281</title></circle>
+<circle cx="736.31" cy="265.97" r="3"><title>step=543, pred_loss=0.000481198</title></circle>
+<circle cx="737.54" cy="265.98" r="3"><title>step=544, pred_loss=0.000448389</title></circle>
+<circle cx="738.77" cy="265.98" r="3"><title>step=545, pred_loss=0.000425363</title></circle>
+<circle cx="740.00" cy="265.97" r="3"><title>step=546, pred_loss=0.000481251</title></circle>
+<circle cx="741.23" cy="265.98" r="3"><title>step=547, pred_loss=0.000454978</title></circle>
+<circle cx="742.46" cy="265.98" r="3"><title>step=548, pred_loss=0.000406285</title></circle>
+<circle cx="743.69" cy="265.97" r="3"><title>step=549, pred_loss=0.000481063</title></circle>
+<circle cx="744.92" cy="265.97" r="3"><title>step=550, pred_loss=0.000478869</title></circle>
+<circle cx="746.15" cy="265.97" r="3"><title>step=551, pred_loss=0.000509087</title></circle>
+<circle cx="747.38" cy="265.98" r="3"><title>step=552, pred_loss=0.000412399</title></circle>
+<circle cx="748.61" cy="265.99" r="3"><title>step=553, pred_loss=0.000365496</title></circle>
+<circle cx="749.83" cy="265.98" r="3"><title>step=554, pred_loss=0.00042046</title></circle>
+<circle cx="751.06" cy="265.99" r="3"><title>step=555, pred_loss=0.000398971</title></circle>
+<circle cx="752.29" cy="265.97" r="3"><title>step=556, pred_loss=0.000465366</title></circle>
+<circle cx="753.52" cy="265.97" r="3"><title>step=557, pred_loss=0.000485245</title></circle>
+<circle cx="754.75" cy="265.98" r="3"><title>step=558, pred_loss=0.000423494</title></circle>
+<circle cx="755.98" cy="265.98" r="3"><title>step=559, pred_loss=0.000426993</title></circle>
+<circle cx="757.21" cy="265.99" r="3"><title>step=560, pred_loss=0.000379868</title></circle>
+<circle cx="758.44" cy="265.98" r="3"><title>step=561, pred_loss=0.00040607</title></circle>
+<circle cx="759.67" cy="265.98" r="3"><title>step=562, pred_loss=0.000430257</title></circle>
+<circle cx="760.90" cy="265.97" r="3"><title>step=563, pred_loss=0.000493716</title></circle>
+<circle cx="762.13" cy="265.99" r="3"><title>step=564, pred_loss=0.000388149</title></circle>
+<circle cx="763.36" cy="265.98" r="3"><title>step=565, pred_loss=0.000442077</title></circle>
+<circle cx="764.59" cy="265.98" r="3"><title>step=566, pred_loss=0.000406761</title></circle>
+<circle cx="765.82" cy="265.98" r="3"><title>step=567, pred_loss=0.000424394</title></circle>
+<circle cx="767.05" cy="265.99" r="3"><title>step=568, pred_loss=0.000371878</title></circle>
+<circle cx="768.28" cy="265.98" r="3"><title>step=569, pred_loss=0.000428658</title></circle>
+<circle cx="769.50" cy="265.99" r="3"><title>step=570, pred_loss=0.000390122</title></circle>
+<circle cx="770.73" cy="265.99" r="3"><title>step=571, pred_loss=0.000386853</title></circle>
+<circle cx="771.96" cy="265.99" r="3"><title>step=572, pred_loss=0.000385104</title></circle>
+<circle cx="773.19" cy="265.99" r="3"><title>step=573, pred_loss=0.000388258</title></circle>
+<circle cx="774.42" cy="265.97" r="3"><title>step=574, pred_loss=0.000484909</title></circle>
+<circle cx="775.65" cy="265.99" r="3"><title>step=575, pred_loss=0.000348262</title></circle>
+<circle cx="776.88" cy="265.98" r="3"><title>step=576, pred_loss=0.000440456</title></circle>
+<circle cx="778.11" cy="265.98" r="3"><title>step=577, pred_loss=0.000434272</title></circle>
+<circle cx="779.34" cy="265.98" r="3"><title>step=578, pred_loss=0.00041757</title></circle>
+<circle cx="780.57" cy="265.99" r="3"><title>step=579, pred_loss=0.000389592</title></circle>
+<circle cx="781.80" cy="265.99" r="3"><title>step=580, pred_loss=0.000393637</title></circle>
+<circle cx="783.03" cy="265.98" r="3"><title>step=581, pred_loss=0.000417452</title></circle>
+<circle cx="784.26" cy="265.99" r="3"><title>step=582, pred_loss=0.000374886</title></circle>
+<circle cx="785.49" cy="265.98" r="3"><title>step=583, pred_loss=0.000429297</title></circle>
+<circle cx="786.72" cy="266.00" r="3"><title>step=584, pred_loss=0.000336578</title></circle>
+<circle cx="787.94" cy="265.98" r="3"><title>step=585, pred_loss=0.000429788</title></circle>
+<circle cx="789.17" cy="265.98" r="3"><title>step=586, pred_loss=0.000428604</title></circle>
+<circle cx="790.40" cy="265.99" r="3"><title>step=587, pred_loss=0.000366357</title></circle>
+<circle cx="791.63" cy="266.00" r="3"><title>step=588, pred_loss=0.000342093</title></circle>
+<circle cx="792.86" cy="265.98" r="3"><title>step=589, pred_loss=0.000422137</title></circle>
+<circle cx="794.09" cy="265.98" r="3"><title>step=590, pred_loss=0.000437493</title></circle>
+<circle cx="795.32" cy="265.98" r="3"><title>step=591, pred_loss=0.000422457</title></circle>
+<circle cx="796.55" cy="265.99" r="3"><title>step=592, pred_loss=0.000373112</title></circle>
+<circle cx="797.78" cy="265.99" r="3"><title>step=593, pred_loss=0.000401799</title></circle>
+<circle cx="799.01" cy="266.00" r="3"><title>step=594, pred_loss=0.000337455</title></circle>
+<circle cx="800.24" cy="265.99" r="3"><title>step=595, pred_loss=0.000395421</title></circle>
+<circle cx="801.47" cy="265.99" r="3"><title>step=596, pred_loss=0.000378035</title></circle>
+<circle cx="802.70" cy="265.99" r="3"><title>step=597, pred_loss=0.000394345</title></circle>
+<circle cx="803.93" cy="265.98" r="3"><title>step=598, pred_loss=0.000417822</title></circle>
+<circle cx="805.16" cy="265.98" r="3"><title>step=599, pred_loss=0.000409877</title></circle>
+<circle cx="806.39" cy="265.98" r="3"><title>step=600, pred_loss=0.000417471</title></circle>
+<circle cx="807.61" cy="265.99" r="3"><title>step=601, pred_loss=0.000366638</title></circle>
+<circle cx="808.84" cy="265.98" r="3"><title>step=602, pred_loss=0.000418562</title></circle>
+<circle cx="810.07" cy="265.99" r="3"><title>step=603, pred_loss=0.000389047</title></circle>
+<circle cx="811.30" cy="265.98" r="3"><title>step=604, pred_loss=0.000428575</title></circle>
+<circle cx="812.53" cy="265.98" r="3"><title>step=605, pred_loss=0.000413699</title></circle>
+<circle cx="813.76" cy="265.98" r="3"><title>step=606, pred_loss=0.000410907</title></circle>
+<circle cx="814.99" cy="265.98" r="3"><title>step=607, pred_loss=0.000410295</title></circle>
+<circle cx="816.22" cy="265.99" r="3"><title>step=608, pred_loss=0.000346303</title></circle>
+<circle cx="817.45" cy="265.98" r="3"><title>step=609, pred_loss=0.00045328</title></circle>
+<circle cx="818.68" cy="265.98" r="3"><title>step=610, pred_loss=0.000415449</title></circle>
+<circle cx="819.91" cy="265.99" r="3"><title>step=611, pred_loss=0.000395457</title></circle>
+<circle cx="821.14" cy="265.99" r="3"><title>step=612, pred_loss=0.000401297</title></circle>
+<circle cx="822.37" cy="265.98" r="3"><title>step=613, pred_loss=0.000413619</title></circle>
+<circle cx="823.60" cy="265.99" r="3"><title>step=614, pred_loss=0.00034637</title></circle>
+<circle cx="824.83" cy="266.00" r="3"><title>step=615, pred_loss=0.000333126</title></circle>
+<circle cx="826.06" cy="265.98" r="3"><title>step=616, pred_loss=0.000433151</title></circle>
+<circle cx="827.28" cy="265.98" r="3"><title>step=617, pred_loss=0.000424485</title></circle>
+<circle cx="828.51" cy="265.99" r="3"><title>step=618, pred_loss=0.000399948</title></circle>
+<circle cx="829.74" cy="266.00" r="3"><title>step=619, pred_loss=0.000341868</title></circle>
+<circle cx="830.97" cy="265.99" r="3"><title>step=620, pred_loss=0.000354144</title></circle>
+<circle cx="832.20" cy="265.99" r="3"><title>step=621, pred_loss=0.000393533</title></circle>
+<circle cx="833.43" cy="265.99" r="3"><title>step=622, pred_loss=0.000378384</title></circle>
+<circle cx="834.66" cy="265.99" r="3"><title>step=623, pred_loss=0.000344081</title></circle>
+<circle cx="835.89" cy="265.99" r="3"><title>step=624, pred_loss=0.00039186</title></circle>
+<circle cx="837.12" cy="265.99" r="3"><title>step=625, pred_loss=0.000394454</title></circle>
+<circle cx="838.35" cy="265.98" r="3"><title>step=626, pred_loss=0.00040317</title></circle>
+<circle cx="839.58" cy="266.00" r="3"><title>step=627, pred_loss=0.000336016</title></circle>
+<circle cx="840.81" cy="265.99" r="3"><title>step=628, pred_loss=0.000357902</title></circle>
+<circle cx="842.04" cy="265.99" r="3"><title>step=629, pred_loss=0.000361673</title></circle>
+<circle cx="843.27" cy="265.99" r="3"><title>step=630, pred_loss=0.000356336</title></circle>
+<circle cx="844.50" cy="265.98" r="3"><title>step=631, pred_loss=0.000415283</title></circle>
+<circle cx="845.72" cy="265.99" r="3"><title>step=632, pred_loss=0.000349036</title></circle>
+<circle cx="846.95" cy="265.99" r="3"><title>step=633, pred_loss=0.00036605</title></circle>
+<circle cx="848.18" cy="266.00" r="3"><title>step=634, pred_loss=0.000313735</title></circle>
+<circle cx="849.41" cy="265.99" r="3"><title>step=635, pred_loss=0.000387174</title></circle>
+<circle cx="850.64" cy="265.98" r="3"><title>step=636, pred_loss=0.000457467</title></circle>
+<circle cx="851.87" cy="266.00" r="3"><title>step=637, pred_loss=0.000343384</title></circle>
+<circle cx="853.10" cy="265.99" r="3"><title>step=638, pred_loss=0.000388112</title></circle>
+<circle cx="854.33" cy="265.98" r="3"><title>step=639, pred_loss=0.000421326</title></circle>
+<circle cx="855.56" cy="265.99" r="3"><title>step=640, pred_loss=0.000377187</title></circle>
+<circle cx="856.79" cy="265.98" r="3"><title>step=641, pred_loss=0.000415048</title></circle>
+<circle cx="858.02" cy="265.99" r="3"><title>step=642, pred_loss=0.00039657</title></circle>
+<circle cx="859.25" cy="265.98" r="3"><title>step=643, pred_loss=0.000448927</title></circle>
+<circle cx="860.48" cy="265.99" r="3"><title>step=644, pred_loss=0.000357018</title></circle>
+<circle cx="861.71" cy="265.98" r="3"><title>step=645, pred_loss=0.000414683</title></circle>
+<circle cx="862.94" cy="265.99" r="3"><title>step=646, pred_loss=0.000345809</title></circle>
+<circle cx="864.17" cy="265.99" r="3"><title>step=647, pred_loss=0.000354517</title></circle>
+<circle cx="865.39" cy="265.99" r="3"><title>step=648, pred_loss=0.000355486</title></circle>
+<circle cx="866.62" cy="265.98" r="3"><title>step=649, pred_loss=0.000452812</title></circle>
+<circle cx="867.85" cy="265.99" r="3"><title>step=650, pred_loss=0.000355808</title></circle>
+<circle cx="869.08" cy="265.99" r="3"><title>step=651, pred_loss=0.000376639</title></circle>
+<circle cx="870.31" cy="265.99" r="3"><title>step=652, pred_loss=0.000371818</title></circle>
+<circle cx="871.54" cy="265.99" r="3"><title>step=653, pred_loss=0.000401059</title></circle>
+<circle cx="872.77" cy="265.99" r="3"><title>step=654, pred_loss=0.000387835</title></circle>
+<circle cx="874.00" cy="265.98" r="3"><title>step=655, pred_loss=0.000429077</title></circle>
+</svg>
+</figure>
+
+    <h2>Evaluation</h2>
+    <table><thead><tr><th>metric</th><th>value</th></tr></thead><tbody><tr><td>next_state_embedding_mse</td><td>0.00037115371926735736</td></tr><tr><td>num_windows</td><td>4184</td></tr></tbody></table>
+    <h3>Evaluation Process</h3>
+    <ol>
+      <li>Load <code>checkpoint.pt</code>, including model weights, config, and dataset metadata.</li>
+      <li>Rebuild <code>SMACJEPA</code> with the saved dimensions.</li>
+      <li>Load the same NPZ data and create valid state-action-next-state windows.</li>
+      <li>Encode the observation sequence and target next-state sequence into latent vectors.</li>
+      <li>Predict the next latent sequence from observation latents plus action-history conditioning.</li>
+      <li>Compute masked mean squared error between predicted and target next latent.</li>
+    </ol>
+  </main>
+</body>
+</html>

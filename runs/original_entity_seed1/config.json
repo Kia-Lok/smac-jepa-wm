@@ -1,0 +1,20 @@
+{
+  "out_dir": "runs/original_entity_seed1",
+  "data": null,
+  "manifest": "splits/original_seed1.json",
+  "split": "train",
+  "dataset_mode": "entity",
+  "epochs": 5,
+  "batch_size": 32,
+  "lr": 0.001,
+  "latent_dim": 64,
+  "hidden_dim": 128,
+  "action_dim": 64,
+  "context_len": 4,
+  "num_heads": 4,
+  "sigreg_weight": 0.01,
+  "decoder_weight": 1.0,
+  "seed": 1,
+  "num_workers": 0,
+  "log_every": 100
+}
