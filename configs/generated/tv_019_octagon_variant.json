@@ -1,0 +1,37 @@
+{
+    "name": "tv_019_octagon_variant",
+    "num_allied_units": 6,
+    "num_enemy_units": 6,
+    "groups": [
+        {
+            "x": 16.22,
+            "y": 7.01,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 4,
+                "ZEALOT": 2
+            }
+        },
+        {
+            "x": 16.42,
+            "y": 23.52,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 6
+            }
+        }
+    ],
+    "attack_point": [
+        16.87,
+        6.91
+    ],
+    "terrain_preset": "OCTAGON",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "STALKER": 0,
+        "ZEALOT": 1,
+        "ZERGLING": 2
+    }
+}

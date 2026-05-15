@@ -1,0 +1,49 @@
+{
+    "name": "muc_048_protoss_combo",
+    "num_allied_units": 12,
+    "num_enemy_units": 13,
+    "groups": [
+        {
+            "x": 16.02,
+            "y": 15.51,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 5,
+                "ZEALOT": 5,
+                "COLOSSUS": 2
+            }
+        },
+        {
+            "x": 14.86,
+            "y": 9.48,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 2,
+                "ZEALOT": 7,
+                "COLOSSUS": 1
+            }
+        },
+        {
+            "x": 15.59,
+            "y": 9.2,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 2,
+                "COLOSSUS": 1
+            }
+        }
+    ],
+    "attack_point": [
+        15.96,
+        15.1
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "COLOSSUS": 0,
+        "STALKER": 1,
+        "ZEALOT": 2
+    }
+}

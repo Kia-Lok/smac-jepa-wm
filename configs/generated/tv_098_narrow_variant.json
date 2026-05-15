@@ -1,0 +1,37 @@
+{
+    "name": "tv_098_narrow_variant",
+    "num_allied_units": 20,
+    "num_enemy_units": 21,
+    "groups": [
+        {
+            "x": 8.49,
+            "y": 15.76,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 12,
+                "BANELING": 8
+            }
+        },
+        {
+            "x": 23.26,
+            "y": 16.24,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 12,
+                "BANELING": 9
+            }
+        }
+    ],
+    "attack_point": [
+        8.19,
+        16.08
+    ],
+    "terrain_preset": "NARROW",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "ZERGLING": 1
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "name": "muc_094_bio_vs_protoss",
+    "num_allied_units": 18,
+    "num_enemy_units": 19,
+    "groups": [
+        {
+            "x": 15.55,
+            "y": 8.01,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 9,
+                "MARAUDER": 7,
+                "MEDIVAC": 2
+            }
+        },
+        {
+            "x": 16.57,
+            "y": 23.38,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 8,
+                "ZEALOT": 8,
+                "COLOSSUS": 3
+            }
+        }
+    ],
+    "attack_point": [
+        15.26,
+        8.35
+    ],
+    "terrain_preset": "OCTAGON",
+    "num_unit_types": 6,
+    "ally_has_shields": false,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "COLOSSUS": 0,
+        "MARAUDER": 1,
+        "MARINE": 2,
+        "MEDIVAC": 3,
+        "STALKER": 4,
+        "ZEALOT": 5
+    }
+}

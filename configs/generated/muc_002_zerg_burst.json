@@ -1,0 +1,63 @@
+{
+    "name": "muc_002_zerg_burst",
+    "num_allied_units": 20,
+    "num_enemy_units": 20,
+    "groups": [
+        {
+            "x": 11.79,
+            "y": 9.93,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 10,
+                "BANELING": 1
+            }
+        },
+        {
+            "x": 11.22,
+            "y": 10.09,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 5,
+                "BANELING": 4
+            }
+        },
+        {
+            "x": 14.81,
+            "y": 19.49,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 7,
+                "BANELING": 1
+            }
+        },
+        {
+            "x": 14.85,
+            "y": 19.05,
+            "faction": "ENEMY",
+            "units": {
+                "BANELING": 5
+            }
+        },
+        {
+            "x": 14.81,
+            "y": 19.79,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 1,
+                "BANELING": 6
+            }
+        }
+    ],
+    "attack_point": [
+        14.45,
+        19.89
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "ZERGLING": 1
+    }
+}

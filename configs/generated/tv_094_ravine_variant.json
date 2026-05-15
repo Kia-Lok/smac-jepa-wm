@@ -1,0 +1,39 @@
+{
+    "name": "tv_094_ravine_variant",
+    "num_allied_units": 16,
+    "num_enemy_units": 16,
+    "groups": [
+        {
+            "x": 16.72,
+            "y": 15.02,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 13
+            }
+        },
+        {
+            "x": 16.94,
+            "y": 14.53,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 3
+            }
+        },
+        {
+            "x": 16.44,
+            "y": 9.34,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 16
+            }
+        }
+    ],
+    "attack_point": [
+        15.5,
+        16.6
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": false
+}

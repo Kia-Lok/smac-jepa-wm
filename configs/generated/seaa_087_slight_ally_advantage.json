@@ -1,0 +1,31 @@
+{
+    "name": "seaa_087_slight_ally_advantage",
+    "num_allied_units": 16,
+    "num_enemy_units": 14,
+    "groups": [
+        {
+            "x": 12.16,
+            "y": 10.78,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 16
+            }
+        },
+        {
+            "x": 13.96,
+            "y": 20.23,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 14
+            }
+        }
+    ],
+    "attack_point": [
+        14.3,
+        19.99
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": false
+}

@@ -1,0 +1,36 @@
+{
+    "name": "mixed_composition_var_306",
+    "num_allied_units": 7,
+    "num_enemy_units": 16,
+    "groups": [
+        {
+            "x": 8.86,
+            "y": 13.05,
+            "faction": "ALLY",
+            "units": {
+                "BANELING": 7
+            }
+        },
+        {
+            "x": 20.98,
+            "y": 17.42,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 6,
+                "BANELING": 10
+            }
+        }
+    ],
+    "attack_point": [
+        9.94,
+        15.96
+    ],
+    "terrain_preset": "CORRIDOR",
+    "num_unit_types": 2,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "STALKER": 1
+    }
+}

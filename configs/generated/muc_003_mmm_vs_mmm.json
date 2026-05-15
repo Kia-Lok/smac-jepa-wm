@@ -1,0 +1,48 @@
+{
+    "name": "muc_003_mmm_vs_mmm",
+    "num_allied_units": 8,
+    "num_enemy_units": 6,
+    "groups": [
+        {
+            "x": 11.41,
+            "y": 10.26,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 5,
+                "MARAUDER": 2,
+                "MEDIVAC": 1
+            }
+        },
+        {
+            "x": 13.46,
+            "y": 18.58,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 3,
+                "MARAUDER": 1
+            }
+        },
+        {
+            "x": 12.85,
+            "y": 19.7,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 1,
+                "MEDIVAC": 1
+            }
+        }
+    ],
+    "attack_point": [
+        14.25,
+        20.22
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 3,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1,
+        "MEDIVAC": 2
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "name": "seaa_039_slight_enemy_advantage",
+    "num_allied_units": 6,
+    "num_enemy_units": 9,
+    "groups": [
+        {
+            "x": 11.23,
+            "y": 9.91,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 3,
+                "ZEALOT": 3
+            }
+        },
+        {
+            "x": 13.37,
+            "y": 20.52,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 4,
+                "ZEALOT": 5
+            }
+        }
+    ],
+    "attack_point": [
+        13.33,
+        19.4
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 2,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "STALKER": 0,
+        "ZEALOT": 1
+    }
+}

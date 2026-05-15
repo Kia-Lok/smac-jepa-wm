@@ -1,0 +1,31 @@
+{
+    "name": "bm_034_single-type_mirror",
+    "num_allied_units": 5,
+    "num_enemy_units": 5,
+    "groups": [
+        {
+            "x": 8.88,
+            "y": 17.0,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 5
+            }
+        },
+        {
+            "x": 22.07,
+            "y": 16.64,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 5
+            }
+        }
+    ],
+    "attack_point": [
+        9.04,
+        16.05
+    ],
+    "terrain_preset": "NARROW",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": false
+}

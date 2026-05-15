@@ -1,0 +1,31 @@
+{
+    "name": "bm_054_single-type_mirror",
+    "num_allied_units": 30,
+    "num_enemy_units": 30,
+    "groups": [
+        {
+            "x": 9.44,
+            "y": 16.07,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 30
+            }
+        },
+        {
+            "x": 23.81,
+            "y": 16.13,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 30
+            }
+        }
+    ],
+    "attack_point": [
+        9.03,
+        16.84
+    ],
+    "terrain_preset": "ALL_GREEN",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": false
+}

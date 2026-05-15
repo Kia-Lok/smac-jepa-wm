@@ -1,0 +1,39 @@
+{
+    "name": "tv_029_simple_variant",
+    "num_allied_units": 8,
+    "num_enemy_units": 8,
+    "groups": [
+        {
+            "x": 9.05,
+            "y": 15.92,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 4
+            }
+        },
+        {
+            "x": 9.47,
+            "y": 14.44,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 4
+            }
+        },
+        {
+            "x": 22.21,
+            "y": 16.41,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 8
+            }
+        }
+    ],
+    "attack_point": [
+        8.14,
+        15.23
+    ],
+    "terrain_preset": "SIMPLE",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": false
+}

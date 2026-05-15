@@ -1,0 +1,39 @@
+{
+    "name": "bm_052_single-type_mirror",
+    "num_allied_units": 8,
+    "num_enemy_units": 8,
+    "groups": [
+        {
+            "x": 9.12,
+            "y": 15.06,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 1
+            }
+        },
+        {
+            "x": 9.09,
+            "y": 14.78,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 7
+            }
+        },
+        {
+            "x": 23.32,
+            "y": 15.25,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 8
+            }
+        }
+    ],
+    "attack_point": [
+        8.72,
+        15.4
+    ],
+    "terrain_preset": "SIMPLE",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": true
+}

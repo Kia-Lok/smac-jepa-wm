@@ -1,0 +1,40 @@
+{
+    "name": "bm_032_3-type_mirror",
+    "num_allied_units": 4,
+    "num_enemy_units": 4,
+    "groups": [
+        {
+            "x": 8.03,
+            "y": 15.26,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 2,
+                "MARAUDER": 1,
+                "MEDIVAC": 1
+            }
+        },
+        {
+            "x": 24.08,
+            "y": 16.05,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 2,
+                "MARAUDER": 1,
+                "MEDIVAC": 1
+            }
+        }
+    ],
+    "attack_point": [
+        7.91,
+        16.69
+    ],
+    "terrain_preset": "NARROW",
+    "num_unit_types": 3,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1,
+        "MEDIVAC": 2
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "name": "seaa_034_slight_enemy_advantage",
+    "num_allied_units": 20,
+    "num_enemy_units": 23,
+    "groups": [
+        {
+            "x": 18.92,
+            "y": 19.36,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 11,
+                "MARAUDER": 9
+            }
+        },
+        {
+            "x": 28.12,
+            "y": 28.76,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 9,
+                "MARAUDER": 14
+            }
+        }
+    ],
+    "attack_point": [
+        4.49,
+        4.02
+    ],
+    "terrain_preset": "CORRIDOR",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1
+    }
+}

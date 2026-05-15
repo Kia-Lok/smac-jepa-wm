@@ -1,0 +1,31 @@
+{
+    "name": "mixed_composition_var_364",
+    "num_allied_units": 7,
+    "num_enemy_units": 17,
+    "groups": [
+        {
+            "x": 9.71,
+            "y": 18.44,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 7
+            }
+        },
+        {
+            "x": 24.42,
+            "y": 14.54,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 17
+            }
+        }
+    ],
+    "attack_point": [
+        6.64,
+        18.38
+    ],
+    "terrain_preset": "ALL_GREEN",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": true
+}

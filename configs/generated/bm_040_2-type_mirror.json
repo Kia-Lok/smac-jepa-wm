@@ -1,0 +1,37 @@
+{
+    "name": "bm_040_2-type_mirror",
+    "num_allied_units": 5,
+    "num_enemy_units": 5,
+    "groups": [
+        {
+            "x": 8.57,
+            "y": 15.42,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 3,
+                "BANELING": 2
+            }
+        },
+        {
+            "x": 22.86,
+            "y": 16.13,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 3,
+                "BANELING": 2
+            }
+        }
+    ],
+    "attack_point": [
+        9.82,
+        15.81
+    ],
+    "terrain_preset": "ALL_GREEN",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "ZERGLING": 1
+    }
+}

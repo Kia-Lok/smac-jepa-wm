@@ -1,0 +1,39 @@
+{
+    "name": "bm_047_single-type_mirror",
+    "num_allied_units": 6,
+    "num_enemy_units": 6,
+    "groups": [
+        {
+            "x": 10.01,
+            "y": 16.67,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 6
+            }
+        },
+        {
+            "x": 24.6,
+            "y": 14.4,
+            "faction": "ENEMY",
+            "units": {
+                "ZEALOT": 5
+            }
+        },
+        {
+            "x": 24.19,
+            "y": 16.05,
+            "faction": "ENEMY",
+            "units": {
+                "ZEALOT": 1
+            }
+        }
+    ],
+    "attack_point": [
+        8.67,
+        15.03
+    ],
+    "terrain_preset": "ALL_GREEN",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": true
+}

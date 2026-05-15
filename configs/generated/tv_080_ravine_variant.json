@@ -1,0 +1,31 @@
+{
+    "name": "tv_080_ravine_variant",
+    "num_allied_units": 8,
+    "num_enemy_units": 8,
+    "groups": [
+        {
+            "x": 16.78,
+            "y": 16.73,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 8
+            }
+        },
+        {
+            "x": 16.29,
+            "y": 8.11,
+            "faction": "ENEMY",
+            "units": {
+                "ZEALOT": 8
+            }
+        }
+    ],
+    "attack_point": [
+        16.1,
+        15.35
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": true
+}

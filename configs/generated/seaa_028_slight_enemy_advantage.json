@@ -1,0 +1,39 @@
+{
+    "name": "seaa_028_slight_enemy_advantage",
+    "num_allied_units": 6,
+    "num_enemy_units": 7,
+    "groups": [
+        {
+            "x": 16.95,
+            "y": 16.31,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 6
+            }
+        },
+        {
+            "x": 15.53,
+            "y": 8.55,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 3
+            }
+        },
+        {
+            "x": 15.7,
+            "y": 8.54,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 4
+            }
+        }
+    ],
+    "attack_point": [
+        15.29,
+        16.47
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": false
+}

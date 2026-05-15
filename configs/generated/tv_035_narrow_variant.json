@@ -1,0 +1,39 @@
+{
+    "name": "tv_035_narrow_variant",
+    "num_allied_units": 16,
+    "num_enemy_units": 16,
+    "groups": [
+        {
+            "x": 8.72,
+            "y": 15.76,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 9,
+                "MARAUDER": 7
+            }
+        },
+        {
+            "x": 23.75,
+            "y": 16.71,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 13,
+                "SPINE_CRAWLER": 3
+            }
+        }
+    ],
+    "attack_point": [
+        8.91,
+        15.91
+    ],
+    "terrain_preset": "NARROW",
+    "num_unit_types": 4,
+    "ally_has_shields": false,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1,
+        "SPINE_CRAWLER": 2,
+        "ZERGLING": 3
+    }
+}

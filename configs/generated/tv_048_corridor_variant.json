@@ -1,0 +1,37 @@
+{
+    "name": "tv_048_corridor_variant",
+    "num_allied_units": 4,
+    "num_enemy_units": 4,
+    "groups": [
+        {
+            "x": 18.62,
+            "y": 19.67,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 4
+            }
+        },
+        {
+            "x": 28.13,
+            "y": 27.82,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 3,
+                "SPINE_CRAWLER": 1
+            }
+        }
+    ],
+    "attack_point": [
+        5.0,
+        4.87
+    ],
+    "terrain_preset": "CORRIDOR",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "SPINE_CRAWLER": 0,
+        "ZEALOT": 1,
+        "ZERGLING": 2
+    }
+}

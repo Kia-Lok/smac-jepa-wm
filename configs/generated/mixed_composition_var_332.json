@@ -1,0 +1,35 @@
+{
+    "name": "mixed_composition_var_332",
+    "num_allied_units": 8,
+    "num_enemy_units": 17,
+    "groups": [
+        {
+            "x": 7.72,
+            "y": 13.5,
+            "faction": "ALLY",
+            "units": {
+                "COLOSSUS": 8
+            }
+        },
+        {
+            "x": 23.95,
+            "y": 15.22,
+            "faction": "ENEMY",
+            "units": {
+                "BANELING": 17
+            }
+        }
+    ],
+    "attack_point": [
+        7.96,
+        17.19
+    ],
+    "terrain_preset": "SIMPLE",
+    "num_unit_types": 2,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "COLOSSUS": 1
+    }
+}

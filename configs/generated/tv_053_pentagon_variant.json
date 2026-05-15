@@ -1,0 +1,54 @@
+{
+    "name": "tv_053_pentagon_variant",
+    "num_allied_units": 11,
+    "num_enemy_units": 10,
+    "groups": [
+        {
+            "x": 10.78,
+            "y": 9.72,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 4,
+                "BANELING": 7
+            }
+        },
+        {
+            "x": 13.6,
+            "y": 18.87,
+            "faction": "ENEMY",
+            "units": {
+                "BANELING": 2
+            }
+        },
+        {
+            "x": 14.68,
+            "y": 18.78,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 3,
+                "BANELING": 1
+            }
+        },
+        {
+            "x": 14.47,
+            "y": 18.43,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 3,
+                "BANELING": 1
+            }
+        }
+    ],
+    "attack_point": [
+        13.86,
+        20.42
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "ZERGLING": 1
+    }
+}

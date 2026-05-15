@@ -1,0 +1,40 @@
+{
+    "name": "tv_056_narrow_variant",
+    "num_allied_units": 17,
+    "num_enemy_units": 16,
+    "groups": [
+        {
+            "x": 9.37,
+            "y": 15.02,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 7,
+                "MARAUDER": 3,
+                "MEDIVAC": 7
+            }
+        },
+        {
+            "x": 22.63,
+            "y": 14.94,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 8,
+                "MARAUDER": 5,
+                "MEDIVAC": 3
+            }
+        }
+    ],
+    "attack_point": [
+        8.94,
+        16.67
+    ],
+    "terrain_preset": "NARROW",
+    "num_unit_types": 3,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1,
+        "MEDIVAC": 2
+    }
+}

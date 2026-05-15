@@ -1,0 +1,53 @@
+{
+    "name": "tv_075_octagon_variant",
+    "num_allied_units": 8,
+    "num_enemy_units": 8,
+    "groups": [
+        {
+            "x": 15.44,
+            "y": 7.91,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 4
+            }
+        },
+        {
+            "x": 15.66,
+            "y": 8.47,
+            "faction": "ALLY",
+            "units": {
+                "MARAUDER": 2
+            }
+        },
+        {
+            "x": 17.12,
+            "y": 7.92,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 1,
+                "MARAUDER": 1
+            }
+        },
+        {
+            "x": 16.58,
+            "y": 23.77,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 5,
+                "MARAUDER": 3
+            }
+        }
+    ],
+    "attack_point": [
+        15.21,
+        8.46
+    ],
+    "terrain_preset": "OCTAGON",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1
+    }
+}

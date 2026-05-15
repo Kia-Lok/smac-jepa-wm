@@ -1,0 +1,38 @@
+{
+    "name": "mixed_composition_var_342",
+    "num_allied_units": 6,
+    "num_enemy_units": 15,
+    "groups": [
+        {
+            "x": 11.48,
+            "y": 18.39,
+            "faction": "ALLY",
+            "units": {
+                "BANELING": 1,
+                "MARINE": 3,
+                "HYDRALISK": 2
+            }
+        },
+        {
+            "x": 24.86,
+            "y": 17.18,
+            "faction": "ENEMY",
+            "units": {
+                "HYDRALISK": 15
+            }
+        }
+    ],
+    "attack_point": [
+        10.96,
+        16.46
+    ],
+    "terrain_preset": "ALL_GREEN",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "HYDRALISK": 1,
+        "MARINE": 2
+    }
+}

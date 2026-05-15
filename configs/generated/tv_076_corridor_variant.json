@@ -1,0 +1,62 @@
+{
+    "name": "tv_076_corridor_variant",
+    "num_allied_units": 20,
+    "num_enemy_units": 20,
+    "groups": [
+        {
+            "x": 18.3,
+            "y": 20.3,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 15
+            }
+        },
+        {
+            "x": 17.56,
+            "y": 19.02,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 4
+            }
+        },
+        {
+            "x": 19.31,
+            "y": 18.58,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 1
+            }
+        },
+        {
+            "x": 26.91,
+            "y": 27.7,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 6,
+                "SPINE_CRAWLER": 1
+            }
+        },
+        {
+            "x": 28.46,
+            "y": 28.59,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 10,
+                "SPINE_CRAWLER": 3
+            }
+        }
+    ],
+    "attack_point": [
+        4.26,
+        4.33
+    ],
+    "terrain_preset": "CORRIDOR",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "SPINE_CRAWLER": 0,
+        "STALKER": 1,
+        "ZERGLING": 2
+    }
+}

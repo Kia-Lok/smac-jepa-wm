@@ -1,0 +1,54 @@
+{
+    "name": "seaa_024_slight_enemy_advantage",
+    "num_allied_units": 12,
+    "num_enemy_units": 13,
+    "groups": [
+        {
+            "x": 16.3,
+            "y": 8.8,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 4,
+                "ZEALOT": 7
+            }
+        },
+        {
+            "x": 17.14,
+            "y": 8.63,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 1
+            }
+        },
+        {
+            "x": 15.51,
+            "y": 22.13,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 5,
+                "ZEALOT": 3
+            }
+        },
+        {
+            "x": 16.3,
+            "y": 23.32,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 2,
+                "ZEALOT": 3
+            }
+        }
+    ],
+    "attack_point": [
+        16.34,
+        7.01
+    ],
+    "terrain_preset": "OCTAGON",
+    "num_unit_types": 2,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "STALKER": 0,
+        "ZEALOT": 1
+    }
+}

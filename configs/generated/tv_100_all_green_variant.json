@@ -1,0 +1,45 @@
+{
+    "name": "tv_100_all_green_variant",
+    "num_allied_units": 20,
+    "num_enemy_units": 22,
+    "groups": [
+        {
+            "x": 9.1,
+            "y": 15.83,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 2
+            }
+        },
+        {
+            "x": 9.79,
+            "y": 15.15,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 18
+            }
+        },
+        {
+            "x": 21.99,
+            "y": 15.78,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 18,
+                "SPINE_CRAWLER": 4
+            }
+        }
+    ],
+    "attack_point": [
+        9.76,
+        16.18
+    ],
+    "terrain_preset": "ALL_GREEN",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "SPINE_CRAWLER": 0,
+        "ZEALOT": 1,
+        "ZERGLING": 2
+    }
+}

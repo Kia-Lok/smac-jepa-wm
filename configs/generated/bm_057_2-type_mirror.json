@@ -1,0 +1,37 @@
+{
+    "name": "bm_057_2-type_mirror",
+    "num_allied_units": 2,
+    "num_enemy_units": 2,
+    "groups": [
+        {
+            "x": 18.74,
+            "y": 18.5,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 1,
+                "ZEALOT": 1
+            }
+        },
+        {
+            "x": 27.88,
+            "y": 27.68,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 1,
+                "ZEALOT": 1
+            }
+        }
+    ],
+    "attack_point": [
+        4.48,
+        4.68
+    ],
+    "terrain_preset": "CORRIDOR",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "STALKER": 0,
+        "ZEALOT": 1
+    }
+}

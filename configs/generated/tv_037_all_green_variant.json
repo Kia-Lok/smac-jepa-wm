@@ -1,0 +1,31 @@
+{
+    "name": "tv_037_all_green_variant",
+    "num_allied_units": 5,
+    "num_enemy_units": 4,
+    "groups": [
+        {
+            "x": 8.13,
+            "y": 16.67,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 5
+            }
+        },
+        {
+            "x": 22.92,
+            "y": 15.01,
+            "faction": "ENEMY",
+            "units": {
+                "ZEALOT": 4
+            }
+        }
+    ],
+    "attack_point": [
+        8.28,
+        14.94
+    ],
+    "terrain_preset": "ALL_GREEN",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": true
+}

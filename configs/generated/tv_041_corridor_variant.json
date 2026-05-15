@@ -1,0 +1,48 @@
+{
+    "name": "tv_041_corridor_variant",
+    "num_allied_units": 6,
+    "num_enemy_units": 6,
+    "groups": [
+        {
+            "x": 19.08,
+            "y": 19.68,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 1,
+                "MARAUDER": 4,
+                "MEDIVAC": 1
+            }
+        },
+        {
+            "x": 27.9,
+            "y": 28.93,
+            "faction": "ENEMY",
+            "units": {
+                "MARAUDER": 2
+            }
+        },
+        {
+            "x": 27.66,
+            "y": 29.15,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 1,
+                "MARAUDER": 2,
+                "MEDIVAC": 1
+            }
+        }
+    ],
+    "attack_point": [
+        3.91,
+        4.57
+    ],
+    "terrain_preset": "CORRIDOR",
+    "num_unit_types": 3,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1,
+        "MEDIVAC": 2
+    }
+}

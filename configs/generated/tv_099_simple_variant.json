@@ -1,0 +1,31 @@
+{
+    "name": "tv_099_simple_variant",
+    "num_allied_units": 12,
+    "num_enemy_units": 13,
+    "groups": [
+        {
+            "x": 9.43,
+            "y": 15.63,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 12
+            }
+        },
+        {
+            "x": 23.57,
+            "y": 15.53,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 13
+            }
+        }
+    ],
+    "attack_point": [
+        8.18,
+        16.72
+    ],
+    "terrain_preset": "SIMPLE",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": false
+}

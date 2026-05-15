@@ -1,0 +1,45 @@
+{
+    "name": "tv_047_octagon_variant",
+    "num_allied_units": 20,
+    "num_enemy_units": 20,
+    "groups": [
+        {
+            "x": 15.97,
+            "y": 8.05,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 20
+            }
+        },
+        {
+            "x": 16.38,
+            "y": 23.22,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 2
+            }
+        },
+        {
+            "x": 14.51,
+            "y": 24.33,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 14,
+                "SPINE_CRAWLER": 4
+            }
+        }
+    ],
+    "attack_point": [
+        15.72,
+        8.15
+    ],
+    "terrain_preset": "OCTAGON",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "SPINE_CRAWLER": 0,
+        "ZEALOT": 1,
+        "ZERGLING": 2
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "name": "bm_083_single-type_mirror",
+    "num_allied_units": 30,
+    "num_enemy_units": 30,
+    "groups": [
+        {
+            "x": 11.36,
+            "y": 10.61,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 30
+            }
+        },
+        {
+            "x": 13.82,
+            "y": 19.6,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 30
+            }
+        }
+    ],
+    "attack_point": [
+        13.68,
+        19.58
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": false
+}

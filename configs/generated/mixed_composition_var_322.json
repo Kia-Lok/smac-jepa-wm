@@ -1,0 +1,37 @@
+{
+    "name": "mixed_composition_var_322",
+    "num_allied_units": 6,
+    "num_enemy_units": 14,
+    "groups": [
+        {
+            "x": 11.03,
+            "y": 14.79,
+            "faction": "ALLY",
+            "units": {
+                "MEDIVAC": 6
+            }
+        },
+        {
+            "x": 20.56,
+            "y": 14.8,
+            "faction": "ENEMY",
+            "units": {
+                "BANELING": 8,
+                "MARAUDER": 6
+            }
+        }
+    ],
+    "attack_point": [
+        7.23,
+        13.66
+    ],
+    "terrain_preset": "OCTAGON",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "MARAUDER": 1,
+        "MEDIVAC": 2
+    }
+}

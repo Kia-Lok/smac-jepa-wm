@@ -1,0 +1,31 @@
+{
+    "name": "bm_066_single-type_mirror",
+    "num_allied_units": 2,
+    "num_enemy_units": 2,
+    "groups": [
+        {
+            "x": 19.42,
+            "y": 19.63,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 2
+            }
+        },
+        {
+            "x": 27.44,
+            "y": 28.46,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 2
+            }
+        }
+    ],
+    "attack_point": [
+        4.06,
+        4.5
+    ],
+    "terrain_preset": "CORRIDOR",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": false
+}

@@ -1,0 +1,55 @@
+{
+    "name": "tv_010_ravine_variant",
+    "num_allied_units": 12,
+    "num_enemy_units": 11,
+    "groups": [
+        {
+            "x": 16.8,
+            "y": 15.31,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 7
+            }
+        },
+        {
+            "x": 16.45,
+            "y": 15.86,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 5
+            }
+        },
+        {
+            "x": 15.57,
+            "y": 7.56,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 4
+            }
+        },
+        {
+            "x": 16.98,
+            "y": 7.42,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 5
+            }
+        },
+        {
+            "x": 15.84,
+            "y": 7.5,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 2
+            }
+        }
+    ],
+    "attack_point": [
+        16.13,
+        14.95
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": false
+}

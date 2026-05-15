@@ -1,0 +1,38 @@
+{
+    "name": "mixed_composition_var_347",
+    "num_allied_units": 7,
+    "num_enemy_units": 15,
+    "groups": [
+        {
+            "x": 9.71,
+            "y": 14.32,
+            "faction": "ALLY",
+            "units": {
+                "COLOSSUS": 7
+            }
+        },
+        {
+            "x": 24.06,
+            "y": 18.75,
+            "faction": "ENEMY",
+            "units": {
+                "COLOSSUS": 3,
+                "BANELING": 9,
+                "MARINE": 3
+            }
+        }
+    ],
+    "attack_point": [
+        9.25,
+        15.04
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "COLOSSUS": 1,
+        "MARINE": 2
+    }
+}

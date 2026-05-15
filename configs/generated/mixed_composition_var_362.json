@@ -1,0 +1,38 @@
+{
+    "name": "mixed_composition_var_362",
+    "num_allied_units": 9,
+    "num_enemy_units": 19,
+    "groups": [
+        {
+            "x": 9.29,
+            "y": 14.96,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 9
+            }
+        },
+        {
+            "x": 20.95,
+            "y": 16.1,
+            "faction": "ENEMY",
+            "units": {
+                "HYDRALISK": 6,
+                "ROACH": 9,
+                "ZERGLING": 4
+            }
+        }
+    ],
+    "attack_point": [
+        8.26,
+        16.51
+    ],
+    "terrain_preset": "CORRIDOR",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "HYDRALISK": 0,
+        "ROACH": 1,
+        "ZERGLING": 2
+    }
+}

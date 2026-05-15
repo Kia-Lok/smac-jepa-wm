@@ -1,0 +1,43 @@
+{
+    "name": "muc_095_protoss_vs_zerg",
+    "num_allied_units": 12,
+    "num_enemy_units": 11,
+    "groups": [
+        {
+            "x": 16.37,
+            "y": 15.89,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 3,
+                "ZEALOT": 7,
+                "COLOSSUS": 2
+            }
+        },
+        {
+            "x": 15.22,
+            "y": 9.1,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 9,
+                "BANELING": 1,
+                "SPINE_CRAWLER": 1
+            }
+        }
+    ],
+    "attack_point": [
+        16.92,
+        16.18
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 6,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "COLOSSUS": 1,
+        "SPINE_CRAWLER": 2,
+        "STALKER": 3,
+        "ZEALOT": 4,
+        "ZERGLING": 5
+    }
+}

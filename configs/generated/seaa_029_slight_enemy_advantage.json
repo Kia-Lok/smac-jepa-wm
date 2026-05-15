@@ -1,0 +1,39 @@
+{
+    "name": "seaa_029_slight_enemy_advantage",
+    "num_allied_units": 5,
+    "num_enemy_units": 6,
+    "groups": [
+        {
+            "x": 9.58,
+            "y": 16.11,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 5
+            }
+        },
+        {
+            "x": 24.48,
+            "y": 15.69,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 5
+            }
+        },
+        {
+            "x": 24.05,
+            "y": 14.59,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 1
+            }
+        }
+    ],
+    "attack_point": [
+        8.51,
+        16.81
+    ],
+    "terrain_preset": "ALL_GREEN",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": false
+}

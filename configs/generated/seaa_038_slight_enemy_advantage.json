@@ -1,0 +1,37 @@
+{
+    "name": "seaa_038_slight_enemy_advantage",
+    "num_allied_units": 6,
+    "num_enemy_units": 9,
+    "groups": [
+        {
+            "x": 7.92,
+            "y": 15.46,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 1,
+                "BANELING": 5
+            }
+        },
+        {
+            "x": 22.8,
+            "y": 16.79,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 6,
+                "BANELING": 3
+            }
+        }
+    ],
+    "attack_point": [
+        10.03,
+        16.25
+    ],
+    "terrain_preset": "ALL_GREEN",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "ZERGLING": 1
+    }
+}

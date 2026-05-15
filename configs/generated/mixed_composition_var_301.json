@@ -1,0 +1,39 @@
+{
+    "name": "mixed_composition_var_301",
+    "num_allied_units": 7,
+    "num_enemy_units": 18,
+    "groups": [
+        {
+            "x": 8.99,
+            "y": 14.2,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 7
+            }
+        },
+        {
+            "x": 23.68,
+            "y": 17.59,
+            "faction": "ENEMY",
+            "units": {
+                "ROACH": 6,
+                "ZERGLING": 6,
+                "ZEALOT": 6
+            }
+        }
+    ],
+    "attack_point": [
+        7.41,
+        17.23
+    ],
+    "terrain_preset": "ALL_GREEN",
+    "num_unit_types": 4,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "ROACH": 0,
+        "STALKER": 1,
+        "ZEALOT": 2,
+        "ZERGLING": 3
+    }
+}

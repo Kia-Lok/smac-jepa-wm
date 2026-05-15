@@ -1,0 +1,39 @@
+{
+    "name": "mixed_composition_var_372",
+    "num_allied_units": 8,
+    "num_enemy_units": 13,
+    "groups": [
+        {
+            "x": 9.63,
+            "y": 13.61,
+            "faction": "ALLY",
+            "units": {
+                "BANELING": 8
+            }
+        },
+        {
+            "x": 24.97,
+            "y": 18.37,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 3,
+                "MARAUDER": 6,
+                "COLOSSUS": 4
+            }
+        }
+    ],
+    "attack_point": [
+        8.91,
+        14.37
+    ],
+    "terrain_preset": "ALL_GREEN",
+    "num_unit_types": 4,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "COLOSSUS": 1,
+        "MARAUDER": 2,
+        "STALKER": 3
+    }
+}

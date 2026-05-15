@@ -1,0 +1,39 @@
+{
+    "name": "seaa_044_slight_enemy_advantage",
+    "num_allied_units": 4,
+    "num_enemy_units": 7,
+    "groups": [
+        {
+            "x": 11.11,
+            "y": 10.26,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 4
+            }
+        },
+        {
+            "x": 13.15,
+            "y": 19.03,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 1
+            }
+        },
+        {
+            "x": 13.59,
+            "y": 20.31,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 6
+            }
+        }
+    ],
+    "attack_point": [
+        13.83,
+        19.5
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": false
+}

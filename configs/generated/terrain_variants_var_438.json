@@ -1,0 +1,37 @@
+{
+    "name": "terrain_variants_var_438",
+    "num_allied_units": 10,
+    "num_enemy_units": 10,
+    "groups": [
+        {
+            "x": 9.69,
+            "y": 14.97,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 8,
+                "MARAUDER": 2
+            }
+        },
+        {
+            "x": 25.34,
+            "y": 14.12,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 8,
+                "MARAUDER": 2
+            }
+        }
+    ],
+    "attack_point": [
+        10.74,
+        13.79
+    ],
+    "terrain_preset": "SIMPLE",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1
+    }
+}

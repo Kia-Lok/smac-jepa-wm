@@ -1,0 +1,37 @@
+{
+    "name": "tv_069_corridor_variant",
+    "num_allied_units": 8,
+    "num_enemy_units": 8,
+    "groups": [
+        {
+            "x": 19.03,
+            "y": 19.64,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 5,
+                "ZEALOT": 3
+            }
+        },
+        {
+            "x": 28.23,
+            "y": 28.87,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 5,
+                "ZEALOT": 3
+            }
+        }
+    ],
+    "attack_point": [
+        4.24,
+        4.32
+    ],
+    "terrain_preset": "CORRIDOR",
+    "num_unit_types": 2,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "STALKER": 0,
+        "ZEALOT": 1
+    }
+}

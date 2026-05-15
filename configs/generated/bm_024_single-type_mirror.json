@@ -1,0 +1,31 @@
+{
+    "name": "bm_024_single-type_mirror",
+    "num_allied_units": 4,
+    "num_enemy_units": 4,
+    "groups": [
+        {
+            "x": 17.09,
+            "y": 8.66,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 4
+            }
+        },
+        {
+            "x": 16.31,
+            "y": 22.02,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 4
+            }
+        }
+    ],
+    "attack_point": [
+        16.17,
+        6.98
+    ],
+    "terrain_preset": "OCTAGON",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": false
+}

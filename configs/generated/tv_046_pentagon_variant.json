@@ -1,0 +1,56 @@
+{
+    "name": "tv_046_pentagon_variant",
+    "num_allied_units": 6,
+    "num_enemy_units": 6,
+    "groups": [
+        {
+            "x": 11.25,
+            "y": 9.98,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 3,
+                "ZEALOT": 2,
+                "COLOSSUS": 1
+            }
+        },
+        {
+            "x": 13.79,
+            "y": 20.13,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 1,
+                "ZEALOT": 2
+            }
+        },
+        {
+            "x": 14.09,
+            "y": 19.61,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 1,
+                "COLOSSUS": 1
+            }
+        },
+        {
+            "x": 13.39,
+            "y": 18.67,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 1
+            }
+        }
+    ],
+    "attack_point": [
+        14.5,
+        20.22
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "COLOSSUS": 0,
+        "STALKER": 1,
+        "ZEALOT": 2
+    }
+}

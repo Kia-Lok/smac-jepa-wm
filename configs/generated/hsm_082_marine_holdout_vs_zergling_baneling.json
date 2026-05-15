@@ -1,0 +1,37 @@
+{
+    "name": "hsm_082_marine_holdout_vs_zergling_baneling",
+    "num_allied_units": 12,
+    "num_enemy_units": 47,
+    "groups": [
+        {
+            "x": 7.98,
+            "y": 14.91,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 12
+            }
+        },
+        {
+            "x": 22.35,
+            "y": 14.91,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 36,
+                "BANELING": 11
+            }
+        }
+    ],
+    "attack_point": [
+        9.93,
+        17.07
+    ],
+    "terrain_preset": "NARROW",
+    "num_unit_types": 3,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "MARINE": 1,
+        "ZERGLING": 2
+    }
+}

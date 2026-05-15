@@ -1,0 +1,47 @@
+{
+    "name": "tv_091_narrow_variant",
+    "num_allied_units": 22,
+    "num_enemy_units": 20,
+    "groups": [
+        {
+            "x": 9.37,
+            "y": 16.52,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 3
+            }
+        },
+        {
+            "x": 9.99,
+            "y": 16.69,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 19
+            }
+        },
+        {
+            "x": 23.03,
+            "y": 14.01,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 2
+            }
+        },
+        {
+            "x": 23.76,
+            "y": 14.07,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 18
+            }
+        }
+    ],
+    "attack_point": [
+        9.78,
+        15.85
+    ],
+    "terrain_preset": "NARROW",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": false
+}

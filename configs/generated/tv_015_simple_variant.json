@@ -1,0 +1,31 @@
+{
+    "name": "tv_015_simple_variant",
+    "num_allied_units": 12,
+    "num_enemy_units": 10,
+    "groups": [
+        {
+            "x": 8.76,
+            "y": 15.52,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 12
+            }
+        },
+        {
+            "x": 23.08,
+            "y": 15.22,
+            "faction": "ENEMY",
+            "units": {
+                "ZEALOT": 10
+            }
+        }
+    ],
+    "attack_point": [
+        9.77,
+        15.92
+    ],
+    "terrain_preset": "SIMPLE",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": true
+}

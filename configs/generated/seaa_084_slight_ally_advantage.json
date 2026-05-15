@@ -1,0 +1,63 @@
+{
+    "name": "seaa_084_slight_ally_advantage",
+    "num_allied_units": 17,
+    "num_enemy_units": 14,
+    "groups": [
+        {
+            "x": 8.3,
+            "y": 15.08,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 8,
+                "ZEALOT": 3
+            }
+        },
+        {
+            "x": 8.57,
+            "y": 15.78,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 2,
+                "ZEALOT": 4
+            }
+        },
+        {
+            "x": 25.01,
+            "y": 16.7,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 1,
+                "ZEALOT": 5
+            }
+        },
+        {
+            "x": 24.16,
+            "y": 16.18,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 1
+            }
+        },
+        {
+            "x": 24.27,
+            "y": 17.02,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 3,
+                "ZEALOT": 4
+            }
+        }
+    ],
+    "attack_point": [
+        8.95,
+        16.05
+    ],
+    "terrain_preset": "NARROW",
+    "num_unit_types": 2,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "STALKER": 0,
+        "ZEALOT": 1
+    }
+}

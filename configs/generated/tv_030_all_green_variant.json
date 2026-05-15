@@ -1,0 +1,39 @@
+{
+    "name": "tv_030_all_green_variant",
+    "num_allied_units": 20,
+    "num_enemy_units": 22,
+    "groups": [
+        {
+            "x": 8.02,
+            "y": 16.28,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 4,
+                "MARAUDER": 16
+            }
+        },
+        {
+            "x": 21.96,
+            "y": 15.99,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 18,
+                "SPINE_CRAWLER": 4
+            }
+        }
+    ],
+    "attack_point": [
+        9.72,
+        15.09
+    ],
+    "terrain_preset": "ALL_GREEN",
+    "num_unit_types": 4,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1,
+        "SPINE_CRAWLER": 2,
+        "ZERGLING": 3
+    }
+}

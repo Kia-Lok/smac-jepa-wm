@@ -1,0 +1,31 @@
+{
+    "name": "hsm_085_colossus_vs_zergling_swarm",
+    "num_allied_units": 1,
+    "num_enemy_units": 12,
+    "groups": [
+        {
+            "x": 15.39,
+            "y": 15.01,
+            "faction": "ALLY",
+            "units": {
+                "COLOSSUS": 1
+            }
+        },
+        {
+            "x": 16.56,
+            "y": 9.04,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 12
+            }
+        }
+    ],
+    "attack_point": [
+        15.24,
+        16.85
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": false
+}

@@ -1,0 +1,37 @@
+{
+    "name": "mixed_composition_var_327",
+    "num_allied_units": 7,
+    "num_enemy_units": 15,
+    "groups": [
+        {
+            "x": 11.35,
+            "y": 16.78,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 4,
+                "BANELING": 3
+            }
+        },
+        {
+            "x": 20.58,
+            "y": 14.86,
+            "faction": "ENEMY",
+            "units": {
+                "MEDIVAC": 15
+            }
+        }
+    ],
+    "attack_point": [
+        8.63,
+        14.39
+    ],
+    "terrain_preset": "OCTAGON",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "MEDIVAC": 1,
+        "STALKER": 2
+    }
+}

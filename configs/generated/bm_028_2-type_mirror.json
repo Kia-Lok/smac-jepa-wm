@@ -1,0 +1,37 @@
+{
+    "name": "bm_028_2-type_mirror",
+    "num_allied_units": 20,
+    "num_enemy_units": 20,
+    "groups": [
+        {
+            "x": 8.23,
+            "y": 16.9,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 9,
+                "BANELING": 11
+            }
+        },
+        {
+            "x": 23.47,
+            "y": 15.08,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 9,
+                "BANELING": 11
+            }
+        }
+    ],
+    "attack_point": [
+        8.98,
+        15.97
+    ],
+    "terrain_preset": "SIMPLE",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "ZERGLING": 1
+    }
+}

@@ -8,7 +8,9 @@ from pathlib import Path
 @dataclass
 class TrainConfig:
     out_dir: str
-    manifest: str
+    manifest: str | None = None
+    data_dir: str | None = None
+    eval_fraction: float = 0.2
     split: str = "train"
     model_size: str = "default"
     epochs: int = 5

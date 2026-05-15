@@ -1,0 +1,37 @@
+{
+    "name": "bm_051_2-type_mirror",
+    "num_allied_units": 16,
+    "num_enemy_units": 16,
+    "groups": [
+        {
+            "x": 9.29,
+            "y": 16.79,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 8,
+                "MARAUDER": 8
+            }
+        },
+        {
+            "x": 24.05,
+            "y": 16.01,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 8,
+                "MARAUDER": 8
+            }
+        }
+    ],
+    "attack_point": [
+        9.28,
+        15.11
+    ],
+    "terrain_preset": "ALL_GREEN",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1
+    }
+}

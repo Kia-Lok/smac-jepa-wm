@@ -1,0 +1,39 @@
+{
+    "name": "bm_036_single-type_mirror",
+    "num_allied_units": 30,
+    "num_enemy_units": 30,
+    "groups": [
+        {
+            "x": 8.83,
+            "y": 16.71,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 30
+            }
+        },
+        {
+            "x": 22.48,
+            "y": 15.98,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 22
+            }
+        },
+        {
+            "x": 23.47,
+            "y": 14.97,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 8
+            }
+        }
+    ],
+    "attack_point": [
+        9.11,
+        16.36
+    ],
+    "terrain_preset": "ALL_GREEN",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": false
+}

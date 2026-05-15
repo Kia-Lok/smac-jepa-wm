@@ -1,0 +1,31 @@
+{
+    "name": "tv_070_narrow_variant",
+    "num_allied_units": 4,
+    "num_enemy_units": 4,
+    "groups": [
+        {
+            "x": 9.58,
+            "y": 15.97,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 4
+            }
+        },
+        {
+            "x": 23.99,
+            "y": 16.8,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 4
+            }
+        }
+    ],
+    "attack_point": [
+        9.02,
+        16.09
+    ],
+    "terrain_preset": "NARROW",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": true
+}

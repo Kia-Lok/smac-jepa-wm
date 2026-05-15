@@ -1,0 +1,37 @@
+{
+    "name": "mixed_composition_var_394",
+    "num_allied_units": 7,
+    "num_enemy_units": 17,
+    "groups": [
+        {
+            "x": 10.17,
+            "y": 17.5,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 3,
+                "COLOSSUS": 4
+            }
+        },
+        {
+            "x": 22.91,
+            "y": 13.41,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 17
+            }
+        }
+    ],
+    "attack_point": [
+        6.72,
+        13.63
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "COLOSSUS": 0,
+        "MARINE": 1,
+        "ZERGLING": 2
+    }
+}

@@ -1,0 +1,46 @@
+{
+    "name": "bm_003_2-type_mirror",
+    "num_allied_units": 12,
+    "num_enemy_units": 12,
+    "groups": [
+        {
+            "x": 11.78,
+            "y": 9.14,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 2,
+                "BANELING": 5
+            }
+        },
+        {
+            "x": 11.11,
+            "y": 9.38,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 3,
+                "BANELING": 2
+            }
+        },
+        {
+            "x": 14.25,
+            "y": 19.96,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 5,
+                "BANELING": 7
+            }
+        }
+    ],
+    "attack_point": [
+        13.68,
+        20.57
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "ZERGLING": 1
+    }
+}

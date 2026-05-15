@@ -1,0 +1,64 @@
+{
+    "name": "tv_073_ravine_variant",
+    "num_allied_units": 16,
+    "num_enemy_units": 16,
+    "groups": [
+        {
+            "x": 16.77,
+            "y": 17.69,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 2,
+                "BANELING": 2
+            }
+        },
+        {
+            "x": 16.6,
+            "y": 16.3,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 4,
+                "BANELING": 1
+            }
+        },
+        {
+            "x": 15.92,
+            "y": 17.47,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 6,
+                "BANELING": 1
+            }
+        },
+        {
+            "x": 15.31,
+            "y": 9.21,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 3,
+                "BANELING": 3
+            }
+        },
+        {
+            "x": 15.69,
+            "y": 10.74,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 9,
+                "BANELING": 1
+            }
+        }
+    ],
+    "attack_point": [
+        16.54,
+        16.69
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "ZERGLING": 1
+    }
+}

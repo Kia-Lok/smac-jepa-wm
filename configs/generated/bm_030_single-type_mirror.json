@@ -1,0 +1,39 @@
+{
+    "name": "bm_030_single-type_mirror",
+    "num_allied_units": 12,
+    "num_enemy_units": 12,
+    "groups": [
+        {
+            "x": 8.82,
+            "y": 14.92,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 12
+            }
+        },
+        {
+            "x": 23.72,
+            "y": 17.32,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 11
+            }
+        },
+        {
+            "x": 23.61,
+            "y": 15.51,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 1
+            }
+        }
+    ],
+    "attack_point": [
+        9.68,
+        16.04
+    ],
+    "terrain_preset": "ALL_GREEN",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": true
+}

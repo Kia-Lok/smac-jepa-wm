@@ -1,0 +1,39 @@
+{
+    "name": "bm_096_single-type_mirror",
+    "num_allied_units": 20,
+    "num_enemy_units": 20,
+    "groups": [
+        {
+            "x": 17.31,
+            "y": 16.61,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 14
+            }
+        },
+        {
+            "x": 16.57,
+            "y": 16.08,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 6
+            }
+        },
+        {
+            "x": 15.85,
+            "y": 8.98,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 20
+            }
+        }
+    ],
+    "attack_point": [
+        15.22,
+        15.71
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": true
+}

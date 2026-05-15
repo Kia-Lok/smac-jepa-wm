@@ -1,0 +1,53 @@
+{
+    "name": "muc_089_zerg_burst",
+    "num_allied_units": 20,
+    "num_enemy_units": 18,
+    "groups": [
+        {
+            "x": 8.65,
+            "y": 16.13,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 13,
+                "BANELING": 7
+            }
+        },
+        {
+            "x": 22.08,
+            "y": 17.25,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 1,
+                "BANELING": 15
+            }
+        },
+        {
+            "x": 23.56,
+            "y": 16.39,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 1
+            }
+        },
+        {
+            "x": 22.65,
+            "y": 16.31,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 1
+            }
+        }
+    ],
+    "attack_point": [
+        9.82,
+        15.07
+    ],
+    "terrain_preset": "NARROW",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "ZERGLING": 1
+    }
+}

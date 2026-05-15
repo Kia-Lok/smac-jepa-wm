@@ -1,0 +1,49 @@
+{
+    "name": "bm_086_3-type_mirror",
+    "num_allied_units": 30,
+    "num_enemy_units": 30,
+    "groups": [
+        {
+            "x": 11.05,
+            "y": 10.86,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 1,
+                "MARAUDER": 9
+            }
+        },
+        {
+            "x": 10.49,
+            "y": 10.21,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 11,
+                "MARAUDER": 3,
+                "MEDIVAC": 6
+            }
+        },
+        {
+            "x": 14.44,
+            "y": 19.45,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 12,
+                "MARAUDER": 12,
+                "MEDIVAC": 6
+            }
+        }
+    ],
+    "attack_point": [
+        14.48,
+        20.03
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 3,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1,
+        "MEDIVAC": 2
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "name": "seaa_025_slight_enemy_advantage",
+    "num_allied_units": 16,
+    "num_enemy_units": 19,
+    "groups": [
+        {
+            "x": 9.2,
+            "y": 15.73,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 16
+            }
+        },
+        {
+            "x": 23.46,
+            "y": 14.93,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 19
+            }
+        }
+    ],
+    "attack_point": [
+        8.04,
+        16.25
+    ],
+    "terrain_preset": "NARROW",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": false
+}

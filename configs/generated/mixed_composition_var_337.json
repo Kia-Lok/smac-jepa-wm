@@ -1,0 +1,39 @@
+{
+    "name": "mixed_composition_var_337",
+    "num_allied_units": 7,
+    "num_enemy_units": 15,
+    "groups": [
+        {
+            "x": 7.27,
+            "y": 16.92,
+            "faction": "ALLY",
+            "units": {
+                "MEDIVAC": 3,
+                "STALKER": 2,
+                "MARAUDER": 2
+            }
+        },
+        {
+            "x": 23.92,
+            "y": 15.83,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 15
+            }
+        }
+    ],
+    "attack_point": [
+        10.44,
+        13.71
+    ],
+    "terrain_preset": "SIMPLE",
+    "num_unit_types": 4,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1,
+        "MEDIVAC": 2,
+        "STALKER": 3
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "name": "tv_002_all_green_variant",
+    "num_allied_units": 10,
+    "num_enemy_units": 10,
+    "groups": [
+        {
+            "x": 8.87,
+            "y": 17.11,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 8
+            }
+        },
+        {
+            "x": 9.86,
+            "y": 17.25,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 2
+            }
+        },
+        {
+            "x": 22.94,
+            "y": 16.08,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 10
+            }
+        }
+    ],
+    "attack_point": [
+        9.38,
+        15.34
+    ],
+    "terrain_preset": "ALL_GREEN",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": false
+}

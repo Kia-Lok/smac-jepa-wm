@@ -1,0 +1,47 @@
+{
+    "name": "tv_020_corridor_variant",
+    "num_allied_units": 20,
+    "num_enemy_units": 20,
+    "groups": [
+        {
+            "x": 18.51,
+            "y": 18.51,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 9
+            }
+        },
+        {
+            "x": 19.15,
+            "y": 18.81,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 3
+            }
+        },
+        {
+            "x": 19.0,
+            "y": 17.68,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 8
+            }
+        },
+        {
+            "x": 27.56,
+            "y": 28.65,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 20
+            }
+        }
+    ],
+    "attack_point": [
+        4.73,
+        3.91
+    ],
+    "terrain_preset": "CORRIDOR",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": false
+}

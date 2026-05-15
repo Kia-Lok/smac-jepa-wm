@@ -1,0 +1,37 @@
+{
+    "name": "tv_007_narrow_variant",
+    "num_allied_units": 12,
+    "num_enemy_units": 13,
+    "groups": [
+        {
+            "x": 7.94,
+            "y": 15.12,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 8,
+                "MARAUDER": 4
+            }
+        },
+        {
+            "x": 23.2,
+            "y": 15.77,
+            "faction": "ENEMY",
+            "units": {
+                "ZEALOT": 13
+            }
+        }
+    ],
+    "attack_point": [
+        9.68,
+        15.06
+    ],
+    "terrain_preset": "NARROW",
+    "num_unit_types": 3,
+    "ally_has_shields": false,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1,
+        "ZEALOT": 2
+    }
+}

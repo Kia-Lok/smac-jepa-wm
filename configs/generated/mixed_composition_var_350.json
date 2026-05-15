@@ -1,0 +1,31 @@
+{
+    "name": "mixed_composition_var_350",
+    "num_allied_units": 7,
+    "num_enemy_units": 15,
+    "groups": [
+        {
+            "x": 9.82,
+            "y": 18.73,
+            "faction": "ALLY",
+            "units": {
+                "BANELING": 7
+            }
+        },
+        {
+            "x": 24.96,
+            "y": 17.11,
+            "faction": "ENEMY",
+            "units": {
+                "BANELING": 15
+            }
+        }
+    ],
+    "attack_point": [
+        7.32,
+        14.86
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": true
+}

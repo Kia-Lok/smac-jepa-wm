@@ -1,0 +1,42 @@
+{
+    "name": "mixed_composition_var_378",
+    "num_allied_units": 8,
+    "num_enemy_units": 17,
+    "groups": [
+        {
+            "x": 8.26,
+            "y": 18.01,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 3,
+                "COLOSSUS": 2,
+                "BANELING": 3
+            }
+        },
+        {
+            "x": 23.99,
+            "y": 15.46,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 6,
+                "ZEALOT": 2,
+                "MARAUDER": 9
+            }
+        }
+    ],
+    "attack_point": [
+        9.33,
+        18.0
+    ],
+    "terrain_preset": "CORRIDOR",
+    "num_unit_types": 5,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "COLOSSUS": 1,
+        "MARAUDER": 2,
+        "ZEALOT": 3,
+        "ZERGLING": 4
+    }
+}

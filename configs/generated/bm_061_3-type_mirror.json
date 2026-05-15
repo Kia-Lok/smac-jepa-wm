@@ -1,0 +1,40 @@
+{
+    "name": "bm_061_3-type_mirror",
+    "num_allied_units": 6,
+    "num_enemy_units": 6,
+    "groups": [
+        {
+            "x": 15.06,
+            "y": 7.08,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 1,
+                "ZEALOT": 4,
+                "COLOSSUS": 1
+            }
+        },
+        {
+            "x": 17.04,
+            "y": 22.18,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 1,
+                "ZEALOT": 4,
+                "COLOSSUS": 1
+            }
+        }
+    ],
+    "attack_point": [
+        16.35,
+        8.01
+    ],
+    "terrain_preset": "OCTAGON",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "COLOSSUS": 0,
+        "STALKER": 1,
+        "ZEALOT": 2
+    }
+}

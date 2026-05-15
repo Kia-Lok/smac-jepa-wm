@@ -1,0 +1,39 @@
+{
+    "name": "tv_026_octagon_variant",
+    "num_allied_units": 6,
+    "num_enemy_units": 6,
+    "groups": [
+        {
+            "x": 15.55,
+            "y": 7.55,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 5
+            }
+        },
+        {
+            "x": 14.28,
+            "y": 7.19,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 1
+            }
+        },
+        {
+            "x": 15.48,
+            "y": 22.04,
+            "faction": "ENEMY",
+            "units": {
+                "ZEALOT": 6
+            }
+        }
+    ],
+    "attack_point": [
+        15.23,
+        7.24
+    ],
+    "terrain_preset": "OCTAGON",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": true
+}

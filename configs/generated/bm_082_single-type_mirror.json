@@ -1,0 +1,39 @@
+{
+    "name": "bm_082_single-type_mirror",
+    "num_allied_units": 30,
+    "num_enemy_units": 30,
+    "groups": [
+        {
+            "x": 10.11,
+            "y": 14.94,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 4
+            }
+        },
+        {
+            "x": 10.12,
+            "y": 16.64,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 26
+            }
+        },
+        {
+            "x": 22.87,
+            "y": 16.93,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 30
+            }
+        }
+    ],
+    "attack_point": [
+        8.34,
+        15.41
+    ],
+    "terrain_preset": "SIMPLE",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": false
+}

@@ -1,0 +1,39 @@
+{
+    "name": "tv_085_simple_variant",
+    "num_allied_units": 20,
+    "num_enemy_units": 22,
+    "groups": [
+        {
+            "x": 9.62,
+            "y": 17.05,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 5,
+                "MARAUDER": 15
+            }
+        },
+        {
+            "x": 22.01,
+            "y": 16.2,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 18,
+                "SPINE_CRAWLER": 4
+            }
+        }
+    ],
+    "attack_point": [
+        9.28,
+        15.93
+    ],
+    "terrain_preset": "SIMPLE",
+    "num_unit_types": 4,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1,
+        "SPINE_CRAWLER": 2,
+        "ZERGLING": 3
+    }
+}

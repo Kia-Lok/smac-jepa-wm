@@ -1,0 +1,55 @@
+{
+    "name": "tv_009_all_green_variant",
+    "num_allied_units": 16,
+    "num_enemy_units": 16,
+    "groups": [
+        {
+            "x": 9.96,
+            "y": 15.3,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 3,
+                "MARAUDER": 1
+            }
+        },
+        {
+            "x": 9.07,
+            "y": 14.76,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 7,
+                "MARAUDER": 5
+            }
+        },
+        {
+            "x": 24.19,
+            "y": 16.65,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 6,
+                "MARAUDER": 5
+            }
+        },
+        {
+            "x": 23.19,
+            "y": 17.52,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 4,
+                "MARAUDER": 1
+            }
+        }
+    ],
+    "attack_point": [
+        9.4,
+        15.61
+    ],
+    "terrain_preset": "ALL_GREEN",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1
+    }
+}

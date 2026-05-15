@@ -1,0 +1,47 @@
+{
+    "name": "seaa_033_slight_enemy_advantage",
+    "num_allied_units": 20,
+    "num_enemy_units": 23,
+    "groups": [
+        {
+            "x": 8.85,
+            "y": 13.98,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 9
+            }
+        },
+        {
+            "x": 9.83,
+            "y": 15.5,
+            "faction": "ALLY",
+            "units": {
+                "MARAUDER": 7,
+                "MEDIVAC": 4
+            }
+        },
+        {
+            "x": 23.63,
+            "y": 15.34,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 12,
+                "MARAUDER": 4,
+                "MEDIVAC": 7
+            }
+        }
+    ],
+    "attack_point": [
+        8.35,
+        16.75
+    ],
+    "terrain_preset": "NARROW",
+    "num_unit_types": 3,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1,
+        "MEDIVAC": 2
+    }
+}

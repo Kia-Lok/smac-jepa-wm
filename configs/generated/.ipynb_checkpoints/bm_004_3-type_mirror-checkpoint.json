@@ -1,0 +1,57 @@
+{
+    "name": "bm_004_3-type_mirror",
+    "num_allied_units": 24,
+    "num_enemy_units": 24,
+    "groups": [
+        {
+            "x": 15.48,
+            "y": 16.9,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 14,
+                "MARAUDER": 6,
+                "MEDIVAC": 4
+            }
+        },
+        {
+            "x": 15.36,
+            "y": 8.64,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 5,
+                "MEDIVAC": 3
+            }
+        },
+        {
+            "x": 14.29,
+            "y": 7.9,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 7,
+                "MARAUDER": 6,
+                "MEDIVAC": 1
+            }
+        },
+        {
+            "x": 15.12,
+            "y": 8.48,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 2
+            }
+        }
+    ],
+    "attack_point": [
+        17.02,
+        16.42
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 3,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1,
+        "MEDIVAC": 2
+    }
+}

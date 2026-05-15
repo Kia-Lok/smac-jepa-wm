@@ -1,0 +1,55 @@
+{
+    "name": "tv_097_corridor_variant",
+    "num_allied_units": 10,
+    "num_enemy_units": 10,
+    "groups": [
+        {
+            "x": 18.8,
+            "y": 19.46,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 3
+            }
+        },
+        {
+            "x": 19.13,
+            "y": 18.07,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 6
+            }
+        },
+        {
+            "x": 19.46,
+            "y": 18.73,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 1
+            }
+        },
+        {
+            "x": 26.77,
+            "y": 28.46,
+            "faction": "ENEMY",
+            "units": {
+                "ZEALOT": 4
+            }
+        },
+        {
+            "x": 27.08,
+            "y": 26.93,
+            "faction": "ENEMY",
+            "units": {
+                "ZEALOT": 6
+            }
+        }
+    ],
+    "attack_point": [
+        4.57,
+        4.22
+    ],
+    "terrain_preset": "CORRIDOR",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": true
+}

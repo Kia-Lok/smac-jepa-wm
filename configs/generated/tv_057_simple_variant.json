@@ -1,0 +1,37 @@
+{
+    "name": "tv_057_simple_variant",
+    "num_allied_units": 5,
+    "num_enemy_units": 4,
+    "groups": [
+        {
+            "x": 9.08,
+            "y": 15.3,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 3,
+                "ZEALOT": 2
+            }
+        },
+        {
+            "x": 23.77,
+            "y": 15.35,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 2,
+                "ZEALOT": 2
+            }
+        }
+    ],
+    "attack_point": [
+        9.58,
+        15.36
+    ],
+    "terrain_preset": "SIMPLE",
+    "num_unit_types": 2,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "STALKER": 0,
+        "ZEALOT": 1
+    }
+}

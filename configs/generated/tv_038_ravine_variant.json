@@ -1,0 +1,39 @@
+{
+    "name": "tv_038_ravine_variant",
+    "num_allied_units": 4,
+    "num_enemy_units": 5,
+    "groups": [
+        {
+            "x": 15.98,
+            "y": 15.7,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 3,
+                "MARAUDER": 1
+            }
+        },
+        {
+            "x": 15.87,
+            "y": 7.91,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 4,
+                "SPINE_CRAWLER": 1
+            }
+        }
+    ],
+    "attack_point": [
+        15.35,
+        15.04
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 4,
+    "ally_has_shields": true,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1,
+        "SPINE_CRAWLER": 2,
+        "ZERGLING": 3
+    }
+}

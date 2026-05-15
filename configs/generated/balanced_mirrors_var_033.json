@@ -1,0 +1,37 @@
+{
+    "name": "balanced_mirrors_var_033",
+    "num_allied_units": 13,
+    "num_enemy_units": 16,
+    "groups": [
+        {
+            "x": 7.99,
+            "y": 15.8,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 8,
+                "ZEALOT": 5
+            }
+        },
+        {
+            "x": 22.34,
+            "y": 17.62,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 12,
+                "ZEALOT": 4
+            }
+        }
+    ],
+    "attack_point": [
+        10.03,
+        13.82
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "MARINE": 0,
+        "ZEALOT": 1
+    }
+}

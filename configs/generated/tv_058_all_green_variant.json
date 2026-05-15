@@ -1,0 +1,46 @@
+{
+    "name": "tv_058_all_green_variant",
+    "num_allied_units": 12,
+    "num_enemy_units": 12,
+    "groups": [
+        {
+            "x": 8.27,
+            "y": 14.62,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 5,
+                "BANELING": 4
+            }
+        },
+        {
+            "x": 7.87,
+            "y": 15.46,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 1,
+                "BANELING": 2
+            }
+        },
+        {
+            "x": 22.4,
+            "y": 16.31,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 6,
+                "BANELING": 6
+            }
+        }
+    ],
+    "attack_point": [
+        8.94,
+        16.68
+    ],
+    "terrain_preset": "ALL_GREEN",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "ZERGLING": 1
+    }
+}

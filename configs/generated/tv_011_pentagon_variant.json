@@ -1,0 +1,47 @@
+{
+    "name": "tv_011_pentagon_variant",
+    "num_allied_units": 6,
+    "num_enemy_units": 7,
+    "groups": [
+        {
+            "x": 12.84,
+            "y": 10.37,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 4,
+                "MARAUDER": 1
+            }
+        },
+        {
+            "x": 12.76,
+            "y": 11.36,
+            "faction": "ALLY",
+            "units": {
+                "MARAUDER": 1
+            }
+        },
+        {
+            "x": 13.49,
+            "y": 20.27,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 6,
+                "SPINE_CRAWLER": 1
+            }
+        }
+    ],
+    "attack_point": [
+        14.2,
+        19.94
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 4,
+    "ally_has_shields": false,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1,
+        "SPINE_CRAWLER": 2,
+        "ZERGLING": 3
+    }
+}

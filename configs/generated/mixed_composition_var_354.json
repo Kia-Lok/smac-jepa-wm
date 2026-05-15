@@ -1,0 +1,35 @@
+{
+    "name": "mixed_composition_var_354",
+    "num_allied_units": 9,
+    "num_enemy_units": 19,
+    "groups": [
+        {
+            "x": 8.85,
+            "y": 17.07,
+            "faction": "ALLY",
+            "units": {
+                "HYDRALISK": 9
+            }
+        },
+        {
+            "x": 20.39,
+            "y": 18.85,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 19
+            }
+        }
+    ],
+    "attack_point": [
+        10.78,
+        17.97
+    ],
+    "terrain_preset": "CORRIDOR",
+    "num_unit_types": 2,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "HYDRALISK": 0,
+        "STALKER": 1
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "name": "mixed_composition_var_333",
+    "num_allied_units": 7,
+    "num_enemy_units": 16,
+    "groups": [
+        {
+            "x": 11.53,
+            "y": 14.4,
+            "faction": "ALLY",
+            "units": {
+                "HYDRALISK": 1,
+                "MARINE": 4,
+                "ZEALOT": 2
+            }
+        },
+        {
+            "x": 25.77,
+            "y": 17.1,
+            "faction": "ENEMY",
+            "units": {
+                "COLOSSUS": 7,
+                "ZEALOT": 9
+            }
+        }
+    ],
+    "attack_point": [
+        8.01,
+        17.23
+    ],
+    "terrain_preset": "CORRIDOR",
+    "num_unit_types": 4,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "COLOSSUS": 0,
+        "HYDRALISK": 1,
+        "MARINE": 2,
+        "ZEALOT": 3
+    }
+}

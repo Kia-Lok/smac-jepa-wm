@@ -1,0 +1,31 @@
+{
+    "name": "tv_067_pentagon_variant",
+    "num_allied_units": 6,
+    "num_enemy_units": 7,
+    "groups": [
+        {
+            "x": 11.06,
+            "y": 10.68,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 6
+            }
+        },
+        {
+            "x": 14.26,
+            "y": 19.97,
+            "faction": "ENEMY",
+            "units": {
+                "ZEALOT": 7
+            }
+        }
+    ],
+    "attack_point": [
+        14.38,
+        19.43
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": true
+}

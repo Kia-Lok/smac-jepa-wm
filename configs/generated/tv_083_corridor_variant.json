@@ -1,0 +1,31 @@
+{
+    "name": "tv_083_corridor_variant",
+    "num_allied_units": 21,
+    "num_enemy_units": 20,
+    "groups": [
+        {
+            "x": 18.7,
+            "y": 18.71,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 21
+            }
+        },
+        {
+            "x": 28.1,
+            "y": 28.17,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 20
+            }
+        }
+    ],
+    "attack_point": [
+        5.08,
+        4.37
+    ],
+    "terrain_preset": "CORRIDOR",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": false
+}

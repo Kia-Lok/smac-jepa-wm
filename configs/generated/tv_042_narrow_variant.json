@@ -1,0 +1,37 @@
+{
+    "name": "tv_042_narrow_variant",
+    "num_allied_units": 21,
+    "num_enemy_units": 20,
+    "groups": [
+        {
+            "x": 10.07,
+            "y": 16.47,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 7,
+                "ZEALOT": 14
+            }
+        },
+        {
+            "x": 23.13,
+            "y": 15.86,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 10,
+                "ZEALOT": 10
+            }
+        }
+    ],
+    "attack_point": [
+        9.6,
+        15.55
+    ],
+    "terrain_preset": "NARROW",
+    "num_unit_types": 2,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "STALKER": 0,
+        "ZEALOT": 1
+    }
+}

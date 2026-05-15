@@ -1,0 +1,46 @@
+{
+    "name": "tv_006_corridor_variant",
+    "num_allied_units": 8,
+    "num_enemy_units": 8,
+    "groups": [
+        {
+            "x": 19.19,
+            "y": 19.36,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 6,
+                "BANELING": 2
+            }
+        },
+        {
+            "x": 27.12,
+            "y": 29.38,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 1,
+                "BANELING": 1
+            }
+        },
+        {
+            "x": 27.79,
+            "y": 29.07,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 5,
+                "BANELING": 1
+            }
+        }
+    ],
+    "attack_point": [
+        5.03,
+        4.47
+    ],
+    "terrain_preset": "CORRIDOR",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "ZERGLING": 1
+    }
+}

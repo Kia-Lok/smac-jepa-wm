@@ -1,0 +1,61 @@
+{
+    "name": "tv_036_simple_variant",
+    "num_allied_units": 8,
+    "num_enemy_units": 8,
+    "groups": [
+        {
+            "x": 7.96,
+            "y": 17.47,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 2,
+                "BANELING": 3
+            }
+        },
+        {
+            "x": 8.6,
+            "y": 16.82,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 3
+            }
+        },
+        {
+            "x": 21.79,
+            "y": 17.07,
+            "faction": "ENEMY",
+            "units": {
+                "BANELING": 2
+            }
+        },
+        {
+            "x": 21.25,
+            "y": 16.66,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 3
+            }
+        },
+        {
+            "x": 22.47,
+            "y": 15.71,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 2,
+                "BANELING": 1
+            }
+        }
+    ],
+    "attack_point": [
+        9.28,
+        16.44
+    ],
+    "terrain_preset": "SIMPLE",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "ZERGLING": 1
+    }
+}

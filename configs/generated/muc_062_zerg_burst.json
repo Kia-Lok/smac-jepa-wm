@@ -1,0 +1,37 @@
+{
+    "name": "muc_062_zerg_burst",
+    "num_allied_units": 6,
+    "num_enemy_units": 5,
+    "groups": [
+        {
+            "x": 11.42,
+            "y": 10.65,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 1,
+                "BANELING": 5
+            }
+        },
+        {
+            "x": 14.18,
+            "y": 20.01,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 2,
+                "BANELING": 3
+            }
+        }
+    ],
+    "attack_point": [
+        13.65,
+        20.08
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "ZERGLING": 1
+    }
+}

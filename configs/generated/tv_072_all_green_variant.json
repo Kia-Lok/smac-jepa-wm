@@ -1,0 +1,45 @@
+{
+    "name": "tv_072_all_green_variant",
+    "num_allied_units": 6,
+    "num_enemy_units": 8,
+    "groups": [
+        {
+            "x": 9.07,
+            "y": 16.72,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 6
+            }
+        },
+        {
+            "x": 23.14,
+            "y": 16.1,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 6,
+                "SPINE_CRAWLER": 1
+            }
+        },
+        {
+            "x": 21.78,
+            "y": 16.28,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 1
+            }
+        }
+    ],
+    "attack_point": [
+        8.6,
+        15.27
+    ],
+    "terrain_preset": "ALL_GREEN",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "SPINE_CRAWLER": 0,
+        "ZEALOT": 1,
+        "ZERGLING": 2
+    }
+}

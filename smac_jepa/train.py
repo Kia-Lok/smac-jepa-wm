@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import argparse
+from contextlib import nullcontext
 import json
 from pathlib import Path
+import random
 
 import torch
 from torch.utils.data import DataLoader
@@ -18,7 +20,9 @@ from smac_jepa.utils.plots import write_svg_line_plot
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Train entity-token SMAC-JEPA")
-    parser.add_argument("--manifest", required=True, help="Entity dataset split manifest")
+    parser.add_argument("--manifest", default=None, help="Entity dataset split manifest")
+    parser.add_argument("--data-dir", default=None, help="Directory containing .npz files to auto-split")
+    parser.add_argument("--eval-fraction", type=float, default=0.2)
     parser.add_argument("--split", default="train")
     parser.add_argument("--model-size", default="default", choices=sorted(MODEL_PRESETS))
     parser.add_argument("--out-dir", required=True)
@@ -74,6 +78,43 @@ def resolved_arch(config: TrainConfig) -> dict[str, int | float]:
         "lr": config.lr or preset.lr,
     }
 
+def load_data_paths_from_args(config: TrainConfig) -> list[str]:
+    if config.manifest is not None:
+        return load_manifest(config.manifest, config.split)
+
+    if config.data_dir is None:
+        raise SystemExit("Either --manifest or --data-dir must be provided.")
+
+    data_dir = Path(config.data_dir)
+    files = sorted(data_dir.glob("*.npz"))
+
+    if len(files) < 2:
+        raise SystemExit(f"Need at least 2 .npz files in {data_dir}, found {len(files)}.")
+
+    rng = random.Random(config.seed)
+    shuffled = files[:]
+    rng.shuffle(shuffled)
+
+    eval_count = max(1, round(len(files) * config.eval_fraction))
+    eval_files = sorted(shuffled[:eval_count])
+    train_files = sorted(shuffled[eval_count:])
+
+    if config.split == "train":
+        selected = train_files
+    elif config.split in {"eval", "test"}:
+        selected = eval_files
+    else:
+        raise SystemExit(f"Unknown split: {config.split}. Use train or eval.")
+
+    print(
+        f"Auto-split from {data_dir}: "
+        f"total={len(files)} train={len(train_files)} eval={len(eval_files)} "
+        f"using split={config.split}",
+        flush=True,
+    )
+
+    return [str(path) for path in selected]
+
 
 def main() -> None:
     args = parse_args()
@@ -86,7 +127,7 @@ def main() -> None:
     device = resolve_device(config.device)
     amp_enabled = bool(config.amp and device.type == "cuda")
 
-    data_paths = load_manifest(config.manifest, config.split)
+    data_paths = load_data_paths_from_args(config)
     dataset = SMACJEPADataset(
         data_paths,
         context_len=config.context_len,
@@ -120,7 +161,7 @@ def main() -> None:
         max_context_len=config.max_context_len,
     ).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=float(arch["lr"]))
-    scaler = torch.amp.GradScaler("cuda", enabled=amp_enabled)
+    scaler = torch.cuda.amp.GradScaler(enabled=amp_enabled)
     start_epoch = 1
     global_step = 0
     if config.resume:
@@ -150,7 +191,13 @@ def main() -> None:
             epoch_batches += 1
             batch = to_device(batch, device)
             optimizer.zero_grad(set_to_none=True)
-            with torch.autocast(device_type=device.type, enabled=amp_enabled):
+            autocast_context = (
+                torch.cuda.amp.autocast(enabled=amp_enabled)
+                if device.type == "cuda"
+                else nullcontext()
+            )
+
+            with autocast_context:
                 losses = model.loss(batch, sigreg_weight=config.sigreg_weight)
             scaler.scale(losses["total_loss"]).backward()
             if config.grad_clip > 0:

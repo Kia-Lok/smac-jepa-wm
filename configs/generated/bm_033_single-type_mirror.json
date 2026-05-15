@@ -1,0 +1,31 @@
+{
+    "name": "bm_033_single-type_mirror",
+    "num_allied_units": 3,
+    "num_enemy_units": 3,
+    "groups": [
+        {
+            "x": 10.75,
+            "y": 9.94,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 3
+            }
+        },
+        {
+            "x": 14.35,
+            "y": 19.63,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 3
+            }
+        }
+    ],
+    "attack_point": [
+        14.0,
+        20.21
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": false
+}

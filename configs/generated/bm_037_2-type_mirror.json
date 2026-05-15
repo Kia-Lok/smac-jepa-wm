@@ -1,0 +1,37 @@
+{
+    "name": "bm_037_2-type_mirror",
+    "num_allied_units": 8,
+    "num_enemy_units": 8,
+    "groups": [
+        {
+            "x": 8.98,
+            "y": 16.79,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 2,
+                "BANELING": 6
+            }
+        },
+        {
+            "x": 23.53,
+            "y": 15.42,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 2,
+                "BANELING": 6
+            }
+        }
+    ],
+    "attack_point": [
+        8.49,
+        15.07
+    ],
+    "terrain_preset": "NARROW",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "ZERGLING": 1
+    }
+}

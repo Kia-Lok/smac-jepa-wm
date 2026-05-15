@@ -1,0 +1,38 @@
+{
+    "name": "mixed_composition_var_352",
+    "num_allied_units": 5,
+    "num_enemy_units": 16,
+    "groups": [
+        {
+            "x": 10.76,
+            "y": 16.08,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 5
+            }
+        },
+        {
+            "x": 23.53,
+            "y": 14.2,
+            "faction": "ENEMY",
+            "units": {
+                "ZEALOT": 7,
+                "ROACH": 1,
+                "BANELING": 8
+            }
+        }
+    ],
+    "attack_point": [
+        8.66,
+        14.48
+    ],
+    "terrain_preset": "SIMPLE",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "ROACH": 1,
+        "ZEALOT": 2
+    }
+}

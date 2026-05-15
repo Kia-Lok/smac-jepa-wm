@@ -1,0 +1,37 @@
+{
+    "name": "tv_050_simple_variant",
+    "num_allied_units": 20,
+    "num_enemy_units": 21,
+    "groups": [
+        {
+            "x": 9.57,
+            "y": 16.42,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 20
+            }
+        },
+        {
+            "x": 23.4,
+            "y": 17.0,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 17,
+                "SPINE_CRAWLER": 4
+            }
+        }
+    ],
+    "attack_point": [
+        8.88,
+        15.62
+    ],
+    "terrain_preset": "SIMPLE",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "SPINE_CRAWLER": 0,
+        "STALKER": 1,
+        "ZERGLING": 2
+    }
+}

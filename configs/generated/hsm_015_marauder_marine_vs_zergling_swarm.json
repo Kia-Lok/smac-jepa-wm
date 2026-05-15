@@ -1,0 +1,55 @@
+{
+    "name": "hsm_015_marauder_marine_vs_zergling_swarm",
+    "num_allied_units": 7,
+    "num_enemy_units": 30,
+    "groups": [
+        {
+            "x": 9.09,
+            "y": 15.12,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 1,
+                "MARAUDER": 1
+            }
+        },
+        {
+            "x": 7.59,
+            "y": 15.1,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 1,
+                "MARAUDER": 1
+            }
+        },
+        {
+            "x": 8.72,
+            "y": 14.31,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 1,
+                "MARAUDER": 2
+            }
+        },
+        {
+            "x": 23.03,
+            "y": 15.31,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 30
+            }
+        }
+    ],
+    "attack_point": [
+        7.94,
+        15.84
+    ],
+    "terrain_preset": "NARROW",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1,
+        "ZERGLING": 2
+    }
+}

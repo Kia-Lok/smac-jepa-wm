@@ -1,0 +1,37 @@
+{
+    "name": "heavy_swarm_var_292",
+    "num_allied_units": 7,
+    "num_enemy_units": 139,
+    "groups": [
+        {
+            "x": 8.07,
+            "y": 17.23,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 3,
+                "ZEALOT": 4
+            }
+        },
+        {
+            "x": 23.96,
+            "y": 17.49,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 139
+            }
+        }
+    ],
+    "attack_point": [
+        15.92,
+        18.44
+    ],
+    "terrain_preset": "OCTAGON",
+    "num_unit_types": 3,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "STALKER": 0,
+        "ZEALOT": 1,
+        "ZERGLING": 2
+    }
+}

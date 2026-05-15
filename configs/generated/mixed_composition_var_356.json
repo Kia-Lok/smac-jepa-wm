@@ -1,0 +1,40 @@
+{
+    "name": "mixed_composition_var_356",
+    "num_allied_units": 7,
+    "num_enemy_units": 19,
+    "groups": [
+        {
+            "x": 8.86,
+            "y": 18.13,
+            "faction": "ALLY",
+            "units": {
+                "COLOSSUS": 4,
+                "ROACH": 3
+            }
+        },
+        {
+            "x": 20.77,
+            "y": 15.2,
+            "faction": "ENEMY",
+            "units": {
+                "ROACH": 7,
+                "HYDRALISK": 7,
+                "MARAUDER": 5
+            }
+        }
+    ],
+    "attack_point": [
+        9.27,
+        16.2
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 4,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "COLOSSUS": 0,
+        "HYDRALISK": 1,
+        "MARAUDER": 2,
+        "ROACH": 3
+    }
+}

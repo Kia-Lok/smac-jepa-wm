@@ -1,0 +1,53 @@
+{
+    "name": "hsm_088_stalker_zealot_vs_zergling_swarm",
+    "num_allied_units": 9,
+    "num_enemy_units": 40,
+    "groups": [
+        {
+            "x": 9.92,
+            "y": 16.09,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 5,
+                "ZEALOT": 2
+            }
+        },
+        {
+            "x": 8.26,
+            "y": 17.25,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 2
+            }
+        },
+        {
+            "x": 22.8,
+            "y": 16.52,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 26
+            }
+        },
+        {
+            "x": 23.02,
+            "y": 15.96,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 14
+            }
+        }
+    ],
+    "attack_point": [
+        8.99,
+        17.06
+    ],
+    "terrain_preset": "SIMPLE",
+    "num_unit_types": 3,
+    "ally_has_shields": false,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "STALKER": 0,
+        "ZEALOT": 1,
+        "ZERGLING": 2
+    }
+}

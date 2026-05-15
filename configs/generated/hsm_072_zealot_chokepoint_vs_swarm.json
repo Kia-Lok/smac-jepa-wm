@@ -1,0 +1,31 @@
+{
+    "name": "hsm_072_zealot_chokepoint_vs_swarm",
+    "num_allied_units": 8,
+    "num_enemy_units": 37,
+    "groups": [
+        {
+            "x": 10.05,
+            "y": 15.36,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 8
+            }
+        },
+        {
+            "x": 22.11,
+            "y": 15.0,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 37
+            }
+        }
+    ],
+    "attack_point": [
+        9.19,
+        15.96
+    ],
+    "terrain_preset": "NARROW",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": true
+}

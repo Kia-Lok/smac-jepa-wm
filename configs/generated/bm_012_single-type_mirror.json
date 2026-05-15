@@ -1,0 +1,31 @@
+{
+    "name": "bm_012_single-type_mirror",
+    "num_allied_units": 8,
+    "num_enemy_units": 8,
+    "groups": [
+        {
+            "x": 16.79,
+            "y": 16.3,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 8
+            }
+        },
+        {
+            "x": 15.19,
+            "y": 9.81,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 8
+            }
+        }
+    ],
+    "attack_point": [
+        15.73,
+        16.68
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": false
+}

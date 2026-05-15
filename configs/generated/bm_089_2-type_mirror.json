@@ -1,0 +1,44 @@
+{
+    "name": "bm_089_2-type_mirror",
+    "num_allied_units": 24,
+    "num_enemy_units": 24,
+    "groups": [
+        {
+            "x": 9.56,
+            "y": 17.01,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 11,
+                "ZEALOT": 13
+            }
+        },
+        {
+            "x": 21.25,
+            "y": 16.52,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 11
+            }
+        },
+        {
+            "x": 21.9,
+            "y": 15.75,
+            "faction": "ENEMY",
+            "units": {
+                "ZEALOT": 13
+            }
+        }
+    ],
+    "attack_point": [
+        8.16,
+        15.56
+    ],
+    "terrain_preset": "NARROW",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "STALKER": 0,
+        "ZEALOT": 1
+    }
+}

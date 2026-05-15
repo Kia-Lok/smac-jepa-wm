@@ -1,0 +1,41 @@
+{
+    "name": "mixed_composition_var_370",
+    "num_allied_units": 5,
+    "num_enemy_units": 15,
+    "groups": [
+        {
+            "x": 6.16,
+            "y": 15.89,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 2,
+                "MARAUDER": 2,
+                "ZEALOT": 1
+            }
+        },
+        {
+            "x": 22.84,
+            "y": 13.13,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 6,
+                "MARINE": 9
+            }
+        }
+    ],
+    "attack_point": [
+        6.58,
+        18.35
+    ],
+    "terrain_preset": "CORRIDOR",
+    "num_unit_types": 5,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1,
+        "STALKER": 2,
+        "ZEALOT": 3,
+        "ZERGLING": 4
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "name": "bm_014_single-type_mirror",
+    "num_allied_units": 4,
+    "num_enemy_units": 4,
+    "groups": [
+        {
+            "x": 16.97,
+            "y": 8.12,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 4
+            }
+        },
+        {
+            "x": 16.83,
+            "y": 23.82,
+            "faction": "ENEMY",
+            "units": {
+                "ZEALOT": 4
+            }
+        }
+    ],
+    "attack_point": [
+        16.68,
+        8.77
+    ],
+    "terrain_preset": "OCTAGON",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": false
+}

@@ -1,0 +1,38 @@
+{
+    "name": "mixed_composition_var_353",
+    "num_allied_units": 9,
+    "num_enemy_units": 15,
+    "groups": [
+        {
+            "x": 6.59,
+            "y": 14.28,
+            "faction": "ALLY",
+            "units": {
+                "MEDIVAC": 3,
+                "ZERGLING": 4,
+                "MARAUDER": 2
+            }
+        },
+        {
+            "x": 21.37,
+            "y": 13.68,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 15
+            }
+        }
+    ],
+    "attack_point": [
+        10.27,
+        13.52
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MEDIVAC": 1,
+        "ZERGLING": 2
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "name": "bm_019_single-type_mirror",
+    "num_allied_units": 2,
+    "num_enemy_units": 2,
+    "groups": [
+        {
+            "x": 15.28,
+            "y": 16.87,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 2
+            }
+        },
+        {
+            "x": 15.72,
+            "y": 8.75,
+            "faction": "ENEMY",
+            "units": {
+                "ZEALOT": 2
+            }
+        }
+    ],
+    "attack_point": [
+        15.0,
+        16.24
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": false
+}

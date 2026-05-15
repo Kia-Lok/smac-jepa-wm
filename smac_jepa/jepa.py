@@ -67,6 +67,8 @@ class SMACJEPA(nn.Module):
                 predictor_layers=predictor_layers,
                 max_context_len=max_context_len,
             )
+            
+            #Fully connected layer
             self.decoder = nn.Sequential(
                 nn.LayerNorm(latent_dim),
                 nn.Linear(latent_dim, hidden_dim),

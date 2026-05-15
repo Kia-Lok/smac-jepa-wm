@@ -1,0 +1,31 @@
+{
+    "name": "seaa_006_slight_enemy_advantage",
+    "num_allied_units": 12,
+    "num_enemy_units": 14,
+    "groups": [
+        {
+            "x": 16.72,
+            "y": 8.96,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 12
+            }
+        },
+        {
+            "x": 16.31,
+            "y": 22.14,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 14
+            }
+        }
+    ],
+    "attack_point": [
+        15.97,
+        7.41
+    ],
+    "terrain_preset": "OCTAGON",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": false
+}

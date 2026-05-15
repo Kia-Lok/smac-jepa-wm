@@ -1,0 +1,41 @@
+{
+    "name": "mixed_composition_var_315",
+    "num_allied_units": 8,
+    "num_enemy_units": 14,
+    "groups": [
+        {
+            "x": 8.65,
+            "y": 13.87,
+            "faction": "ALLY",
+            "units": {
+                "MEDIVAC": 6,
+                "MARAUDER": 2
+            }
+        },
+        {
+            "x": 22.06,
+            "y": 17.83,
+            "faction": "ENEMY",
+            "units": {
+                "BANELING": 2,
+                "STALKER": 3,
+                "COLOSSUS": 9
+            }
+        }
+    ],
+    "attack_point": [
+        8.25,
+        17.61
+    ],
+    "terrain_preset": "CORRIDOR",
+    "num_unit_types": 5,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "BANELING": 0,
+        "COLOSSUS": 1,
+        "MARAUDER": 2,
+        "MEDIVAC": 3,
+        "STALKER": 4
+    }
+}

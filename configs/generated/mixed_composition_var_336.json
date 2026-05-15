@@ -1,0 +1,39 @@
+{
+    "name": "mixed_composition_var_336",
+    "num_allied_units": 7,
+    "num_enemy_units": 17,
+    "groups": [
+        {
+            "x": 6.54,
+            "y": 16.21,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 3,
+                "MEDIVAC": 4
+            }
+        },
+        {
+            "x": 25.38,
+            "y": 16.78,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 5,
+                "MEDIVAC": 6,
+                "MARINE": 6
+            }
+        }
+    ],
+    "attack_point": [
+        6.78,
+        18.49
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "MARINE": 0,
+        "MEDIVAC": 1,
+        "STALKER": 2
+    }
+}

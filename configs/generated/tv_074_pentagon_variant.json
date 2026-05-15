@@ -1,0 +1,37 @@
+{
+    "name": "tv_074_pentagon_variant",
+    "num_allied_units": 4,
+    "num_enemy_units": 3,
+    "groups": [
+        {
+            "x": 11.2,
+            "y": 10.12,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 3,
+                "MARAUDER": 1
+            }
+        },
+        {
+            "x": 14.18,
+            "y": 19.89,
+            "faction": "ENEMY",
+            "units": {
+                "ZEALOT": 3
+            }
+        }
+    ],
+    "attack_point": [
+        13.99,
+        20.43
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 3,
+    "ally_has_shields": false,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1,
+        "ZEALOT": 2
+    }
+}

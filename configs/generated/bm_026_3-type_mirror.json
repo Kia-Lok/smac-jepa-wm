@@ -1,0 +1,40 @@
+{
+    "name": "bm_026_3-type_mirror",
+    "num_allied_units": 16,
+    "num_enemy_units": 16,
+    "groups": [
+        {
+            "x": 9.41,
+            "y": 15.9,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 4,
+                "ZEALOT": 10,
+                "COLOSSUS": 2
+            }
+        },
+        {
+            "x": 22.69,
+            "y": 15.5,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 4,
+                "ZEALOT": 10,
+                "COLOSSUS": 2
+            }
+        }
+    ],
+    "attack_point": [
+        9.44,
+        15.6
+    ],
+    "terrain_preset": "NARROW",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "COLOSSUS": 0,
+        "STALKER": 1,
+        "ZEALOT": 2
+    }
+}

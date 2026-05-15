@@ -1,0 +1,39 @@
+{
+    "name": "mixed_composition_var_391",
+    "num_allied_units": 8,
+    "num_enemy_units": 19,
+    "groups": [
+        {
+            "x": 8.04,
+            "y": 13.52,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 4,
+                "ZERGLING": 4
+            }
+        },
+        {
+            "x": 25.66,
+            "y": 13.06,
+            "faction": "ENEMY",
+            "units": {
+                "HYDRALISK": 9,
+                "COLOSSUS": 10
+            }
+        }
+    ],
+    "attack_point": [
+        10.29,
+        17.11
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 4,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "COLOSSUS": 0,
+        "HYDRALISK": 1,
+        "STALKER": 2,
+        "ZERGLING": 3
+    }
+}

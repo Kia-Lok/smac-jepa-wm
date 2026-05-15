@@ -1,0 +1,31 @@
+{
+    "name": "bm_060_single-type_mirror",
+    "num_allied_units": 30,
+    "num_enemy_units": 30,
+    "groups": [
+        {
+            "x": 17.08,
+            "y": 16.2,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 30
+            }
+        },
+        {
+            "x": 16.02,
+            "y": 9.05,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 30
+            }
+        }
+    ],
+    "attack_point": [
+        16.02,
+        16.3
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": false
+}

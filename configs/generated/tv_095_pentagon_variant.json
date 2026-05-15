@@ -1,0 +1,46 @@
+{
+    "name": "tv_095_pentagon_variant",
+    "num_allied_units": 6,
+    "num_enemy_units": 4,
+    "groups": [
+        {
+            "x": 11.08,
+            "y": 10.99,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 1,
+                "ZEALOT": 1
+            }
+        },
+        {
+            "x": 11.2,
+            "y": 9.06,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 3,
+                "ZEALOT": 1
+            }
+        },
+        {
+            "x": 14.15,
+            "y": 19.63,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 3,
+                "ZEALOT": 1
+            }
+        }
+    ],
+    "attack_point": [
+        13.74,
+        19.84
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 2,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "STALKER": 0,
+        "ZEALOT": 1
+    }
+}

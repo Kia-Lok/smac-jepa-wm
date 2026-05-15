@@ -1,0 +1,39 @@
+{
+    "name": "tv_018_pentagon_variant",
+    "num_allied_units": 12,
+    "num_enemy_units": 12,
+    "groups": [
+        {
+            "x": 10.64,
+            "y": 10.82,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 12
+            }
+        },
+        {
+            "x": 13.07,
+            "y": 20.71,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 10
+            }
+        },
+        {
+            "x": 14.62,
+            "y": 20.52,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 2
+            }
+        }
+    ],
+    "attack_point": [
+        13.36,
+        19.73
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": false
+}

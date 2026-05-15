@@ -1,0 +1,42 @@
+{
+    "name": "mixed_composition_var_357",
+    "num_allied_units": 6,
+    "num_enemy_units": 14,
+    "groups": [
+        {
+            "x": 11.18,
+            "y": 16.41,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 1,
+                "ROACH": 3,
+                "HYDRALISK": 2
+            }
+        },
+        {
+            "x": 23.44,
+            "y": 17.85,
+            "faction": "ENEMY",
+            "units": {
+                "ROACH": 5,
+                "MEDIVAC": 6,
+                "ZEALOT": 3
+            }
+        }
+    ],
+    "attack_point": [
+        9.19,
+        13.69
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 5,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "HYDRALISK": 0,
+        "MARINE": 1,
+        "MEDIVAC": 2,
+        "ROACH": 3,
+        "ZEALOT": 4
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "name": "mixed_composition_var_396",
+    "num_allied_units": 7,
+    "num_enemy_units": 20,
+    "groups": [
+        {
+            "x": 11.63,
+            "y": 13.72,
+            "faction": "ALLY",
+            "units": {
+                "ROACH": 4,
+                "MARINE": 3
+            }
+        },
+        {
+            "x": 23.95,
+            "y": 14.67,
+            "faction": "ENEMY",
+            "units": {
+                "ZEALOT": 10,
+                "ZERGLING": 10
+            }
+        }
+    ],
+    "attack_point": [
+        9.62,
+        18.17
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 4,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "MARINE": 0,
+        "ROACH": 1,
+        "ZEALOT": 2,
+        "ZERGLING": 3
+    }
+}

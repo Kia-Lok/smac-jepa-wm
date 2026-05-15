@@ -1,0 +1,39 @@
+{
+    "name": "bm_010_single-type_mirror",
+    "num_allied_units": 12,
+    "num_enemy_units": 12,
+    "groups": [
+        {
+            "x": 15.46,
+            "y": 7.56,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 4
+            }
+        },
+        {
+            "x": 15.74,
+            "y": 8.46,
+            "faction": "ALLY",
+            "units": {
+                "ZERGLING": 8
+            }
+        },
+        {
+            "x": 15.69,
+            "y": 23.92,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 12
+            }
+        }
+    ],
+    "attack_point": [
+        16.99,
+        7.33
+    ],
+    "terrain_preset": "OCTAGON",
+    "num_unit_types": 0,
+    "ally_has_shields": false,
+    "enemy_has_shields": false
+}

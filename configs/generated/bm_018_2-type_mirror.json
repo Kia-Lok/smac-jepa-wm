@@ -1,0 +1,37 @@
+{
+    "name": "bm_018_2-type_mirror",
+    "num_allied_units": 20,
+    "num_enemy_units": 20,
+    "groups": [
+        {
+            "x": 15.17,
+            "y": 7.54,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 6,
+                "MARAUDER": 14
+            }
+        },
+        {
+            "x": 15.72,
+            "y": 22.47,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 6,
+                "MARAUDER": 14
+            }
+        }
+    ],
+    "attack_point": [
+        16.28,
+        8.44
+    ],
+    "terrain_preset": "OCTAGON",
+    "num_unit_types": 2,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1
+    }
+}

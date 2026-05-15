@@ -1,0 +1,37 @@
+{
+    "name": "seaa_007_slight_enemy_advantage",
+    "num_allied_units": 5,
+    "num_enemy_units": 7,
+    "groups": [
+        {
+            "x": 14.99,
+            "y": 16.1,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 3,
+                "ZEALOT": 2
+            }
+        },
+        {
+            "x": 15.44,
+            "y": 8.43,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 5,
+                "ZEALOT": 2
+            }
+        }
+    ],
+    "attack_point": [
+        16.31,
+        16.23
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 2,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "STALKER": 0,
+        "ZEALOT": 1
+    }
+}

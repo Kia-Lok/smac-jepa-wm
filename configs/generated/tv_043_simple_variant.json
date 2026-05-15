@@ -1,0 +1,53 @@
+{
+    "name": "tv_043_simple_variant",
+    "num_allied_units": 12,
+    "num_enemy_units": 11,
+    "groups": [
+        {
+            "x": 9.62,
+            "y": 15.08,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 3,
+                "MARAUDER": 5
+            }
+        },
+        {
+            "x": 9.05,
+            "y": 14.34,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 1
+            }
+        },
+        {
+            "x": 9.21,
+            "y": 15.63,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 3
+            }
+        },
+        {
+            "x": 22.28,
+            "y": 16.94,
+            "faction": "ENEMY",
+            "units": {
+                "ZEALOT": 11
+            }
+        }
+    ],
+    "attack_point": [
+        9.56,
+        14.95
+    ],
+    "terrain_preset": "SIMPLE",
+    "num_unit_types": 3,
+    "ally_has_shields": false,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1,
+        "ZEALOT": 2
+    }
+}

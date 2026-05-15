@@ -1,0 +1,49 @@
+{
+    "name": "bm_094_3-type_mirror",
+    "num_allied_units": 24,
+    "num_enemy_units": 24,
+    "groups": [
+        {
+            "x": 10.76,
+            "y": 10.12,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 9,
+                "ZEALOT": 11,
+                "COLOSSUS": 4
+            }
+        },
+        {
+            "x": 13.54,
+            "y": 20.3,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 4,
+                "ZEALOT": 11,
+                "COLOSSUS": 2
+            }
+        },
+        {
+            "x": 14.25,
+            "y": 19.4,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 5,
+                "COLOSSUS": 2
+            }
+        }
+    ],
+    "attack_point": [
+        14.17,
+        19.94
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "COLOSSUS": 0,
+        "STALKER": 1,
+        "ZEALOT": 2
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "name": "tv_031_ravine_variant",
+    "num_allied_units": 20,
+    "num_enemy_units": 21,
+    "groups": [
+        {
+            "x": 14.95,
+            "y": 16.32,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 11,
+                "ZEALOT": 9
+            }
+        },
+        {
+            "x": 16.61,
+            "y": 8.3,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 7,
+                "ZEALOT": 14
+            }
+        }
+    ],
+    "attack_point": [
+        15.87,
+        16.29
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 2,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "STALKER": 0,
+        "ZEALOT": 1
+    }
+}

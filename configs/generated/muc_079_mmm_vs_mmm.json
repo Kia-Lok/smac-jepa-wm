@@ -1,0 +1,40 @@
+{
+    "name": "muc_079_mmm_vs_mmm",
+    "num_allied_units": 12,
+    "num_enemy_units": 10,
+    "groups": [
+        {
+            "x": 16.8,
+            "y": 16.99,
+            "faction": "ALLY",
+            "units": {
+                "MARINE": 5,
+                "MARAUDER": 5,
+                "MEDIVAC": 2
+            }
+        },
+        {
+            "x": 16.3,
+            "y": 9.41,
+            "faction": "ENEMY",
+            "units": {
+                "MARINE": 5,
+                "MARAUDER": 3,
+                "MEDIVAC": 2
+            }
+        }
+    ],
+    "attack_point": [
+        15.52,
+        16.09
+    ],
+    "terrain_preset": "RAVINE",
+    "num_unit_types": 3,
+    "ally_has_shields": false,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "MARAUDER": 0,
+        "MARINE": 1,
+        "MEDIVAC": 2
+    }
+}

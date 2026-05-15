@@ -1,0 +1,31 @@
+{
+    "name": "bm_100_single-type_mirror",
+    "num_allied_units": 30,
+    "num_enemy_units": 30,
+    "groups": [
+        {
+            "x": 15.83,
+            "y": 8.85,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 30
+            }
+        },
+        {
+            "x": 15.91,
+            "y": 21.95,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 30
+            }
+        }
+    ],
+    "attack_point": [
+        15.71,
+        7.35
+    ],
+    "terrain_preset": "OCTAGON",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": true
+}

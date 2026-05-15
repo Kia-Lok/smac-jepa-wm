@@ -1,0 +1,37 @@
+{
+    "name": "mixed_composition_var_330",
+    "num_allied_units": 7,
+    "num_enemy_units": 18,
+    "groups": [
+        {
+            "x": 9.97,
+            "y": 15.85,
+            "faction": "ALLY",
+            "units": {
+                "MEDIVAC": 6,
+                "ZEALOT": 1
+            }
+        },
+        {
+            "x": 20.86,
+            "y": 18.31,
+            "faction": "ENEMY",
+            "units": {
+                "HYDRALISK": 18
+            }
+        }
+    ],
+    "attack_point": [
+        8.53,
+        15.68
+    ],
+    "terrain_preset": "ALL_GREEN",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "HYDRALISK": 0,
+        "MEDIVAC": 1,
+        "ZEALOT": 2
+    }
+}

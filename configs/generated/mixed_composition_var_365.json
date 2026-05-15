@@ -1,0 +1,41 @@
+{
+    "name": "mixed_composition_var_365",
+    "num_allied_units": 7,
+    "num_enemy_units": 22,
+    "groups": [
+        {
+            "x": 6.26,
+            "y": 13.77,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 2,
+                "COLOSSUS": 5
+            }
+        },
+        {
+            "x": 24.42,
+            "y": 15.95,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 9,
+                "MARINE": 9,
+                "STALKER": 4
+            }
+        }
+    ],
+    "attack_point": [
+        8.66,
+        14.8
+    ],
+    "terrain_preset": "NARROW",
+    "num_unit_types": 5,
+    "ally_has_shields": true,
+    "enemy_has_shields": true,
+    "unit_type_ids": {
+        "COLOSSUS": 0,
+        "MARINE": 1,
+        "STALKER": 2,
+        "ZEALOT": 3,
+        "ZERGLING": 4
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "name": "tv_078_simple_variant",
+    "num_allied_units": 12,
+    "num_enemy_units": 14,
+    "groups": [
+        {
+            "x": 7.91,
+            "y": 16.17,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 5
+            }
+        },
+        {
+            "x": 7.65,
+            "y": 15.77,
+            "faction": "ALLY",
+            "units": {
+                "ZEALOT": 7
+            }
+        },
+        {
+            "x": 22.48,
+            "y": 15.96,
+            "faction": "ENEMY",
+            "units": {
+                "ZERGLING": 12,
+                "SPINE_CRAWLER": 2
+            }
+        }
+    ],
+    "attack_point": [
+        8.42,
+        16.65
+    ],
+    "terrain_preset": "SIMPLE",
+    "num_unit_types": 3,
+    "ally_has_shields": true,
+    "enemy_has_shields": false,
+    "unit_type_ids": {
+        "SPINE_CRAWLER": 0,
+        "ZEALOT": 1,
+        "ZERGLING": 2
+    }
+}

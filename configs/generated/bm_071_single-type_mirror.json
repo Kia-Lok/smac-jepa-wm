@@ -1,0 +1,31 @@
+{
+    "name": "bm_071_single-type_mirror",
+    "num_allied_units": 2,
+    "num_enemy_units": 2,
+    "groups": [
+        {
+            "x": 11.59,
+            "y": 10.04,
+            "faction": "ALLY",
+            "units": {
+                "STALKER": 2
+            }
+        },
+        {
+            "x": 14.27,
+            "y": 19.52,
+            "faction": "ENEMY",
+            "units": {
+                "STALKER": 2
+            }
+        }
+    ],
+    "attack_point": [
+        13.39,
+        20.5
+    ],
+    "terrain_preset": "PENTAGON",
+    "num_unit_types": 0,
+    "ally_has_shields": true,
+    "enemy_has_shields": true
+}
