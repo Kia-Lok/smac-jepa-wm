@@ -6,12 +6,10 @@ from torch import nn
 from smac_jepa.modules import (
     EntityJEPAActionPredictor,
     EntityStateEncoder,
-    JEPAActionPredictor,
-    StateEncoder,
     sigreg_loss,
 )
 
-#Loads both the encoder and predictor as part of the JEPA Model (Currently got issue where the encoder is somehow not an attention head
+
 class SMACJEPA(nn.Module):
     def __init__(
         self,
@@ -22,7 +20,7 @@ class SMACJEPA(nn.Module):
         hidden_dim: int = 128,
         action_dim: int = 64, #Number of actions available
         num_heads: int = 2,
-        mode: str = "flat",
+        mode: str = "entity",
         max_agents: int | None = None,
         max_enemies: int = 0,
         max_actions: int | None = None,
@@ -32,118 +30,95 @@ class SMACJEPA(nn.Module):
         action_layers: int = 1,
         predictor_layers: int = 1,
         max_context_len: int = 32,
+        static_dim: int = 0,
     ):
-        super().__init__() #Need override nn.Module
+        super().__init__()
+        if mode != "entity":
+            raise ValueError("SMACJEPA only supports entity mode")
+        if token_dim is None or max_agents is None or max_actions is None:
+            raise ValueError("Entity mode requires token_dim, max_agents, and max_actions")
         self.mode = mode
         self.state_dim = state_dim
         self.n_agents = n_agents
         self.n_actions = n_actions
-        self.latent_dim = latent_dim #Flags to pass in as params when running the script
+        self.latent_dim = latent_dim
         self.decoder_weight = decoder_weight
-        if mode == "entity":
-            if token_dim is None or max_agents is None or max_actions is None:
-                raise ValueError("Entity mode requires token_dim, max_agents, and max_actions")
-            self.max_agents = max_agents
-            self.max_enemies = max_enemies
-            self.max_actions = max_actions
-            self.token_dim = token_dim
-            self.encoder = EntityStateEncoder(
-                token_dim=token_dim,
-                latent_dim=latent_dim,
-                hidden_dim=hidden_dim,
-                num_heads=num_heads,
-                max_agents=max_agents,
-                max_enemies=max_enemies,
-                num_layers=encoder_layers,
-            )
-            self.predictor = EntityJEPAActionPredictor(
-                latent_dim=latent_dim,
-                max_agents=max_agents,
-                max_actions=max_actions,
-                action_dim=action_dim,
-                hidden_dim=hidden_dim,
-                num_heads=num_heads,
-                action_layers=action_layers,
-                predictor_layers=predictor_layers,
-                max_context_len=max_context_len,
-            )
-            
-            #Fully connected layer
-            self.decoder = nn.Sequential(
-                nn.LayerNorm(latent_dim),
-                nn.Linear(latent_dim, hidden_dim),
-                nn.GELU(),
-                nn.Linear(hidden_dim, (max_agents + max_enemies) * token_dim),
-            )
-        else:
-            self.max_agents = n_agents
-            self.max_enemies = 0
-            self.max_actions = n_actions
-            self.token_dim = state_dim
-            self.encoder = StateEncoder(state_dim, hidden_dim, latent_dim)
-            self.predictor = JEPAActionPredictor(
-                latent_dim=latent_dim,
-                n_agents=n_agents,
-                n_actions=n_actions,
-                action_dim=action_dim,
-                hidden_dim=hidden_dim,
-                num_heads=num_heads,
-            )
-            self.decoder = None
-    #Encode the obs into embeddings.
-    def encode_state(self, states: torch.Tensor) -> torch.Tensor:
-        return self.encoder(states)
-    #Produce the prediction based on the current observation and conditioning variable (Past actions)
-    def predict_next(
-        self,
-        latents: torch.Tensor,
-        conditioning_actions: torch.Tensor,
-    ) -> torch.Tensor:
-        return self.predictor(latents, conditioning_actions)
+        self.static_dim = static_dim
+        self.max_agents = max_agents
+        self.max_enemies = max_enemies
+        self.max_actions = max_actions
+        self.token_dim = token_dim
+        self.encoder = EntityStateEncoder(
+            token_dim=token_dim,
+            latent_dim=latent_dim,
+            hidden_dim=hidden_dim,
+            num_heads=num_heads,
+            max_agents=max_agents,
+            max_enemies=max_enemies,
+            num_layers=encoder_layers,
+        )
+        self.predictor = EntityJEPAActionPredictor(
+            latent_dim=latent_dim,
+            max_agents=max_agents,
+            max_actions=max_actions,
+            action_dim=action_dim,
+            hidden_dim=hidden_dim,
+            num_heads=num_heads,
+            action_layers=action_layers,
+            predictor_layers=predictor_layers,
+            max_context_len=max_context_len,
+            static_dim=static_dim,
+        )
+        self.decoder = nn.Sequential(
+            nn.LayerNorm(latent_dim),
+            nn.Linear(latent_dim, hidden_dim),
+            nn.GELU(),
+            nn.Linear(hidden_dim, token_dim),
+        )
+        self.presence_head = nn.Sequential(
+            nn.LayerNorm(latent_dim),
+            nn.Linear(latent_dim, hidden_dim),
+            nn.GELU(),
+            nn.Linear(hidden_dim, 1),
+        )
 
     def forward(self, batch: dict[str, torch.Tensor]) -> dict[str, torch.Tensor]:
-        if self.mode == "entity":
-            latents = self.encoder(batch["entity_t"], batch["entity_mask"])
-            with torch.no_grad():
-                target_latent = self.encoder(batch["target_entity"], batch["target_entity_mask"])
-            pred_latent = self.predictor(
-                latents,
-                batch["action_t"],
-                batch["action_mask"],
-                batch["mask"],
-            )
-            decoded = self.decode_entities(pred_latent)
-            return {
-                "pred_latent": pred_latent,
-                "target_latent": target_latent,
-                "decoded_target": decoded,
-                "target_entity": batch["target_entity"],
-                "target_entity_mask": batch["target_entity_mask"],
-                "mask": batch["mask"],
-            }
-
-        # observation sequence plus action-history conditioning predicts the
-        # next observation sequence in latent space.
-        latents = self.encode_state(batch["state_t"]) #Observed obs (state_t -> encoder -> latents)
-        with torch.no_grad():
-            target_latent = self.encode_state(batch["target_state"]) #Real next state (target_state -> encoder -> target_latents)
-        pred_latent = self.predict_next(latents, batch["action_t"]) #Pred next state (latent + action_t -> predictor -> pred_latent)
+        latents = self.encoder(batch["entity_t"], batch["entity_mask"])
+        target_latent = self.encoder(batch["target_entity"], batch["target_entity_mask"])
+        pred_latent = self.predictor(
+            latents,
+            batch["action_t"],
+            batch["action_mask"],
+            batch["mask"],
+            batch["entity_mask"],
+            batch.get("static_condition"),
+        )
+        decoded = self.decode_entities(pred_latent)
+        presence_logits = self.predict_presence(pred_latent)
+        current_latent_mask = batch["entity_mask"] * batch["mask"].unsqueeze(-1)
+        target_latent_mask = batch["target_entity_mask"] * batch["mask"].unsqueeze(-1)
+        slot_mask = batch.get("entity_slot_mask")
+        if slot_mask is None:
+            slot_mask = batch["target_entity_mask"] * batch["mask"].unsqueeze(-1)
         return {
             "pred_latent": pred_latent,
             "target_latent": target_latent,
-            "mask": batch["mask"], #Masked MSE is used due to possibility of the latent space being invalid (actual < max)
+            "reg_latent": torch.cat([latents, target_latent], dim=1),
+            "reg_mask": torch.cat([current_latent_mask, target_latent_mask], dim=1),
+            "decoded_target": decoded,
+            "presence_logits": presence_logits,
+            "target_entity": batch["target_entity"],
+            "target_entity_mask": batch["target_entity_mask"],
+            "entity_slot_mask": slot_mask,
+            "mask": batch["mask"],
+            "current_entity_mask": batch["entity_mask"],
         }
 
     def decode_entities(self, latents: torch.Tensor) -> torch.Tensor:
-        if self.decoder is None:
-            raise RuntimeError("Entity decoder is only available in entity mode")
-        decoded = self.decoder(latents)
-        return decoded.reshape(
-            latents.shape[0],
-            latents.shape[1],
-            self.max_agents + self.max_enemies,
-            self.token_dim,
-        )
+        return self.decoder(latents)
+
+    def predict_presence(self, latents: torch.Tensor) -> torch.Tensor:
+        return self.presence_head(latents).squeeze(-1)
 
     def loss(
         self,
@@ -151,27 +126,37 @@ class SMACJEPA(nn.Module):
         sigreg_weight: float = 0.01,
     ) -> dict[str, torch.Tensor]:
         out = self.forward(batch)
-        mask = out["mask"].unsqueeze(-1)
+        mask = out["target_entity_mask"].unsqueeze(-1) * out["mask"].unsqueeze(-1).unsqueeze(-1)
         denom = mask.sum().clamp_min(1.0) * out["pred_latent"].shape[-1]
         pred_loss = ((out["pred_latent"] - out["target_latent"]).pow(2) * mask).sum() / denom
-        reg_loss = sigreg_loss(out["target_latent"], out["mask"])
-        decoded_loss = pred_loss.new_tensor(0.0)
-        if self.mode == "entity":
-            entity_mask = out["target_entity_mask"].unsqueeze(-1) * out["mask"].unsqueeze(-1).unsqueeze(-1)
-            entity_denom = entity_mask.sum().clamp_min(1.0) * out["target_entity"].shape[-1]
-            decoded_loss = (
-                (out["decoded_target"] - out["target_entity"]).pow(2) * entity_mask
-            ).sum() / entity_denom
-        total = pred_loss + sigreg_weight * reg_loss + self.decoder_weight * decoded_loss
+        reg_loss = sigreg_loss(out["reg_latent"], out["reg_mask"])
+        entity_denom = mask.sum().clamp_min(1.0) * out["target_entity"].shape[-1]
+        decoded_loss = (
+            (out["decoded_target"] - out["target_entity"]).pow(2) * mask
+        ).sum() / entity_denom
+        slot_mask = out["entity_slot_mask"]
+        presence_target = out["target_entity_mask"]
+        presence_loss_raw = torch.nn.functional.binary_cross_entropy_with_logits(
+            out["presence_logits"],
+            presence_target,
+            reduction="none",
+        )
+        presence_loss = (presence_loss_raw * slot_mask).sum() / slot_mask.sum().clamp_min(1.0)
+        total = (
+            pred_loss
+            + sigreg_weight * reg_loss
+            + self.decoder_weight * decoded_loss
+            + presence_loss
+        )
         losses = {
             "total_loss": total,
             "pred_loss": pred_loss,
             "sigreg_loss": reg_loss,
             "decoded_loss": decoded_loss,
+            "presence_loss": presence_loss,
         }
-        if self.mode == "entity":
-            with torch.no_grad():
-                losses.update(entity_prediction_metrics(out))
+        with torch.no_grad():
+            losses.update(entity_prediction_metrics(out))
         return losses
 
 
@@ -192,6 +177,12 @@ def entity_prediction_metrics(out: dict[str, torch.Tensor]) -> dict[str, torch.T
         "decoded_mse": mse,
         "decoded_r2": r2,
     }
+    if "presence_logits" in out and "entity_slot_mask" in out:
+        slot_mask = out["entity_slot_mask"]
+        target_presence = out["target_entity_mask"]
+        pred_presence = (torch.sigmoid(out["presence_logits"]) >= 0.5).to(target.dtype)
+        presence_correct = (pred_presence == target_presence).to(target.dtype) * slot_mask
+        metrics["presence_acc"] = presence_correct.sum() / slot_mask.sum().clamp_min(1.0)
     for threshold in (0.01, 0.05, 0.10):
         correct = ((decoded - target).abs() <= threshold).to(target.dtype) * mask
         metrics[f"tol_acc_{threshold:.2f}"] = correct.sum() / denom

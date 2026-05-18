@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-python -m smac_jepa.train \
+python_cmd="${PYTHON:-uv run python}"
+
+$python_cmd -m smac_jepa.train \
   --manifest splits/original_seed1.json \
   --out-dir runs/original_entity_smoke_cpu \
   --model-size smoke \

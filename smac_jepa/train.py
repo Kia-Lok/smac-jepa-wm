@@ -10,7 +10,7 @@ import torch
 from torch.utils.data import DataLoader
 
 from smac_jepa.config import TrainConfig
-from smac_jepa.data import SMACJEPADataset, load_manifest
+from smac_jepa.data import SMACJEPADataset, load_manifest, load_manifest_all
 from smac_jepa.jepa import SMACJEPA
 from smac_jepa.presets import MODEL_PRESETS, get_model_preset
 from smac_jepa.utils import set_seed
@@ -33,12 +33,15 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--hidden-dim", type=int)
     parser.add_argument("--action-dim", type=int)
     parser.add_argument("--context-len", type=int, default=4)
+    parser.add_argument("--window-mode", choices=["sequential", "random"], default="sequential")
+    parser.add_argument("--window-len", type=int)
+    parser.add_argument("--samples-per-epoch", type=int)
     parser.add_argument("--num-heads", type=int)
     parser.add_argument("--encoder-layers", type=int)
     parser.add_argument("--action-layers", type=int)
     parser.add_argument("--predictor-layers", type=int)
     parser.add_argument("--max-context-len", type=int, default=32)
-    parser.add_argument("--sigreg-weight", type=float, default=0.01)
+    parser.add_argument("--sigreg-weight", type=float, default=0.09)
     parser.add_argument("--decoder-weight", type=float, default=1.0)
     parser.add_argument("--grad-clip", type=float, default=1.0)
     parser.add_argument("--device", default="auto", choices=["auto", "cpu", "cuda", "mps"])
@@ -120,6 +123,11 @@ def main() -> None:
     args = parse_args()
     config = TrainConfig(**vars(args))
     arch = resolved_arch(config)
+    window_len = config.window_len or config.context_len
+    if window_len > config.max_context_len:
+        raise SystemExit(
+            f"window length {window_len} exceeds --max-context-len {config.max_context_len}"
+        )
     out_dir = Path(config.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -128,10 +136,24 @@ def main() -> None:
     amp_enabled = bool(config.amp and device.type == "cuda")
 
     data_paths = load_data_paths_from_args(config)
+    cap_paths = load_manifest_all(config.manifest) if config.manifest is not None else data_paths
+    cap_dataset = SMACJEPADataset(cap_paths, context_len=1, mode="entity")
+    cap_metadata = cap_dataset.metadata
     dataset = SMACJEPADataset(
         data_paths,
         context_len=config.context_len,
         mode="entity",
+        window_mode=config.window_mode,
+        window_len=window_len,
+        samples_per_epoch=config.samples_per_epoch,
+        seed=config.seed,
+        max_agents=cap_metadata.max_agents,
+        max_enemies=cap_metadata.max_enemies,
+        max_actions=cap_metadata.max_actions,
+        token_dim=cap_metadata.token_dim,
+        dynamic_token_dim=cap_metadata.dynamic_token_dim,
+        static_dim=cap_metadata.static_dim,
+        entity_static_feat_size=cap_metadata.entity_static_feat_size,
     )
     loader = DataLoader(
         dataset,
@@ -154,6 +176,7 @@ def main() -> None:
         max_enemies=dataset.metadata.max_enemies,
         max_actions=dataset.metadata.max_actions,
         token_dim=dataset.metadata.token_dim,
+        static_dim=dataset.metadata.static_dim,
         decoder_weight=config.decoder_weight,
         encoder_layers=int(arch["encoder_layers"]),
         action_layers=int(arch["action_layers"]),
@@ -174,7 +197,12 @@ def main() -> None:
         start_epoch = int(checkpoint.get("epoch", 0)) + 1
         global_step = int(checkpoint.get("global_step", 0))
 
-    saved_config = vars(args) | arch | {"resolved_device": device.type, "amp_enabled": amp_enabled}
+    saved_config = vars(args) | arch | {
+        "context_len": window_len,
+        "window_len": window_len,
+        "resolved_device": device.type,
+        "amp_enabled": amp_enabled,
+    }
     (out_dir / "config.json").write_text(json.dumps(saved_config, indent=2) + "\n")
     logger = LossLogger(out_dir, "loss_log")
     epoch_logger = LossLogger(out_dir, "epoch_loss")
@@ -279,10 +307,16 @@ def main() -> None:
                 "n_enemies": dataset.metadata.n_enemies,
                 "ally_state_feat_size": dataset.metadata.ally_state_feat_size,
                 "enemy_state_feat_size": dataset.metadata.enemy_state_feat_size,
+                "ally_has_shields": dataset.metadata.ally_has_shields,
+                "enemy_has_shields": dataset.metadata.enemy_has_shields,
+                "num_unit_types": dataset.metadata.num_unit_types,
                 "max_agents": dataset.metadata.max_agents,
                 "max_enemies": dataset.metadata.max_enemies,
                 "max_actions": dataset.metadata.max_actions,
                 "token_dim": dataset.metadata.token_dim,
+                "dynamic_token_dim": dataset.metadata.dynamic_token_dim,
+                "static_dim": dataset.metadata.static_dim,
+                "entity_static_feat_size": dataset.metadata.entity_static_feat_size,
                 "mode": dataset.metadata.mode,
             },
             "config": vars(args),
