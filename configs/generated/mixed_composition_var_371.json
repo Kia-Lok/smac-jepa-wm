@@ -1,39 +1,37 @@
 {
-    "name": "mixed_composition_var_371",
-    "num_allied_units": 7,
-    "num_enemy_units": 17,
-    "groups": [
-        {
-            "x": 11.43,
-            "y": 18.21,
-            "faction": "ALLY",
-            "units": {
-                "ROACH": 1,
-                "BANELING": 4,
-                "MARAUDER": 2
-            }
-        },
-        {
-            "x": 20.7,
-            "y": 16.74,
-            "faction": "ENEMY",
-            "units": {
-                "ZEALOT": 17
-            }
-        }
-    ],
-    "attack_point": [
-        9.46,
-        16.56
-    ],
-    "terrain_preset": "PENTAGON",
-    "num_unit_types": 4,
-    "ally_has_shields": true,
-    "enemy_has_shields": true,
-    "unit_type_ids": {
-        "BANELING": 0,
-        "MARAUDER": 1,
-        "ROACH": 2,
-        "ZEALOT": 3
+  "name": "mixed_composition_var_371",
+  "num_allied_units": 7,
+  "num_enemy_units": 17,
+  "groups": [
+    {
+      "x": 11.43,
+      "y": 18.21,
+      "faction": "ALLY",
+      "units": {
+        "MARAUDER": 3,
+        "BANELING": 4
+      }
+    },
+    {
+      "x": 20.7,
+      "y": 16.74,
+      "faction": "ENEMY",
+      "units": {
+        "ZEALOT": 17
+      }
     }
+  ],
+  "attack_point": [
+    9.46,
+    16.56
+  ],
+  "terrain_preset": "PENTAGON",
+  "num_unit_types": 4,
+  "ally_has_shields": true,
+  "enemy_has_shields": true,
+  "unit_type_ids": {
+    "BANELING": 0,
+    "MARAUDER": 3,
+    "ZEALOT": 3
+  }
 }

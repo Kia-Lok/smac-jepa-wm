@@ -1,42 +1,40 @@
 {
-    "name": "mixed_composition_var_349",
-    "num_allied_units": 6,
-    "num_enemy_units": 13,
-    "groups": [
-        {
-            "x": 9.82,
-            "y": 13.75,
-            "faction": "ALLY",
-            "units": {
-                "STALKER": 2,
-                "MARINE": 3,
-                "MARAUDER": 1
-            }
-        },
-        {
-            "x": 23.59,
-            "y": 15.17,
-            "faction": "ENEMY",
-            "units": {
-                "ZERGLING": 5,
-                "MARAUDER": 3,
-                "ROACH": 5
-            }
-        }
-    ],
-    "attack_point": [
-        7.81,
-        18.28
-    ],
-    "terrain_preset": "CORRIDOR",
-    "num_unit_types": 5,
-    "ally_has_shields": true,
-    "enemy_has_shields": true,
-    "unit_type_ids": {
-        "MARAUDER": 0,
-        "MARINE": 1,
-        "ROACH": 2,
-        "STALKER": 3,
-        "ZERGLING": 4
+  "name": "mixed_composition_var_349",
+  "num_allied_units": 6,
+  "num_enemy_units": 13,
+  "groups": [
+    {
+      "x": 9.82,
+      "y": 13.75,
+      "faction": "ALLY",
+      "units": {
+        "STALKER": 2,
+        "MARINE": 3,
+        "MARAUDER": 1
+      }
+    },
+    {
+      "x": 23.59,
+      "y": 15.17,
+      "faction": "ENEMY",
+      "units": {
+        "ZERGLING": 5,
+        "MARAUDER": 8
+      }
     }
+  ],
+  "attack_point": [
+    7.81,
+    18.28
+  ],
+  "terrain_preset": "CORRIDOR",
+  "num_unit_types": 5,
+  "ally_has_shields": true,
+  "enemy_has_shields": true,
+  "unit_type_ids": {
+    "MARAUDER": 2,
+    "MARINE": 1,
+    "STALKER": 3,
+    "ZERGLING": 4
+  }
 }

@@ -1,32 +1,32 @@
 {
     "name": "balanced_mirrors_var_031",
-    "num_allied_units": 14,
+    "num_allied_units": 15,
     "num_enemy_units": 17,
     "groups": [
         {
-            "x": 9.19,
-            "y": 16.35,
+            "x": 10.46,
+            "y": 15.85,
             "faction": "ALLY",
             "units": {
-                "MARINE": 9,
+                "MARINE": 10,
                 "ZEALOT": 5
             }
         },
         {
-            "x": 22.66,
-            "y": 17.89,
+            "x": 23.83,
+            "y": 17.59,
             "faction": "ENEMY",
             "units": {
-                "MARINE": 12,
-                "ZEALOT": 5
+                "MARINE": 11,
+                "ZEALOT": 6
             }
         }
     ],
     "attack_point": [
-        8.78,
-        17.51
+        10.65,
+        16.24
     ],
-    "terrain_preset": "PENTAGON",
+    "terrain_preset": "ALL_GREEN",
     "num_unit_types": 2,
     "ally_has_shields": false,
     "enemy_has_shields": false,

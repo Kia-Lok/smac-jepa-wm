@@ -38,7 +38,8 @@ def main() -> None:
 
     collector = Path(__file__).with_name("collect_smaclite_data.py")
 
-    successful: list[Path] = []
+    successful_existing: list[Path] = []
+    successful_new: list[Path] = []
     failed: list[Path] = []
 
     print(f"Found {len(configs)} configs in {config_dir}")
@@ -49,6 +50,17 @@ def main() -> None:
         scenario = config_path.stem
         out_path = out_dir / f"{scenario}.npz"
         seed = args.seed + idx
+
+        # If the expected .npz already exists and is non-empty, do not regenerate it.
+        if out_path.exists() and out_path.stat().st_size > 0:
+            print(f"[SKIP EXISTING] {config_path.name} -> {out_path}")
+            successful_existing.append(out_path)
+            continue
+
+        # If the file exists but is empty, remove it and regenerate.
+        if out_path.exists() and out_path.stat().st_size == 0:
+            print(f"[REMOVE EMPTY] {out_path}")
+            out_path.unlink()
 
         cmd = [
             sys.executable,
@@ -72,11 +84,13 @@ def main() -> None:
         print("=" * 80)
         print(f"[{idx + 1}/{len(configs)}] Collecting: {config_path.name}")
         print(f"Scenario: {scenario}")
+        print(f"Output: {out_path}")
         print(f"Seed: {seed}")
         print("=" * 80)
 
         try:
             subprocess.run(cmd, check=True)
+
         except subprocess.CalledProcessError as e:
             print()
             print("=" * 80)
@@ -84,34 +98,45 @@ def main() -> None:
             print(f"[SKIP] Exit code: {e.returncode}")
             print("[SKIP] Continuing with next config.")
             print("=" * 80)
-            print()
+
+            # Remove incomplete output if it exists.
+            if out_path.exists():
+                print(f"[REMOVE PARTIAL] {out_path}")
+                out_path.unlink()
 
             failed.append(config_path)
-
-            # Remove possibly corrupted or partially written file.
-            if out_path.exists():
-                try:
-                    out_path.unlink()
-                    print(f"[CLEANUP] Removed partial output: {out_path}")
-                except OSError as cleanup_error:
-                    print(f"[WARNING] Could not remove partial output {out_path}: {cleanup_error}")
-
+            print()
             continue
 
-        if out_path.exists():
-            successful.append(out_path)
+        # Only count it as successful if the output file was actually created.
+        if out_path.exists() and out_path.stat().st_size > 0:
+            successful_new.append(out_path)
             print(f"[OK] Saved: {out_path}")
         else:
+            print()
+            print("=" * 80)
+            print(f"[SKIP] Collector exited successfully but output file was missing or empty.")
+            print(f"[SKIP] Config: {config_path}")
+            print(f"[SKIP] Expected output: {out_path}")
+            print("=" * 80)
+
+            if out_path.exists():
+                print(f"[REMOVE EMPTY/PARTIAL] {out_path}")
+                out_path.unlink()
+
             failed.append(config_path)
-            print(f"[SKIP] Collector exited successfully but output file was missing: {out_path}")
 
         print()
+
+    total_successful = len(successful_existing) + len(successful_new)
 
     print("=" * 80)
     print("Collection summary")
     print("=" * 80)
     print(f"Total configs: {len(configs)}")
-    print(f"Successful: {len(successful)}")
+    print(f"Already existed: {len(successful_existing)}")
+    print(f"Newly collected: {len(successful_new)}")
+    print(f"Successful total: {total_successful}")
     print(f"Failed/skipped: {len(failed)}")
     print()
 
@@ -120,7 +145,7 @@ def main() -> None:
         failed_path.write_text("\n".join(str(path) for path in failed), encoding="utf-8")
         print(f"Failed config list written to: {failed_path}")
 
-    if not successful:
+    if total_successful == 0:
         raise SystemExit(
             "No configs were collected successfully, so no manifest will be generated."
         )
@@ -129,8 +154,6 @@ def main() -> None:
     print("Generating manifest from successful .npz files only...")
     print()
 
-    # smac_jepa.splits scans the output directory for existing .npz files.
-    # Since failed partial files are removed above, the manifest should only include valid outputs.
     subprocess.run(
         [
             sys.executable,
@@ -155,8 +178,9 @@ def main() -> None:
     print("Done")
     print("=" * 80)
     print(f"Manifest written to: {manifest_out}")
-    print(f"Successful files: {len(successful)}")
-    print(f"Skipped configs: {len(failed)}")
+    print(f"Already existed: {len(successful_existing)}")
+    print(f"Newly collected: {len(successful_new)}")
+    print(f"Failed/skipped: {len(failed)}")
 
 
 if __name__ == "__main__":

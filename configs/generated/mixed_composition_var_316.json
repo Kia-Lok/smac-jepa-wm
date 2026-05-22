@@ -1,38 +1,36 @@
 {
-    "name": "mixed_composition_var_316",
-    "num_allied_units": 6,
-    "num_enemy_units": 20,
-    "groups": [
-        {
-            "x": 7.7,
-            "y": 17.74,
-            "faction": "ALLY",
-            "units": {
-                "MARAUDER": 6
-            }
-        },
-        {
-            "x": 21.75,
-            "y": 18.3,
-            "faction": "ENEMY",
-            "units": {
-                "MARAUDER": 7,
-                "ROACH": 6,
-                "ZERGLING": 7
-            }
-        }
-    ],
-    "attack_point": [
-        9.13,
-        14.78
-    ],
-    "terrain_preset": "SIMPLE",
-    "num_unit_types": 3,
-    "ally_has_shields": true,
-    "enemy_has_shields": true,
-    "unit_type_ids": {
-        "MARAUDER": 0,
-        "ROACH": 1,
-        "ZERGLING": 2
+  "name": "mixed_composition_var_316",
+  "num_allied_units": 6,
+  "num_enemy_units": 20,
+  "groups": [
+    {
+      "x": 7.7,
+      "y": 17.74,
+      "faction": "ALLY",
+      "units": {
+        "MARAUDER": 6
+      }
+    },
+    {
+      "x": 21.75,
+      "y": 18.3,
+      "faction": "ENEMY",
+      "units": {
+        "MARAUDER": 13,
+        "ZERGLING": 7
+      }
     }
+  ],
+  "attack_point": [
+    9.13,
+    14.78
+  ],
+  "terrain_preset": "SIMPLE",
+  "num_unit_types": 3,
+  "ally_has_shields": true,
+  "enemy_has_shields": true,
+  "unit_type_ids": {
+    "MARAUDER": 1,
+    "ZERGLING": 2
+  }
 }

@@ -10,13 +10,17 @@ import torch
 from torch.utils.data import DataLoader
 
 from smac_jepa.config import TrainConfig
-from smac_jepa.data import SMACJEPADataset, load_manifest
+from smac_jepa.data import SMACJEPADataset, load_manifest, load_manifest_all
 from smac_jepa.jepa import SMACJEPA
 from smac_jepa.presets import MODEL_PRESETS, get_model_preset
 from smac_jepa.utils import set_seed
 from smac_jepa.utils.logging import LossLogger
 from smac_jepa.utils.plots import write_svg_line_plot
 
+try:
+    import wandb
+except ImportError:
+    wandb = None
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Train entity-token SMAC-JEPA")
@@ -33,12 +37,15 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--hidden-dim", type=int)
     parser.add_argument("--action-dim", type=int)
     parser.add_argument("--context-len", type=int, default=4)
+    parser.add_argument("--window-mode", choices=["sequential", "random"], default="sequential")
+    parser.add_argument("--window-len", type=int)
+    parser.add_argument("--samples-per-epoch", type=int)
     parser.add_argument("--num-heads", type=int)
     parser.add_argument("--encoder-layers", type=int)
     parser.add_argument("--action-layers", type=int)
     parser.add_argument("--predictor-layers", type=int)
     parser.add_argument("--max-context-len", type=int, default=32)
-    parser.add_argument("--sigreg-weight", type=float, default=0.01)
+    parser.add_argument("--sigreg-weight", type=float, default=0.09)
     parser.add_argument("--decoder-weight", type=float, default=1.0)
     parser.add_argument("--grad-clip", type=float, default=1.0)
     parser.add_argument("--device", default="auto", choices=["auto", "cpu", "cuda", "mps"])
@@ -47,6 +54,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--seed", type=int, default=1)
     parser.add_argument("--num-workers", type=int, default=0)
     parser.add_argument("--log-every", type=int, default=10)
+    parser.add_argument("--wandb", action="store_true", help="Enable Weights & Biases logging")
+    parser.add_argument("--wandb-project", default="SMAC-JEPA-losses", help="W&B project name")
+    parser.add_argument("--wandb-entity", default="kialok-nus", help="W&B username or team/entity")
+    parser.add_argument("--wandb-name", default=None, help="W&B run name")
+    parser.add_argument("--wandb-mode", default="online", choices=["online", "offline", "disabled"])
     return parser.parse_args()
 
 
@@ -118,8 +130,24 @@ def load_data_paths_from_args(config: TrainConfig) -> list[str]:
 
 def main() -> None:
     args = parse_args()
-    config = TrainConfig(**vars(args))
+
+    wandb_enabled = args.wandb
+    wandb_project = args.wandb_project
+    wandb_entity = args.wandb_entity
+    wandb_name = args.wandb_name
+    wandb_mode = args.wandb_mode
+
+    config_args = vars(args).copy()
+    for key in ["wandb", "wandb_project", "wandb_entity", "wandb_name", "wandb_mode"]:
+        config_args.pop(key)
+
+    config = TrainConfig(**config_args)
     arch = resolved_arch(config)
+    window_len = config.window_len or config.context_len
+    if window_len > config.max_context_len:
+        raise SystemExit(
+            f"window length {window_len} exceeds --max-context-len {config.max_context_len}"
+        )
     out_dir = Path(config.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -128,10 +156,24 @@ def main() -> None:
     amp_enabled = bool(config.amp and device.type == "cuda")
 
     data_paths = load_data_paths_from_args(config)
+    cap_paths = load_manifest_all(config.manifest) if config.manifest is not None else data_paths
+    cap_dataset = SMACJEPADataset(cap_paths, context_len=1, mode="entity")
+    cap_metadata = cap_dataset.metadata
     dataset = SMACJEPADataset(
         data_paths,
         context_len=config.context_len,
         mode="entity",
+        window_mode=config.window_mode,
+        window_len=window_len,
+        samples_per_epoch=config.samples_per_epoch,
+        seed=config.seed,
+        max_agents=cap_metadata.max_agents,
+        max_enemies=cap_metadata.max_enemies,
+        max_actions=cap_metadata.max_actions,
+        token_dim=cap_metadata.token_dim,
+        dynamic_token_dim=cap_metadata.dynamic_token_dim,
+        static_dim=cap_metadata.static_dim,
+        entity_static_feat_size=cap_metadata.entity_static_feat_size,
     )
     loader = DataLoader(
         dataset,
@@ -154,6 +196,7 @@ def main() -> None:
         max_enemies=dataset.metadata.max_enemies,
         max_actions=dataset.metadata.max_actions,
         token_dim=dataset.metadata.token_dim,
+        static_dim=dataset.metadata.static_dim,
         decoder_weight=config.decoder_weight,
         encoder_layers=int(arch["encoder_layers"]),
         action_layers=int(arch["action_layers"]),
@@ -174,8 +217,65 @@ def main() -> None:
         start_epoch = int(checkpoint.get("epoch", 0)) + 1
         global_step = int(checkpoint.get("global_step", 0))
 
-    saved_config = vars(args) | arch | {"resolved_device": device.type, "amp_enabled": amp_enabled}
+    saved_config = vars(args) | arch | {
+        "context_len": window_len,
+        "window_len": window_len,
+        "resolved_device": device.type,
+        "amp_enabled": amp_enabled,
+    }
     (out_dir / "config.json").write_text(json.dumps(saved_config, indent=2) + "\n")
+    wandb_run = None
+    if wandb_enabled:
+        if wandb is None:
+            raise SystemExit(
+                "W&B logging requested with --wandb, but wandb is not installed. "
+                "Install it with: uv pip install wandb"
+            )
+
+        wandb_run = wandb.init(
+            project=wandb_project,
+            entity=wandb_entity,
+            name=wandb_name or out_dir.name,
+            config=saved_config,
+            mode=wandb_mode,
+            dir=str(out_dir),
+        )
+
+        wandb_run.watch(model, log=None)
+
+    def save_checkpoint(epoch_to_save: int, checkpoint_path: Path) -> None:
+        torch.save(
+            {
+                "model_state": model.state_dict(),
+                "metadata": {
+                    "state_dim": dataset.metadata.state_dim,
+                    "n_agents": dataset.metadata.n_agents,
+                    "n_actions": dataset.metadata.n_actions,
+                    "n_enemies": dataset.metadata.n_enemies,
+                    "ally_state_feat_size": dataset.metadata.ally_state_feat_size,
+                    "enemy_state_feat_size": dataset.metadata.enemy_state_feat_size,
+                    "ally_has_shields": dataset.metadata.ally_has_shields,
+                    "enemy_has_shields": dataset.metadata.enemy_has_shields,
+                    "num_unit_types": dataset.metadata.num_unit_types,
+                    "max_agents": dataset.metadata.max_agents,
+                    "max_enemies": dataset.metadata.max_enemies,
+                    "max_actions": dataset.metadata.max_actions,
+                    "token_dim": dataset.metadata.token_dim,
+                    "dynamic_token_dim": dataset.metadata.dynamic_token_dim,
+                    "static_dim": dataset.metadata.static_dim,
+                    "entity_static_feat_size": dataset.metadata.entity_static_feat_size,
+                    "mode": dataset.metadata.mode,
+                },
+                "config": vars(args),
+                "resolved_config": saved_config,
+                "optimizer_state": optimizer.state_dict(),
+                "scaler_state": scaler.state_dict(),
+                "epoch": epoch_to_save,
+                "global_step": global_step,
+            },
+            checkpoint_path,
+        )
+
     logger = LossLogger(out_dir, "loss_log")
     epoch_logger = LossLogger(out_dir, "epoch_loss")
 
@@ -214,6 +314,20 @@ def main() -> None:
                 row[key] = float(value.detach().cpu())
             logger.log(row)
             step_rows.append(row) #step_row stores loss for each step
+            if wandb_run is not None:
+                wandb_run.log(
+                    {
+                        "train/epoch": epoch,
+                        "train/total_loss": row.get("total_loss"),
+                        "train/pred_loss": row.get("pred_loss"),
+                        "train/sigreg_loss": row.get("sigreg_loss"),
+                        "train/decoded_loss": row.get("decoded_loss"),
+                        "train/lr": optimizer.param_groups[0]["lr"],
+                    },
+                    step=global_step,
+                )
+            
+            
             for key, value in row.items():
                 if key in {"epoch", "step"}:
                     continue
@@ -233,10 +347,30 @@ def main() -> None:
             epoch_row[key] = value / max(epoch_batches, 1)
         epoch_logger.log(epoch_row)
         epoch_rows.append(epoch_row) #Stores loss for the entire epoch (After all batches of it ran)
+        if wandb_run is not None:
+            wandb_run.log(
+                {
+                    "epoch/epoch": epoch,
+                    "epoch/total_loss": epoch_row.get("total_loss"),
+                    "epoch/pred_loss": epoch_row.get("pred_loss"),
+                    "epoch/sigreg_loss": epoch_row.get("sigreg_loss"),
+                    "epoch/decoded_loss": epoch_row.get("decoded_loss"),
+                },
+                step=global_step,
+            )
+        
         print(
             "epoch_summary epoch={epoch} step={step} total_loss={total_loss:.6f} "
             "pred_loss={pred_loss:.6f} sigreg_loss={sigreg_loss:.6f} "
             "decoded_loss={decoded_loss:.6f}".format(**epoch_row),
+            flush=True,
+        )
+
+        epoch_checkpoint_path = out_dir / f"checkpoint_epoch_{epoch:03d}.pt"
+        save_checkpoint(epoch, epoch_checkpoint_path)
+        save_checkpoint(epoch, out_dir / "checkpoint.pt")
+        print(
+            f"saved_checkpoint {epoch_checkpoint_path} and {out_dir / 'checkpoint.pt'}",
             flush=True,
         )
 
@@ -269,32 +403,14 @@ def main() -> None:
         flush=True,
     )
 
-    torch.save(
-        {
-            "model_state": model.state_dict(),
-            "metadata": {
-                "state_dim": dataset.metadata.state_dim,
-                "n_agents": dataset.metadata.n_agents,
-                "n_actions": dataset.metadata.n_actions,
-                "n_enemies": dataset.metadata.n_enemies,
-                "ally_state_feat_size": dataset.metadata.ally_state_feat_size,
-                "enemy_state_feat_size": dataset.metadata.enemy_state_feat_size,
-                "max_agents": dataset.metadata.max_agents,
-                "max_enemies": dataset.metadata.max_enemies,
-                "max_actions": dataset.metadata.max_actions,
-                "token_dim": dataset.metadata.token_dim,
-                "mode": dataset.metadata.mode,
-            },
-            "config": vars(args),
-            "resolved_config": saved_config,
-            "optimizer_state": optimizer.state_dict(),
-            "scaler_state": scaler.state_dict(),
-            "epoch": config.epochs,
-            "global_step": global_step,
-        },
-        out_dir / "checkpoint.pt",
-    )
+    # checkpoint.pt is already updated after every epoch.
+    
+    if wandb_run is not None:
+        wandb_run.save(str(out_dir / "config.json"))
+        wandb_run.save(str(out_dir / "checkpoint.pt"))
+        wandb_run.finish()
 
 
 if __name__ == "__main__":
     main()
+    

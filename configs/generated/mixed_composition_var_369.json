@@ -1,39 +1,39 @@
 {
-    "name": "mixed_composition_var_369",
-    "num_allied_units": 8,
-    "num_enemy_units": 14,
-    "groups": [
-        {
-            "x": 7.09,
-            "y": 15.36,
-            "faction": "ALLY",
-            "units": {
-                "ZERGLING": 5,
-                "COLOSSUS": 2,
-                "ZEALOT": 1
-            }
-        },
-        {
-            "x": 24.48,
-            "y": 16.62,
-            "faction": "ENEMY",
-            "units": {
-                "HYDRALISK": 14
-            }
-        }
-    ],
-    "attack_point": [
-        10.2,
-        15.81
-    ],
-    "terrain_preset": "CORRIDOR",
-    "num_unit_types": 4,
-    "ally_has_shields": true,
-    "enemy_has_shields": true,
-    "unit_type_ids": {
-        "COLOSSUS": 0,
-        "HYDRALISK": 1,
-        "ZEALOT": 2,
-        "ZERGLING": 3
+  "name": "mixed_composition_var_369",
+  "num_allied_units": 8,
+  "num_enemy_units": 14,
+  "groups": [
+    {
+      "x": 7.09,
+      "y": 15.36,
+      "faction": "ALLY",
+      "units": {
+        "ZERGLING": 5,
+        "COLOSSUS": 2,
+        "ZEALOT": 1
+      }
+    },
+    {
+      "x": 24.48,
+      "y": 16.62,
+      "faction": "ENEMY",
+      "units": {
+        "STALKER": 14
+      }
     }
+  ],
+  "attack_point": [
+    10.2,
+    15.81
+  ],
+  "terrain_preset": "CORRIDOR",
+  "num_unit_types": 4,
+  "ally_has_shields": true,
+  "enemy_has_shields": true,
+  "unit_type_ids": {
+    "COLOSSUS": 0,
+    "STALKER": 1,
+    "ZEALOT": 2,
+    "ZERGLING": 3
+  }
 }

@@ -1,42 +1,40 @@
 {
-    "name": "mixed_composition_var_338",
-    "num_allied_units": 9,
-    "num_enemy_units": 19,
-    "groups": [
-        {
-            "x": 9.46,
-            "y": 13.82,
-            "faction": "ALLY",
-            "units": {
-                "MEDIVAC": 4,
-                "ROACH": 3,
-                "MARAUDER": 2
-            }
-        },
-        {
-            "x": 22.22,
-            "y": 13.99,
-            "faction": "ENEMY",
-            "units": {
-                "COLOSSUS": 8,
-                "HYDRALISK": 5,
-                "MEDIVAC": 6
-            }
-        }
-    ],
-    "attack_point": [
-        9.89,
-        15.12
-    ],
-    "terrain_preset": "PENTAGON",
-    "num_unit_types": 5,
-    "ally_has_shields": true,
-    "enemy_has_shields": true,
-    "unit_type_ids": {
-        "COLOSSUS": 0,
-        "HYDRALISK": 1,
-        "MARAUDER": 2,
-        "MEDIVAC": 3,
-        "ROACH": 4
+  "name": "mixed_composition_var_338",
+  "num_allied_units": 9,
+  "num_enemy_units": 19,
+  "groups": [
+    {
+      "x": 9.46,
+      "y": 13.82,
+      "faction": "ALLY",
+      "units": {
+        "MEDIVAC": 4,
+        "MARAUDER": 5
+      }
+    },
+    {
+      "x": 22.22,
+      "y": 13.99,
+      "faction": "ENEMY",
+      "units": {
+        "COLOSSUS": 8,
+        "STALKER": 5,
+        "MEDIVAC": 6
+      }
     }
+  ],
+  "attack_point": [
+    9.89,
+    15.12
+  ],
+  "terrain_preset": "PENTAGON",
+  "num_unit_types": 5,
+  "ally_has_shields": true,
+  "enemy_has_shields": true,
+  "unit_type_ids": {
+    "COLOSSUS": 0,
+    "STALKER": 1,
+    "MARAUDER": 6,
+    "MEDIVAC": 3
+  }
 }

@@ -1,40 +1,38 @@
 {
-    "name": "mixed_composition_var_341",
-    "num_allied_units": 6,
-    "num_enemy_units": 15,
-    "groups": [
-        {
-            "x": 7.21,
-            "y": 13.76,
-            "faction": "ALLY",
-            "units": {
-                "ZERGLING": 3,
-                "HYDRALISK": 3
-            }
-        },
-        {
-            "x": 23.62,
-            "y": 17.74,
-            "faction": "ENEMY",
-            "units": {
-                "STALKER": 4,
-                "MARAUDER": 6,
-                "HYDRALISK": 5
-            }
-        }
-    ],
-    "attack_point": [
-        7.47,
-        15.29
-    ],
-    "terrain_preset": "NARROW",
-    "num_unit_types": 4,
-    "ally_has_shields": true,
-    "enemy_has_shields": true,
-    "unit_type_ids": {
-        "HYDRALISK": 0,
-        "MARAUDER": 1,
-        "STALKER": 2,
-        "ZERGLING": 3
+  "name": "mixed_composition_var_341",
+  "num_allied_units": 6,
+  "num_enemy_units": 15,
+  "groups": [
+    {
+      "x": 7.21,
+      "y": 13.76,
+      "faction": "ALLY",
+      "units": {
+        "ZERGLING": 3,
+        "STALKER": 3
+      }
+    },
+    {
+      "x": 23.62,
+      "y": 17.74,
+      "faction": "ENEMY",
+      "units": {
+        "STALKER": 9,
+        "MARAUDER": 6
+      }
     }
+  ],
+  "attack_point": [
+    7.47,
+    15.29
+  ],
+  "terrain_preset": "NARROW",
+  "num_unit_types": 4,
+  "ally_has_shields": true,
+  "enemy_has_shields": true,
+  "unit_type_ids": {
+    "STALKER": 2,
+    "MARAUDER": 1,
+    "ZERGLING": 3
+  }
 }

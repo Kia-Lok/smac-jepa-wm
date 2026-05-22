@@ -1,43 +1,42 @@
 {
-    "name": "mixed_composition_var_339",
-    "num_allied_units": 6,
-    "num_enemy_units": 18,
-    "groups": [
-        {
-            "x": 9.66,
-            "y": 13.23,
-            "faction": "ALLY",
-            "units": {
-                "ZEALOT": 3,
-                "ROACH": 1,
-                "HYDRALISK": 2
-            }
-        },
-        {
-            "x": 21.15,
-            "y": 18.92,
-            "faction": "ENEMY",
-            "units": {
-                "BANELING": 9,
-                "STALKER": 4,
-                "ZERGLING": 5
-            }
-        }
-    ],
-    "attack_point": [
-        8.75,
-        14.7
-    ],
-    "terrain_preset": "ALL_GREEN",
-    "num_unit_types": 6,
-    "ally_has_shields": true,
-    "enemy_has_shields": true,
-    "unit_type_ids": {
-        "BANELING": 0,
-        "HYDRALISK": 1,
-        "ROACH": 2,
-        "STALKER": 3,
-        "ZEALOT": 4,
+  "name": "mixed_composition_var_339",
+  "num_allied_units": 6,
+  "num_enemy_units": 18,
+  "groups": [
+    {
+      "x": 9.66,
+      "y": 13.23,
+      "faction": "ALLY",
+      "units": {
+        "ZEALOT": 3,
+        "MARAUDER": 1,
+        "STALKER": 2
+      }
+    },
+    {
+      "x": 21.15,
+      "y": 18.92,
+      "faction": "ENEMY",
+      "units": {
+        "BANELING": 9,
+        "STALKER": 4,
         "ZERGLING": 5
+      }
     }
+  ],
+  "attack_point": [
+    8.75,
+    14.7
+  ],
+  "terrain_preset": "ALL_GREEN",
+  "num_unit_types": 6,
+  "ally_has_shields": true,
+  "enemy_has_shields": true,
+  "unit_type_ids": {
+    "BANELING": 0,
+    "STALKER": 4,
+    "MARAUDER": 2,
+    "ZEALOT": 4,
+    "ZERGLING": 5
+  }
 }

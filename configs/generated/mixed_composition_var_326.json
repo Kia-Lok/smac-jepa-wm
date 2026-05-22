@@ -1,41 +1,40 @@
 {
-    "name": "mixed_composition_var_326",
-    "num_allied_units": 6,
-    "num_enemy_units": 19,
-    "groups": [
-        {
-            "x": 7.87,
-            "y": 18.35,
-            "faction": "ALLY",
-            "units": {
-                "ZERGLING": 3,
-                "MARAUDER": 3
-            }
-        },
-        {
-            "x": 20.69,
-            "y": 18.75,
-            "faction": "ENEMY",
-            "units": {
-                "ROACH": 7,
-                "ZEALOT": 6,
-                "MEDIVAC": 6
-            }
-        }
-    ],
-    "attack_point": [
-        10.23,
-        13.61
-    ],
-    "terrain_preset": "CORRIDOR",
-    "num_unit_types": 5,
-    "ally_has_shields": true,
-    "enemy_has_shields": true,
-    "unit_type_ids": {
-        "MARAUDER": 0,
-        "MEDIVAC": 1,
-        "ROACH": 2,
-        "ZEALOT": 3,
-        "ZERGLING": 4
+  "name": "mixed_composition_var_326",
+  "num_allied_units": 6,
+  "num_enemy_units": 19,
+  "groups": [
+    {
+      "x": 7.87,
+      "y": 18.35,
+      "faction": "ALLY",
+      "units": {
+        "ZERGLING": 3,
+        "MARAUDER": 3
+      }
+    },
+    {
+      "x": 20.69,
+      "y": 18.75,
+      "faction": "ENEMY",
+      "units": {
+        "MARAUDER": 7,
+        "ZEALOT": 6,
+        "MEDIVAC": 6
+      }
     }
+  ],
+  "attack_point": [
+    10.23,
+    13.61
+  ],
+  "terrain_preset": "CORRIDOR",
+  "num_unit_types": 5,
+  "ally_has_shields": true,
+  "enemy_has_shields": true,
+  "unit_type_ids": {
+    "MARAUDER": 2,
+    "MEDIVAC": 1,
+    "ZEALOT": 3,
+    "ZERGLING": 4
+  }
 }

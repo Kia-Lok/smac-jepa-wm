@@ -84,6 +84,16 @@ def main() -> None:
         enemy_state_feat_size=np.asarray(
             enemy_state_feat_size if args.entity_layout else 0, dtype=np.int64
         ),
+        ally_has_shields=np.asarray(False, dtype=bool),
+        enemy_has_shields=np.asarray(False, dtype=bool),
+        num_unit_types=np.asarray(0, dtype=np.int64),
+        static_condition=np.zeros((0,), dtype=np.float32),
+        static_dim=np.asarray(0, dtype=np.int64),
+        entity_static=np.zeros(
+            (args.n_agents + (args.n_enemies if args.entity_layout else 0), 0),
+            dtype=np.float32,
+        ),
+        entity_static_feat_size=np.asarray(0, dtype=np.int64),
         max_steps=np.asarray(args.steps, dtype=np.int64),
     )
     print(f"Saved synthetic dataset to {out}")

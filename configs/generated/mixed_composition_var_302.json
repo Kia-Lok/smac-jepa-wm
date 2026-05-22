@@ -1,36 +1,36 @@
 {
-    "name": "mixed_composition_var_302",
-    "num_allied_units": 6,
-    "num_enemy_units": 17,
-    "groups": [
-        {
-            "x": 9.11,
-            "y": 14.89,
-            "faction": "ALLY",
-            "units": {
-                "ROACH": 6
-            }
-        },
-        {
-            "x": 21.62,
-            "y": 18.75,
-            "faction": "ENEMY",
-            "units": {
-                "ROACH": 9,
-                "COLOSSUS": 8
-            }
-        }
-    ],
-    "attack_point": [
-        7.37,
-        18.38
-    ],
-    "terrain_preset": "PENTAGON",
-    "num_unit_types": 2,
-    "ally_has_shields": true,
-    "enemy_has_shields": true,
-    "unit_type_ids": {
-        "COLOSSUS": 0,
-        "ROACH": 1
+  "name": "mixed_composition_var_302",
+  "num_allied_units": 6,
+  "num_enemy_units": 17,
+  "groups": [
+    {
+      "x": 9.11,
+      "y": 14.89,
+      "faction": "ALLY",
+      "units": {
+        "MARAUDER": 6
+      }
+    },
+    {
+      "x": 21.62,
+      "y": 18.75,
+      "faction": "ENEMY",
+      "units": {
+        "MARAUDER": 9,
+        "COLOSSUS": 8
+      }
     }
+  ],
+  "attack_point": [
+    7.37,
+    18.38
+  ],
+  "terrain_preset": "PENTAGON",
+  "num_unit_types": 2,
+  "ally_has_shields": true,
+  "enemy_has_shields": true,
+  "unit_type_ids": {
+    "COLOSSUS": 0,
+    "MARAUDER": 1
+  }
 }

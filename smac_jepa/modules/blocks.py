@@ -35,13 +35,21 @@ class AttentionBlock(nn.Module):
         )
 
     def forward(
-        self, x: torch.Tensor, key_padding_mask: torch.Tensor | None = None
+        self,
+        x: torch.Tensor,
+        key_padding_mask: torch.Tensor | None = None,
+        causal: bool = False,
+        attn_mask: torch.Tensor | None = None,
     ) -> torch.Tensor:
         attn_in = self.norm_attn(x)
+        if causal and attn_mask is None:
+            steps = x.shape[1]
+            attn_mask = torch.ones(steps, steps, dtype=torch.bool, device=x.device).triu(1)
         attn_out, _ = self.attn(
             attn_in,
             attn_in,
             attn_in,
+            attn_mask=attn_mask,
             key_padding_mask=key_padding_mask,
             need_weights=False,
         )

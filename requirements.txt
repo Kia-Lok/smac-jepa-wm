@@ -1,4 +1,4 @@
 numpy>=1.23
 torch>=2.0
 gymnasium>=0.29
-
+wandb>=0.16

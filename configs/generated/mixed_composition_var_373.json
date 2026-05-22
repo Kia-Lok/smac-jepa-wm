@@ -1,37 +1,37 @@
 {
-    "name": "mixed_composition_var_373",
-    "num_allied_units": 9,
-    "num_enemy_units": 19,
-    "groups": [
-        {
-            "x": 10.53,
-            "y": 18.85,
-            "faction": "ALLY",
-            "units": {
-                "BANELING": 9
-            }
-        },
-        {
-            "x": 24.25,
-            "y": 17.57,
-            "faction": "ENEMY",
-            "units": {
-                "ROACH": 9,
-                "MEDIVAC": 10
-            }
-        }
-    ],
-    "attack_point": [
-        8.69,
-        15.79
-    ],
-    "terrain_preset": "CORRIDOR",
-    "num_unit_types": 3,
-    "ally_has_shields": true,
-    "enemy_has_shields": true,
-    "unit_type_ids": {
-        "BANELING": 0,
-        "MEDIVAC": 1,
-        "ROACH": 2
+  "name": "mixed_composition_var_373",
+  "num_allied_units": 9,
+  "num_enemy_units": 19,
+  "groups": [
+    {
+      "x": 10.53,
+      "y": 18.85,
+      "faction": "ALLY",
+      "units": {
+        "BANELING": 9
+      }
+    },
+    {
+      "x": 24.25,
+      "y": 17.57,
+      "faction": "ENEMY",
+      "units": {
+        "MARAUDER": 9,
+        "MEDIVAC": 10
+      }
     }
+  ],
+  "attack_point": [
+    8.69,
+    15.79
+  ],
+  "terrain_preset": "CORRIDOR",
+  "num_unit_types": 3,
+  "ally_has_shields": true,
+  "enemy_has_shields": true,
+  "unit_type_ids": {
+    "BANELING": 0,
+    "MEDIVAC": 1,
+    "MARAUDER": 2
+  }
 }

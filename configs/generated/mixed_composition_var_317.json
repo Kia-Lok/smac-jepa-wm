@@ -1,39 +1,37 @@
 {
-    "name": "mixed_composition_var_317",
-    "num_allied_units": 6,
-    "num_enemy_units": 19,
-    "groups": [
-        {
-            "x": 7.66,
-            "y": 13.37,
-            "faction": "ALLY",
-            "units": {
-                "BANELING": 6
-            }
-        },
-        {
-            "x": 23.94,
-            "y": 13.53,
-            "faction": "ENEMY",
-            "units": {
-                "STALKER": 6,
-                "HYDRALISK": 5,
-                "COLOSSUS": 8
-            }
-        }
-    ],
-    "attack_point": [
-        8.28,
-        15.01
-    ],
-    "terrain_preset": "OCTAGON",
-    "num_unit_types": 4,
-    "ally_has_shields": true,
-    "enemy_has_shields": true,
-    "unit_type_ids": {
-        "BANELING": 0,
-        "COLOSSUS": 1,
-        "HYDRALISK": 2,
-        "STALKER": 3
+  "name": "mixed_composition_var_317",
+  "num_allied_units": 6,
+  "num_enemy_units": 19,
+  "groups": [
+    {
+      "x": 7.66,
+      "y": 13.37,
+      "faction": "ALLY",
+      "units": {
+        "BANELING": 6
+      }
+    },
+    {
+      "x": 23.94,
+      "y": 13.53,
+      "faction": "ENEMY",
+      "units": {
+        "STALKER": 11,
+        "COLOSSUS": 8
+      }
     }
+  ],
+  "attack_point": [
+    8.28,
+    15.01
+  ],
+  "terrain_preset": "OCTAGON",
+  "num_unit_types": 4,
+  "ally_has_shields": true,
+  "enemy_has_shields": true,
+  "unit_type_ids": {
+    "BANELING": 0,
+    "COLOSSUS": 1,
+    "STALKER": 5
+  }
 }

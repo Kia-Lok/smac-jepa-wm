@@ -2,5 +2,6 @@
 
 from smac_jepa.jepa import SMACJEPA
 
-__all__ = ["SMACJEPA"]
+#__all__ = ["SMACJEPA"]
+__all__ = []
 

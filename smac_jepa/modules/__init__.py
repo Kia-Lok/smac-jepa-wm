@@ -1,11 +1,10 @@
-from smac_jepa.modules.encoders import EntityStateEncoder, StateEncoder
-from smac_jepa.modules.predictor import EntityJEPAActionPredictor, JEPAActionPredictor
-from smac_jepa.modules.sigreg import sigreg_loss
+from smac_jepa.modules.encoders import EntityStateEncoder
+from smac_jepa.modules.predictor import EntityJEPAActionPredictor
+from smac_jepa.modules.sigreg import SIGReg, sigreg_loss
 
 __all__ = [
     "EntityStateEncoder",
     "EntityJEPAActionPredictor",
-    "StateEncoder",
-    "JEPAActionPredictor",
+    "SIGReg",
     "sigreg_loss",
 ]

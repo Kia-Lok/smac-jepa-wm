@@ -1,43 +1,41 @@
 {
-    "name": "mixed_composition_var_329",
-    "num_allied_units": 7,
-    "num_enemy_units": 22,
-    "groups": [
-        {
-            "x": 11.42,
-            "y": 16.82,
-            "faction": "ALLY",
-            "units": {
-                "ZEALOT": 3,
-                "HYDRALISK": 2,
-                "ZERGLING": 2
-            }
-        },
-        {
-            "x": 21.8,
-            "y": 17.77,
-            "faction": "ENEMY",
-            "units": {
-                "ROACH": 8,
-                "MARAUDER": 7,
-                "MARINE": 7
-            }
-        }
-    ],
-    "attack_point": [
-        6.95,
-        17.59
-    ],
-    "terrain_preset": "OCTAGON",
-    "num_unit_types": 6,
-    "ally_has_shields": true,
-    "enemy_has_shields": true,
-    "unit_type_ids": {
-        "HYDRALISK": 0,
-        "MARAUDER": 1,
-        "MARINE": 2,
-        "ROACH": 3,
-        "ZEALOT": 4,
-        "ZERGLING": 5
+  "name": "mixed_composition_var_329",
+  "num_allied_units": 7,
+  "num_enemy_units": 22,
+  "groups": [
+    {
+      "x": 11.42,
+      "y": 16.82,
+      "faction": "ALLY",
+      "units": {
+        "ZEALOT": 3,
+        "STALKER": 2,
+        "ZERGLING": 2
+      }
+    },
+    {
+      "x": 21.8,
+      "y": 17.77,
+      "faction": "ENEMY",
+      "units": {
+        "MARAUDER": 15,
+        "MARINE": 7
+      }
     }
+  ],
+  "attack_point": [
+    6.95,
+    17.59
+  ],
+  "terrain_preset": "OCTAGON",
+  "num_unit_types": 6,
+  "ally_has_shields": true,
+  "enemy_has_shields": true,
+  "unit_type_ids": {
+    "STALKER": 0,
+    "MARAUDER": 4,
+    "MARINE": 2,
+    "ZEALOT": 4,
+    "ZERGLING": 5
+  }
 }

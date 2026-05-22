@@ -1,37 +1,37 @@
 {
-    "name": "mixed_composition_var_395",
-    "num_allied_units": 7,
-    "num_enemy_units": 12,
-    "groups": [
-        {
-            "x": 6.29,
-            "y": 16.81,
-            "faction": "ALLY",
-            "units": {
-                "HYDRALISK": 7
-            }
-        },
-        {
-            "x": 24.6,
-            "y": 18.57,
-            "faction": "ENEMY",
-            "units": {
-                "MARINE": 9,
-                "COLOSSUS": 3
-            }
-        }
-    ],
-    "attack_point": [
-        9.88,
-        14.58
-    ],
-    "terrain_preset": "PENTAGON",
-    "num_unit_types": 3,
-    "ally_has_shields": true,
-    "enemy_has_shields": true,
-    "unit_type_ids": {
-        "COLOSSUS": 0,
-        "HYDRALISK": 1,
-        "MARINE": 2
+  "name": "mixed_composition_var_395",
+  "num_allied_units": 7,
+  "num_enemy_units": 12,
+  "groups": [
+    {
+      "x": 6.29,
+      "y": 16.81,
+      "faction": "ALLY",
+      "units": {
+        "STALKER": 7
+      }
+    },
+    {
+      "x": 24.6,
+      "y": 18.57,
+      "faction": "ENEMY",
+      "units": {
+        "MARINE": 9,
+        "COLOSSUS": 3
+      }
     }
+  ],
+  "attack_point": [
+    9.88,
+    14.58
+  ],
+  "terrain_preset": "PENTAGON",
+  "num_unit_types": 3,
+  "ally_has_shields": true,
+  "enemy_has_shields": true,
+  "unit_type_ids": {
+    "COLOSSUS": 0,
+    "STALKER": 1,
+    "MARINE": 2
+  }
 }

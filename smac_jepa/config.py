@@ -20,12 +20,15 @@ class TrainConfig:
     hidden_dim: int | None = None
     action_dim: int | None = None
     context_len: int = 4
+    window_mode: str = "sequential"
+    window_len: int | None = None
+    samples_per_epoch: int | None = None
     num_heads: int | None = None
     encoder_layers: int | None = None
     action_layers: int | None = None
     predictor_layers: int | None = None
     max_context_len: int = 32
-    sigreg_weight: float = 0.01
+    sigreg_weight: float = 0.09
     decoder_weight: float = 1.0
     grad_clip: float = 1.0
     device: str = "auto"

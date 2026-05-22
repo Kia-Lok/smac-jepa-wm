@@ -1,41 +1,41 @@
 {
-    "name": "mixed_composition_var_331",
-    "num_allied_units": 9,
-    "num_enemy_units": 18,
-    "groups": [
-        {
-            "x": 11.77,
-            "y": 13.48,
-            "faction": "ALLY",
-            "units": {
-                "ZERGLING": 6,
-                "BANELING": 3
-            }
-        },
-        {
-            "x": 25.42,
-            "y": 16.21,
-            "faction": "ENEMY",
-            "units": {
-                "ROACH": 4,
-                "HYDRALISK": 6,
-                "COLOSSUS": 8
-            }
-        }
-    ],
-    "attack_point": [
-        10.02,
-        14.07
-    ],
-    "terrain_preset": "RAVINE",
-    "num_unit_types": 5,
-    "ally_has_shields": true,
-    "enemy_has_shields": true,
-    "unit_type_ids": {
-        "BANELING": 0,
-        "COLOSSUS": 1,
-        "HYDRALISK": 2,
-        "ROACH": 3,
-        "ZERGLING": 4
+  "name": "mixed_composition_var_331",
+  "num_allied_units": 9,
+  "num_enemy_units": 18,
+  "groups": [
+    {
+      "x": 11.77,
+      "y": 13.48,
+      "faction": "ALLY",
+      "units": {
+        "ZERGLING": 6,
+        "BANELING": 3
+      }
+    },
+    {
+      "x": 25.42,
+      "y": 16.21,
+      "faction": "ENEMY",
+      "units": {
+        "MARAUDER": 4,
+        "STALKER": 6,
+        "COLOSSUS": 8
+      }
     }
+  ],
+  "attack_point": [
+    10.02,
+    14.07
+  ],
+  "terrain_preset": "RAVINE",
+  "num_unit_types": 5,
+  "ally_has_shields": true,
+  "enemy_has_shields": true,
+  "unit_type_ids": {
+    "BANELING": 0,
+    "COLOSSUS": 1,
+    "STALKER": 2,
+    "MARAUDER": 3,
+    "ZERGLING": 4
+  }
 }

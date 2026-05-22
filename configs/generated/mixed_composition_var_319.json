@@ -1,37 +1,37 @@
 {
-    "name": "mixed_composition_var_319",
-    "num_allied_units": 7,
-    "num_enemy_units": 20,
-    "groups": [
-        {
-            "x": 9.9,
-            "y": 14.1,
-            "faction": "ALLY",
-            "units": {
-                "MARINE": 7
-            }
-        },
-        {
-            "x": 24.55,
-            "y": 13.4,
-            "faction": "ENEMY",
-            "units": {
-                "ROACH": 10,
-                "ZERGLING": 10
-            }
-        }
-    ],
-    "attack_point": [
-        9.01,
-        16.52
-    ],
-    "terrain_preset": "PENTAGON",
-    "num_unit_types": 3,
-    "ally_has_shields": true,
-    "enemy_has_shields": true,
-    "unit_type_ids": {
-        "MARINE": 0,
-        "ROACH": 1,
-        "ZERGLING": 2
+  "name": "mixed_composition_var_319",
+  "num_allied_units": 7,
+  "num_enemy_units": 20,
+  "groups": [
+    {
+      "x": 9.9,
+      "y": 14.1,
+      "faction": "ALLY",
+      "units": {
+        "MARINE": 7
+      }
+    },
+    {
+      "x": 24.55,
+      "y": 13.4,
+      "faction": "ENEMY",
+      "units": {
+        "MARAUDER": 10,
+        "ZERGLING": 10
+      }
     }
+  ],
+  "attack_point": [
+    9.01,
+    16.52
+  ],
+  "terrain_preset": "PENTAGON",
+  "num_unit_types": 3,
+  "ally_has_shields": true,
+  "enemy_has_shields": true,
+  "unit_type_ids": {
+    "MARINE": 0,
+    "MARAUDER": 1,
+    "ZERGLING": 2
+  }
 }

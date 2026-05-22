@@ -1,43 +1,40 @@
 {
-    "name": "mixed_composition_var_366",
-    "num_allied_units": 9,
-    "num_enemy_units": 21,
-    "groups": [
-        {
-            "x": 7.22,
-            "y": 14.7,
-            "faction": "ALLY",
-            "units": {
-                "COLOSSUS": 4,
-                "STALKER": 2,
-                "MARINE": 3
-            }
-        },
-        {
-            "x": 24.61,
-            "y": 17.06,
-            "faction": "ENEMY",
-            "units": {
-                "MARAUDER": 7,
-                "HYDRALISK": 7,
-                "ROACH": 7
-            }
-        }
-    ],
-    "attack_point": [
-        10.83,
-        14.12
-    ],
-    "terrain_preset": "SIMPLE",
-    "num_unit_types": 6,
-    "ally_has_shields": true,
-    "enemy_has_shields": true,
-    "unit_type_ids": {
-        "COLOSSUS": 0,
-        "HYDRALISK": 1,
-        "MARAUDER": 2,
-        "MARINE": 3,
-        "ROACH": 4,
-        "STALKER": 5
+  "name": "mixed_composition_var_366",
+  "num_allied_units": 9,
+  "num_enemy_units": 21,
+  "groups": [
+    {
+      "x": 7.22,
+      "y": 14.7,
+      "faction": "ALLY",
+      "units": {
+        "COLOSSUS": 4,
+        "STALKER": 2,
+        "MARINE": 3
+      }
+    },
+    {
+      "x": 24.61,
+      "y": 17.06,
+      "faction": "ENEMY",
+      "units": {
+        "MARAUDER": 14,
+        "STALKER": 7
+      }
     }
+  ],
+  "attack_point": [
+    10.83,
+    14.12
+  ],
+  "terrain_preset": "SIMPLE",
+  "num_unit_types": 6,
+  "ally_has_shields": true,
+  "enemy_has_shields": true,
+  "unit_type_ids": {
+    "COLOSSUS": 0,
+    "STALKER": 6,
+    "MARAUDER": 6,
+    "MARINE": 3
+  }
 }
