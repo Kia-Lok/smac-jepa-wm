@@ -1,0 +1,6 @@
+{
+  "small_army": ["small_", "tiny_"],
+  "large_army": ["large_", "big_"],
+  "mixed_units": ["mixed_", "generated_mixed_"],
+  "hard_maps": ["hard_", "choke_"]
+}
