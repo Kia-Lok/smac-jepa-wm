@@ -91,6 +91,9 @@ def main() -> None:
         action_layers=int(config.get("action_layers", 1)),
         predictor_layers=int(config.get("predictor_layers", 1)),
         max_context_len=int(config.get("max_context_len", 32)),
+        static_conditioning=str(
+            metadata.get("static_conditioning", config.get("static_conditioning", "action"))
+        ),
     ).to(device)
     model.load_state_dict(checkpoint["model_state"])
     model.eval()

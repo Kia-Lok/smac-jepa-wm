@@ -28,6 +28,7 @@ class TrainConfig:
     action_layers: int | None = None
     predictor_layers: int | None = None
     max_context_len: int = 32
+    static_conditioning: str = "action"
     sigreg_weight: float = 0.09
     decoder_weight: float = 1.0
     grad_clip: float = 1.0

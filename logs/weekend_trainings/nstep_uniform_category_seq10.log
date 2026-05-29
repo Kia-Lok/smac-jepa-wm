@@ -1,0 +1,122 @@
+category_prioritized enabled because category prefixes were provided
+warning_zero_match_categories Ravine,bio plus medivac,vertical clash
+category_prioritized enabled total_items=1767417 categories=87
+  category=10m vs 11m files=25 items=26112 initial_prob=0.011494
+  category=27m vs 30m files=9 items=9033 initial_prob=0.011494
+  category=2c vs 64zg files=42 items=13357 initial_prob=0.011494
+  category=2s vs 1sc files=13 items=17055 initial_prob=0.011494
+  category=2s3z files=15 items=11743 initial_prob=0.011494
+  category=3s vs 5z files=7 items=5269 initial_prob=0.011494
+  category=3s5z files=14 items=10443 initial_prob=0.011494
+  category=3s5z vs 3s6z files=13 items=9831 initial_prob=0.011494
+  category=Anti Swarm files=47 items=42648 initial_prob=0.011494
+  category=Mirrors files=202 items=193652 initial_prob=0.011494
+  category=Swarm files=23 items=14709 initial_prob=0.011494
+  category=asym files=29 items=42934 initial_prob=0.011494
+  category=backline protection files=4 items=7038 initial_prob=0.011494
+  category=bane vs bane files=23 items=13141 initial_prob=0.011494
+  category=baneling threat files=17 items=25034 initial_prob=0.011494
+  category=bio support files=19 items=29586 initial_prob=0.011494
+  category=bio vs protoss files=12 items=16016 initial_prob=0.011494
+  category=bm files=83 items=50736 initial_prob=0.011494
+  category=close quarters bane files=22 items=11747 initial_prob=0.011494
+  category=close scramble files=19 items=15077 initial_prob=0.011494
+  category=colossus anchor files=6 items=8731 initial_prob=0.011494
+  category=colossus guard files=14 items=18695 initial_prob=0.011494
+  category=colossus vs bio files=7 items=8901 initial_prob=0.011494
+  category=corner push files=14 items=23462 initial_prob=0.011494
+  category=corner to corner files=15 items=23422 initial_prob=0.011494
+  category=corridor files=21 items=5542 initial_prob=0.011494
+  category=corridor choke files=15 items=16608 initial_prob=0.011494
+  category=enemy support files=10 items=15284 initial_prob=0.011494
+  category=exact 50 files=24 items=35841 initial_prob=0.011494
+  category=few strong vs many weak files=17 items=15475 initial_prob=0.011494
+  category=green open field files=3 items=4052 initial_prob=0.011494
+  category=heavy swarm files=103 items=42805 initial_prob=0.011494
+  category=hsm files=33 items=10775 initial_prob=0.011494
+  category=large capped asym files=9 items=14540 initial_prob=0.011494
+  category=large capped marine files=21 items=34556 initial_prob=0.011494
+  category=large mixed cap files=9 items=11864 initial_prob=0.011494
+  category=low count micro files=45 items=34238 initial_prob=0.011494
+  category=low count roles files=9 items=11227 initial_prob=0.011494
+  category=marine holdout files=24 items=21132 initial_prob=0.011494
+  category=marine roach cross files=19 items=32263 initial_prob=0.011494
+  category=marine small files=21 items=24210 initial_prob=0.011494
+  category=medium mixed roles files=6 items=9355 initial_prob=0.011494
+  category=medivac kite files=10 items=15779 initial_prob=0.011494
+  category=medivac support files=20 items=24683 initial_prob=0.011494
+  category=medivac swarm files=19 items=30404 initial_prob=0.011494
+  category=mix support files=5 items=5685 initial_prob=0.011494
+  category=mixed composition files=7 items=4509 initial_prob=0.011494
+  category=mmm files=13 items=9342 initial_prob=0.011494
+  category=muc files=21 items=11281 initial_prob=0.011494
+  category=multiwave enemy files=24 items=14589 initial_prob=0.011494
+  category=narrow split files=7 items=9697 initial_prob=0.011494
+  category=octagon surround files=19 items=16208 initial_prob=0.011494
+  category=pentagon diagonal files=10 items=12786 initial_prob=0.011494
+  category=protoss vs zerg files=12 items=12650 initial_prob=0.011494
+  category=quantity vs quality files=40 items=42443 initial_prob=0.011494
+  category=ravine crossfire files=19 items=31620 initial_prob=0.011494
+  category=slight advantage files=34 items=14124 initial_prob=0.011494
+  category=small left fast files=16 items=18863 initial_prob=0.011494
+  category=small right ranged files=9 items=13429 initial_prob=0.011494
+  category=small zerg skirmish files=26 items=21179 initial_prob=0.011494
+  category=split ally files=5 items=7045 initial_prob=0.011494
+  category=split enemy files=10 items=11821 initial_prob=0.011494
+  category=stalker kite test files=17 items=14549 initial_prob=0.011494
+  category=stalker zealot files=17 items=20708 initial_prob=0.011494
+  category=swarm bio funnel files=8 items=5318 initial_prob=0.011494
+  category=swarm center hold files=4 items=618 initial_prob=0.011494
+  category=swarm colossus files=14 items=12088 initial_prob=0.011494
+  category=swarm small pincer files=5 items=1704 initial_prob=0.011494
+  category=swarm three wave files=5 items=5254 initial_prob=0.011494
+  category=swarm vertical wave files=11 items=16282 initial_prob=0.011494
+  category=swarm zealot wall files=2 items=842 initial_prob=0.011494
+  category=terain enemy arc files=11 items=15190 initial_prob=0.011494
+  category=terrain bottomup files=6 items=10848 initial_prob=0.011494
+  category=terrain center fort files=9 items=7984 initial_prob=0.011494
+  category=terrain close offset files=19 items=17225 initial_prob=0.011494
+  category=terrain column files=18 items=29592 initial_prob=0.011494
+  category=terrain corner files=9 items=13114 initial_prob=0.011494
+  category=terrain sparse files=9 items=15123 initial_prob=0.011494
+  category=terrain stress files=39 items=70169 initial_prob=0.011494
+  category=terrain variants files=52 items=33795 initial_prob=0.011494
+  category=terrain wide files=5 items=7396 initial_prob=0.011494
+  category=terrain_box_split files=4 items=4941 initial_prob=0.011494
+  category=tv files=58 items=28953 initial_prob=0.011494
+  category=zealot vs zerglings files=14 items=8614 initial_prob=0.011494
+  category=zerg bane skirmish files=18 items=9744 initial_prob=0.011494
+  category=zerg pressure files=16 items=22080 initial_prob=0.011494
+  category=uncategorized files=67 items=79010 initial_prob=0.011494
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /home/jovyan/.netrc.
+wandb: Currently logged in as: kialok (kialok-nus) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.27.0
+wandb: Run data is saved locally in runs/generated_seed4_nstep_uniform_category_seq10/wandb/run-20260529_042815-romwsjrn
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run nstep_uniform_category_seq10
+wandb: ⭐️ View project at https://wandb.ai/kialok-nus/SMAC-JEPA-losses
+wandb: 🚀 View run at https://wandb.ai/kialok-nus/SMAC-JEPA-losses/runs/romwsjrn
+epoch_start epoch=1 sampling_mode=uniform_warmup batches=55232
+epoch=1 step=1 total_loss=292.737610 pred_loss=0.449010 sigreg_loss=3240.000000 decoded_loss=0.127363
+epoch=1 step=10 total_loss=54.834618 pred_loss=0.232585 sigreg_loss=600.000000 decoded_loss=0.053553
+epoch=1 step=20 total_loss=28.600283 pred_loss=0.142468 sigreg_loss=309.750000 decoded_loss=0.056823
+epoch=1 step=30 total_loss=18.102219 pred_loss=0.129885 sigreg_loss=193.875000 decoded_loss=0.043022
+epoch=1 step=40 total_loss=17.402357 pred_loss=0.113625 sigreg_loss=187.750000 decoded_loss=0.044665
+epoch=1 step=50 total_loss=16.508572 pred_loss=0.130487 sigreg_loss=177.125000 decoded_loss=0.043260
+epoch=1 step=60 total_loss=15.094738 pred_loss=0.136240 sigreg_loss=163.000000 decoded_loss=0.044419
+epoch=1 step=70 total_loss=14.144676 pred_loss=0.135628 sigreg_loss=152.875000 decoded_loss=0.040499
+epoch=1 step=80 total_loss=14.884098 pred_loss=0.148158 sigreg_loss=162.750000 decoded_loss=0.034976
+epoch=1 step=90 total_loss=16.913002 pred_loss=0.135303 sigreg_loss=185.500000 decoded_loss=0.038179
+epoch=1 step=100 total_loss=13.042583 pred_loss=0.125810 sigreg_loss=142.750000 decoded_loss=0.030979
+epoch=1 step=110 total_loss=13.974409 pred_loss=0.109556 sigreg_loss=153.375000 decoded_loss=0.034594
+epoch=1 step=120 total_loss=12.265451 pred_loss=0.124219 sigreg_loss=134.000000 decoded_loss=0.026475
+epoch=1 step=130 total_loss=13.547855 pred_loss=0.099010 sigreg_loss=148.625000 decoded_loss=0.031524
+epoch=1 step=140 total_loss=12.955629 pred_loss=0.121729 sigreg_loss=142.000000 decoded_loss=0.026571
+epoch=1 step=150 total_loss=17.383333 pred_loss=0.095203 sigreg_loss=191.250000 decoded_loss=0.027786
+epoch=1 step=160 total_loss=14.690784 pred_loss=0.112205 sigreg_loss=161.250000 decoded_loss=0.028979
+epoch=1 step=170 total_loss=11.965431 pred_loss=0.122923 sigreg_loss=131.000000 decoded_loss=0.024763
+epoch=1 step=180 total_loss=12.068731 pred_loss=0.084009 sigreg_loss=132.500000 decoded_loss=0.025508
+epoch=1 step=190 total_loss=12.353631 pred_loss=0.106716 sigreg_loss=135.250000 decoded_loss=0.021961
+epoch=1 step=200 total_loss=11.261316 pred_loss=0.114243 sigreg_loss=123.250000 decoded_loss=0.021487
+epoch=1 step=210 total_loss=11.722106 pred_loss=0.090896 sigreg_loss=128.750000 decoded_loss=0.020186
+epoch=1 step=220 total_loss=12.387619 pred_loss=0.092243 sigreg_loss=136.125000 decoded_loss=0.020251
