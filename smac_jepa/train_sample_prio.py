@@ -22,6 +22,11 @@ try:
     import wandb
 except ImportError:
     wandb = None
+    
+"""
+GENERAL IDEA:
+Main change from train.py is that this script has sample-level prioritised replay where individual data (Not categorical) that the model doesn't generalise well on will be biased in future epoch sampling. This script keeps the baseline objectives defined in train.py and keeps a difficulty score per dataset item, where the scores are used to bias future epoch sampling
+"""
 
 
 class IndexedDataset(Dataset):
@@ -55,24 +60,25 @@ def parse_args() -> argparse.Namespace:
     )
 
     # Same core args as train.py.
-    parser.add_argument("--manifest", default=None, help="Entity dataset split manifest")
-    parser.add_argument("--data-dir", default=None, help="Directory containing .npz files to auto-split")
-    parser.add_argument("--eval-fraction", type=float, default=0.2)
-    parser.add_argument("--split", default="train")
+    parser.add_argument("--manifest", default=None, help="Entity dataset split manifest") #Train-test split info
+    parser.add_argument("--data-dir", default=None, help="Directory containing .npz files to auto-split") #Data dir
+    parser.add_argument("--eval-fraction", type=float, default=0.2) #Should never need to be passed manually
+    parser.add_argument("--split", default="train") #Should never need to be passed manually
 
-    parser.add_argument("--model-size", default="default", choices=sorted(MODEL_PRESETS))
-    parser.add_argument("--out-dir", required=True)
-    parser.add_argument("--epochs", type=int, default=5)
-    parser.add_argument("--batch-size", type=int)
-    parser.add_argument("--lr", type=float)
+    parser.add_argument("--model-size", default="default", choices=sorted(MODEL_PRESETS)) #Should not be touched
+    parser.add_argument("--out-dir", required=True) #Output dir (Watch out for same output dir names; will overwrite)
+    parser.add_argument("--epochs", type=int, default=5) 
+    parser.add_argument("--batch-size", type=int) #For some reason, higher batch size doesn't correspond to faster training...?
+    parser.add_argument("--lr", type=float) #Should set around 0.001-0.005
 
-    parser.add_argument("--latent-dim", type=int)
-    parser.add_argument("--hidden-dim", type=int)
-    parser.add_argument("--action-dim", type=int)
-    parser.add_argument("--context-len", type=int, default=4)
+    parser.add_argument("--latent-dim", type=int) #Should not be touched
+    parser.add_argument("--hidden-dim", type=int) #Should not be touched
+    parser.add_argument("--action-dim", type=int) #Should not be touched
+    parser.add_argument("--context-len", type=int, default=4) #Attention heads can look at future and past horizons (Casual attention heads which the predictor is can only look at past). Context len determines how much is put into the attention head in one go (4 implies 4 timesteps are passed into the attention head at once)
 
-    parser.add_argument("--window-mode", choices=["sequential", "random"], default="sequential")
-    parser.add_argument("--window-len", type=int)
+    parser.add_argument("--window-mode", choices=["sequential", "random"], default="sequential") #Sequential means training from start to end for each dataset. Random means a random point is chosen within the episode and trained for the window length
+    parser.add_argument("--window-len", type=int) #How long a random snippet is (Need to figure out how to make this btr since rn its tied to context-len)
+    #All args below until next point should not be touched (Modifications should be made in model architecture files)
     parser.add_argument("--samples-per-epoch", type=int)
 
     parser.add_argument("--num-heads", type=int)
@@ -86,28 +92,29 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--grad-clip", type=float, default=1.0)
 
     parser.add_argument("--device", default="auto", choices=["auto", "cpu", "cuda", "mps"])
-    parser.add_argument("--amp", action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument("--amp", action=argparse.BooleanOptionalAction, default=True) #Default pass it
     parser.add_argument("--resume")
     parser.add_argument("--seed", type=int, default=1)
-    parser.add_argument("--num-workers", type=int, default=0)
-    parser.add_argument("--log-every", type=int, default=10)
+    parser.add_argument("--num-workers", type=int, default=0) 
+    parser.add_argument("--log-every", type=int, default=10) #Wandb logging and local loss file logging
 
     # New sample-level priority args.
-    parser.add_argument("--sample-prioritized", action="store_true")
-    parser.add_argument("--priority-alpha", type=float, default=0.6)
-    parser.add_argument("--priority-uniform-mix", type=float, default=0.5)
-    parser.add_argument("--priority-ema-beta", type=float, default=0.9)
-    parser.add_argument("--priority-warmup-epochs", type=int, default=1)
-    parser.add_argument("--priority-eps", type=float, default=1e-6)
-    parser.add_argument("--priority-max-multiplier", type=float, default=10.0)
+    parser.add_argument("--sample-prioritized", action="store_true") #Default pass it, else reverts to normal train.py
+    parser.add_argument("--priority-alpha", type=float, default=0.6) #Priority = score ** alpha. So alpha = 0.0 means no priorisation while alpha = 1.0 means FULL prioritisation
+    parser.add_argument("--priority-uniform-mix", type=float, default=0.5) #Mixes prioritised sampling with uniform sampling
+    #Mixed = uniform_mix * uniform_prob + (1 - uniform_mix) * priority_mix. Default means 50% uniform, 50% prioritised
+    parser.add_argument("--priority-ema-beta", type=float, default=0.9) #Contols how priority score is updated over time. sample's prioritiy is updated with exponential moving avg. new_score = beta * old_score + (1 - beta) * current_loss. Lower beta means sampling is more reactive towards weaker samples while higher beta means priorities change slower and more stable. Higher beta is preferred to avoid reacting violently to one noisy batch
+    parser.add_argument("--priority-warmup-epochs", type=int, default=1) #Number of epochs where normal uniform sampling is used before priority sampling. Default shld be 1
+    parser.add_argument("--priority-eps", type=float, default=1e-6) #Epsilon to avoid priority = 0 which can cause division by 0 error. Do not touch
+    parser.add_argument("--priority-max-multiplier", type=float, default=10.0) #Ceiling for how high priority can be 
     parser.add_argument(
         "--priority-score",
-        default="pred_loss",
+        default="pred_loss", #Priority should be determined ONLY BY PRED LOSS. DO NOT CHANGE
         choices=["pred_loss", "decoded_loss", "total_loss"],
         help="Which per-sample loss updates the priority table.",
     )
 
-    # W&B args.
+    # W&B args, hardcoded to my (Max) own wandb so SHOULD BE CHANGED IF USED ELSEWHERE
     parser.add_argument("--wandb", action="store_true", help="Enable Weights & Biases logging")
     parser.add_argument("--wandb-project", default="SMAC-JEPA-losses")
     parser.add_argument("--wandb-entity", default="kialok-nus")
@@ -116,7 +123,7 @@ def parse_args() -> argparse.Namespace:
 
     return parser.parse_args()
 
-
+#Device selection (Default shld be GPU)
 def to_device(batch: dict[str, torch.Tensor], device: torch.device) -> dict[str, torch.Tensor]:
     return {key: value.to(device) for key, value in batch.items()}
 
@@ -130,7 +137,7 @@ def resolve_device(requested: str) -> torch.device:
         return torch.device("cpu")
     return torch.device(requested)
 
-
+#Generate model architecture
 def resolved_arch(config: TrainConfig) -> dict[str, int | float]:
     preset = get_model_preset(config.model_size)
     return {
@@ -145,7 +152,7 @@ def resolved_arch(config: TrainConfig) -> dict[str, int | float]:
         "lr": config.lr or preset.lr,
     }
 
-
+#Takes manifest and returns a list containing paths to all relevant data for training
 def load_data_paths_from_args(config: TrainConfig) -> list[str]:
     if config.manifest is not None:
         return load_manifest(config.manifest, config.split)
@@ -158,13 +165,14 @@ def load_data_paths_from_args(config: TrainConfig) -> list[str]:
     if len(files) < 2:
         raise SystemExit(f"Need at least 2 .npz files in {data_dir}, found {len(files)}.")
 
+    #Files are shuffled randomly (Determined by seed)
     rng = random.Random(config.seed)
     shuffled = files[:]
     rng.shuffle(shuffled)
 
     eval_count = max(1, round(len(files) * config.eval_fraction))
-    eval_files = sorted(shuffled[:eval_count])
-    train_files = sorted(shuffled[eval_count:])
+    eval_files = sorted(shuffled[:eval_count]) #Eval split
+    train_files = sorted(shuffled[eval_count:]) #Train split
 
     if config.split == "train":
         selected = train_files
@@ -181,9 +189,9 @@ def load_data_paths_from_args(config: TrainConfig) -> list[str]:
     )
     return [str(path) for path in selected]
 
-
+#New addition from train.py. Called once the whole dataset is used in training for every epoch
 def make_priority_weights(
-    scores: torch.Tensor,
+    scores: torch.Tensor, #Scores is a tensor of difficulty values, one per dataset item
     *,
     alpha: float,
     uniform_mix: float,
@@ -199,48 +207,42 @@ def make_priority_weights(
     - WeightedRandomSampler only needs relative weights, but we return a
       probability-like vector for easier logging/debugging.
     """
-    if scores.numel() == 0:
-        raise ValueError("Empty priority score tensor.")
+    if scores.numel() == 0: #numel is number of elements in the tensor
+        raise ValueError("Empty priority score tensor.") #Prevents function from running if dataset has no samples
 
-    safe = scores.detach().float().cpu()
-    safe = torch.where(torch.isfinite(safe), safe, torch.ones_like(safe))
-    safe = safe.clamp_min(eps)
+    safe = scores.detach().float().cpu() #Detach to avoid affecting gradients (model in train mode) and moved to cpu for calculations
+    safe = torch.where(torch.isfinite(safe), safe, torch.ones_like(safe)) #Handles weird values like NaN and replace with 1.0
+    safe = safe.clamp_min(eps) #ensures no minimum score below epsilon; Any 0 score will become epsilon
 
-    mean = safe.mean().clamp_min(eps)
-    safe = (safe / mean).clamp(min=eps, max=max_multiplier)
-
-    priority = safe.pow(alpha)
-    priority_prob = priority / priority.sum().clamp_min(eps)
-
+    mean = safe.mean().clamp_min(eps) #Relative mean within score tensor
+    safe = (safe / mean).clamp(min=eps, max=max_multiplier) #Relative difficulty where a score of 1.0 implies avg difficulty, below is easier and above is harder
+    #Any sample cannot be considered more than 10 times harder than avg (Ceiling) to prevents any data from dominating sampling
+    
+    priority = safe.pow(alpha) #Priority eqn
+    priority_prob = priority / priority.sum().clamp_min(eps) #Softmax
+   
     n = safe.numel()
-    uniform_prob = torch.full_like(priority_prob, 1.0 / n)
+    uniform_prob = torch.full_like(priority_prob, 1.0 / n) #create normal uniform sampling distribution from the priority prob
 
-    mixed = uniform_mix * uniform_prob + (1.0 - uniform_mix) * priority_prob
-    return mixed.clamp_min(eps)
+    mixed = uniform_mix * uniform_prob + (1.0 - uniform_mix) * priority_prob #Generates a prob distri that is combined with uniform (Every sample has equal prob)
+    return mixed.clamp_min(eps) #Once again ensures every sample has min epsilon prob
 
-
+#Modified Loss Function from train.py. Training objective is the same but loss calculation is done manually here so that it can compute per-sample loss for prioritised sampling (Since difficulty score is based on pred loss). Original train.py uses SMACJEPA.loss() and this script follows same logic.
 def loss_with_per_sample_scores(
     model: SMACJEPA,
     batch: dict[str, torch.Tensor],
     *,
     sigreg_weight: float,
     decoder_weight: float,
-    priority_score: str,
-) -> tuple[dict[str, torch.Tensor], torch.Tensor]:
-    """
-    Same overall loss structure as SMACJEPA.loss(), but also returns a
-    per-sample score for the priority table.
+    priority_score: str, #Which loss used as sample difficulty score (Default is pred loss)
+) -> tuple[dict[str, torch.Tensor], torch.Tensor]: #returns a dictionary of scalar losses for training and logging and vector of per-sample difficult score
+    out = model.forward(batch) #Forward pass
 
-    This intentionally scores samples using prediction loss by default, because
-    prediction difficulty is the cleanest signal for world-model learning.
-    """
-    out = model.forward(batch)
-
-    mask = out["target_entity_mask"].unsqueeze(-1) * out["mask"].unsqueeze(-1).unsqueeze(-1)
+    mask = out["target_entity_mask"].unsqueeze(-1) * out["mask"].unsqueeze(-1).unsqueeze(-1) #Only expose parts of data relevant for loss logging like masking unused agents and time steps
 
     # Scalar pred loss, matching the model's existing reduction style.
-    pred_denom = mask.sum().clamp_min(1.0) * out["pred_latent"].shape[-1]
-    pred_loss = ((out["pred_latent"] - out["target_latent"]).pow(2) * mask).sum() / pred_denom
+    pred_denom = mask.sum().clamp_min(1.0) * out["pred_latent"].shape[-1] 
+    pred_loss = ((out["pred_latent"] - out["target_latent"]).pow(2) * mask).sum() / pred_denom #JEPA Prediction loss. Needed for backprop but per-sample needs individual pred losses
 
     # Per-sample pred loss for priority.
     per_sample_pred_num = ((out["pred_latent"] - out["target_latent"]).pow(2) * mask).sum(
@@ -250,12 +252,16 @@ def loss_with_per_sample_scores(
         "pred_latent"
     ].shape[-1]
     per_sample_pred_loss = per_sample_pred_num / per_sample_pred_den
-
+    
+    
+    #Sigreg regularisation loss 
     reg_loss = sigreg_loss(out["reg_latent"], out["reg_mask"])
-
+    
+    #Decoder loss
     entity_denom = mask.sum().clamp_min(1.0) * out["target_entity"].shape[-1]
     decoded_loss = ((out["decoded_target"] - out["target_entity"]).pow(2) * mask).sum() / entity_denom
-
+    
+    #GPT decided to just have a per-sample decoder loss but should not be used
     per_sample_decoded_num = ((out["decoded_target"] - out["target_entity"]).pow(2) * mask).sum(
         dim=tuple(range(1, mask.ndim))
     )
@@ -263,7 +269,8 @@ def loss_with_per_sample_scores(
         "target_entity"
     ].shape[-1]
     per_sample_decoded_loss = per_sample_decoded_num / per_sample_decoded_den
-
+    
+    #PResence loss (Whether each entity slot is occupied/present)
     slot_mask = out["entity_slot_mask"]
     presence_target = out["target_entity_mask"]
     presence_loss_raw = torch.nn.functional.binary_cross_entropy_with_logits(
@@ -272,11 +279,13 @@ def loss_with_per_sample_scores(
         reduction="none",
     )
     presence_loss = (presence_loss_raw * slot_mask).sum() / slot_mask.sum().clamp_min(1.0)
-
+    
+    #GPT decided to have a per-sample presence loss but should not be used
     per_sample_presence_num = (presence_loss_raw * slot_mask).sum(dim=tuple(range(1, slot_mask.ndim)))
     per_sample_presence_den = slot_mask.sum(dim=tuple(range(1, slot_mask.ndim))).clamp_min(1.0)
     per_sample_presence_loss = per_sample_presence_num / per_sample_presence_den
-
+    
+    #Presence loss is invluded as part of the total loss. I think its fine?
     total_loss = pred_loss + sigreg_weight * reg_loss + decoder_weight * decoded_loss + presence_loss
 
     # Per-sample total excludes sigreg because sigreg is batch-level/global.
@@ -310,8 +319,10 @@ def loss_with_per_sample_scores(
 
 
 def main() -> None:
+    #Read all CLI args and store in variable args
     args = parse_args()
-
+    
+    #These are fields not native to config, so inclusion will crash the train programme
     priority_fields = {
         "sample_prioritized",
         "priority_alpha",
@@ -329,33 +340,41 @@ def main() -> None:
         "wandb_name",
         "wandb_mode",
     }
-
+    
+    #Create a clean dictionary containing only the arguments TrainConfig expects
     config_args = vars(args).copy()
     for key in priority_fields | wandb_fields:
         config_args.pop(key)
 
+    #Creates TrainConfig
     config = TrainConfig(**config_args)
-    arch = resolved_arch(config)
-
+    arch = resolved_arch(config) #Fills in architecture defaults
+    
+    #Resolve window length
     window_len = config.window_len or config.context_len
     if window_len > config.max_context_len:
         raise SystemExit(
             f"window length {window_len} exceeds --max-context-len {config.max_context_len}"
         )
 
+    #Output dir creation
     out_dir = Path(config.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    #Device and seed settings
     set_seed(config.seed)
     device = resolve_device(config.device)
     amp_enabled = bool(config.amp and device.type == "cuda")
-
+    
+    #loads all train data in data_paths, cap loads everything to determine maximum dimensions
     data_paths = load_data_paths_from_args(config)
     cap_paths = load_manifest_all(config.manifest) if config.manifest is not None else data_paths
 
+    #Infer maximum metadata (max_agents, max_enemies, max_actions, token_dim, static_dim, entity_static_feat_size)
     cap_dataset = SMACJEPADataset(cap_paths, context_len=1, mode="entity")
     cap_metadata = cap_dataset.metadata
-
+    
+    #Dataset construction for training
     base_dataset = SMACJEPADataset(
         data_paths,
         context_len=config.context_len,
@@ -372,8 +391,10 @@ def main() -> None:
         static_dim=cap_metadata.static_dim,
         entity_static_feat_size=cap_metadata.entity_static_feat_size,
     )
+    #Wrapper to apply indexing to the dataset
     dataset = IndexedDataset(base_dataset)
-
+    
+    #Model construction
     model = SMACJEPA(
         state_dim=dataset.metadata.state_dim,
         n_agents=dataset.metadata.n_agents,
@@ -394,16 +415,18 @@ def main() -> None:
         predictor_layers=int(arch["predictor_layers"]),
         max_context_len=config.max_context_len,
     ).to(device)
-
+    
+    #Optimiser and gradient scaler (To prevent numerical underflow with fp16)
     optimizer = torch.optim.AdamW(model.parameters(), lr=float(arch["lr"]))
     scaler = torch.cuda.amp.GradScaler(enabled=amp_enabled)
 
-    priority_scores = torch.ones(len(dataset), dtype=torch.float32)
-    priority_seen = torch.zeros(len(dataset), dtype=torch.bool)
+    priority_scores = torch.ones(len(dataset), dtype=torch.float32) #Stores difficulty of 1.0 for every sample initially
+    priority_seen = torch.zeros(len(dataset), dtype=torch.bool) #Stores whether or not a sample is seen and real loss has been computed for it
 
     start_epoch = 1
     global_step = 0
 
+    #Used to resume training from any existing checkpoint
     if config.resume:
         checkpoint = torch.load(config.resume, map_location=device)
         model.load_state_dict(checkpoint["model_state"])
@@ -425,7 +448,8 @@ def main() -> None:
 
         start_epoch = int(checkpoint.get("epoch", 0)) + 1
         global_step = int(checkpoint.get("global_step", 0))
-
+    
+    #Run settings are stored for reporducibility (if need be)
     saved_config = vars(args) | arch | {
         "context_len": window_len,
         "window_len": window_len,
@@ -434,7 +458,8 @@ def main() -> None:
         "dataset_len": len(dataset),
     }
     (out_dir / "config.json").write_text(json.dumps(saved_config, indent=2) + "\n")
-
+    
+    #Initialise Wandb for loss tracking in real time (and give nice graphs for analysis)
     wandb_run = None
     if args.wandb:
         if wandb is None:
@@ -452,6 +477,7 @@ def main() -> None:
         )
         wandb_run.watch(model, log=None)
 
+    #Checkpoint saving after every epoch
     def save_checkpoint(epoch_to_save: int, checkpoint_path: Path) -> None:
         torch.save(
             {
@@ -486,7 +512,8 @@ def main() -> None:
             },
             checkpoint_path,
         )
-
+    
+    #Logging for per step loss rows and per epoch averages
     logger = LossLogger(out_dir, "loss_log")
     epoch_logger = LossLogger(out_dir, "epoch_loss")
 
@@ -505,13 +532,14 @@ def main() -> None:
         f"score={args.priority_score}",
         flush=True,
     )
-
+    
+    #Training Loop (Also usable for resuming training)
     for epoch in range(start_epoch, config.epochs + 1):
         use_priority = (
             args.sample_prioritized
             and epoch > args.priority_warmup_epochs
             and priority_seen.any().item()
-        )
+        ) #Decide if priority sampling should be used this epoch
 
         if use_priority:
             weights = make_priority_weights(
@@ -521,19 +549,22 @@ def main() -> None:
                 eps=args.priority_eps,
                 max_multiplier=args.priority_max_multiplier,
             )
+            #Turns priority table into sampler weights
             sampler = WeightedRandomSampler(
                 weights=weights.double(),
                 num_samples=len(dataset),
-                replacement=True,
+                replacement=True, #Same sample can be selected multiple times in one epoch (With total number of data in 1 epoch equal to len(dataset))
             )
             shuffle = False
             sampler_mode = "priority"
         else:
+            #samples each dataset item once per epoch
             sampler = RandomSampler(dataset)
             shuffle = False
             weights = torch.full((len(dataset),), 1.0 / max(len(dataset), 1))
             sampler_mode = "uniform"
 
+        #build dataloader for this epoch based on sampler
         loader = DataLoader(
             dataset,
             batch_size=int(arch["batch_size"]),
@@ -542,31 +573,38 @@ def main() -> None:
             num_workers=config.num_workers,
         )
 
+        
         epoch_sums: dict[str, float] = {}
         epoch_batches = 0
         repeated_indices = 0
         sampled_indices_this_epoch: set[int] = set()
 
+        #Batch increments the global step and epoch batch count (GG I been misunderstanding global step)
         for batch in loader:
             global_step += 1
             epoch_batches += 1
-
+            
+            #Move batch to GPU
             batch = to_device(batch, device)
             sample_indices = batch["sample_index"].detach().cpu().long()
-
+            
+            #Count repeated item occurrence from prev epoch. For tracking purposes only 
             for idx in sample_indices.tolist():
                 if idx in sampled_indices_this_epoch:
                     repeated_indices += 1
                 sampled_indices_this_epoch.add(idx)
-
+                
+            #Clear gradients
             optimizer.zero_grad(set_to_none=True)
-
+            
+            #CUDA AMP settings
             autocast_context = (
                 torch.cuda.amp.autocast(enabled=amp_enabled)
                 if device.type == "cuda"
                 else nullcontext()
             )
-
+            
+            #Loss computation
             with autocast_context:
                 losses, sample_scores = loss_with_per_sample_scores(
                     model,
@@ -575,7 +613,8 @@ def main() -> None:
                     decoder_weight=config.decoder_weight,
                     priority_score=args.priority_score,
                 )
-
+                
+            #Backpropagation
             scaler.scale(losses["total_loss"]).backward()
 
             if config.grad_clip > 0:
@@ -599,7 +638,8 @@ def main() -> None:
 
             priority_scores[sample_indices] = updated
             priority_seen[sample_indices] = True
-
+            
+            #Build logging row
             row: dict[str, float | int | str] = {
                 "epoch": epoch,
                 "step": global_step,
