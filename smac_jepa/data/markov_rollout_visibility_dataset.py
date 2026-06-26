@@ -39,6 +39,8 @@ from smac_jepa.data.markov_rollout_dataset import MarkovRolloutSMACJEPADataset
 
 
 class VisibilityMarkovRolloutSMACJEPADataset(MarkovRolloutSMACJEPADataset):
+    explicit_visibility_mask_version = 1
+
     """
     Markov rollout dataset with optional enemy visibility masking on inputs only.
 
@@ -107,6 +109,11 @@ class VisibilityMarkovRolloutSMACJEPADataset(MarkovRolloutSMACJEPADataset):
         state_end = action_end + 1
 
         full_state_seq = states[start:state_end]
+        enemy_visible_seq = self._compute_enemy_visibility(
+            full_state_seq,
+            meta,
+            episode.get("static_condition"),
+        )
         input_state_seq = full_state_seq.copy()
 
         if self.enemy_visibility_mask:
@@ -142,6 +149,19 @@ class VisibilityMarkovRolloutSMACJEPADataset(MarkovRolloutSMACJEPADataset):
             episode["entity_static"],
         )
 
+        # Explicit observation mask. The legacy entity mask may remain 1 for a
+        # zeroed enemy token because static entity features are still present.
+        # Hidden enemies must instead be 0 here so the encoder and recurrent
+        # memory do not treat an unobserved zero token as a real observation.
+        observation_mask_seq = target_entity_mask_seq.copy()
+        if self.enemy_visibility_mask and meta.n_enemies > 0:
+            enemy_start = int(self.metadata.max_agents)
+            enemy_stop = enemy_start + int(meta.n_enemies)
+            observation_mask_seq[:, enemy_start:enemy_stop] *= (
+                enemy_visible_seq.astype(np.float32)
+            )
+        entity_mask_seq = observation_mask_seq.copy()
+
         action_t, action_mask = self._pad_actions(action_seq, meta)
         action_mask *= valid_actions[:, None]
 
@@ -149,7 +169,8 @@ class VisibilityMarkovRolloutSMACJEPADataset(MarkovRolloutSMACJEPADataset):
         state_valid[0] = valid_actions[0]
         state_valid[1:] = valid_actions
 
-        entity_mask_seq *= state_valid[:, None]
+        observation_mask_seq *= state_valid[:, None]
+        entity_mask_seq = observation_mask_seq.copy()
         target_entity_mask_seq *= state_valid[:, None]
 
         slot_mask = self._slot_mask(meta)
@@ -158,7 +179,12 @@ class VisibilityMarkovRolloutSMACJEPADataset(MarkovRolloutSMACJEPADataset):
 
         return {
             "entity_seq": torch.from_numpy(entity_seq),
+            # Backward compatibility: entity_mask_seq is now the true
+            # observation mask rather than a structural/presence mask.
             "entity_mask_seq": torch.from_numpy(entity_mask_seq),
+            "observation_mask_seq": torch.from_numpy(
+                observation_mask_seq
+            ),
             "target_entity_seq": torch.from_numpy(target_entity_seq),
             "target_entity_mask_seq": torch.from_numpy(target_entity_mask_seq),
             "entity_slot_mask_seq": torch.from_numpy(entity_slot_mask),
@@ -172,6 +198,95 @@ class VisibilityMarkovRolloutSMACJEPADataset(MarkovRolloutSMACJEPADataset):
             "segment_start": torch.tensor(start, dtype=torch.long),
             "episode_index": torch.tensor(episode_idx, dtype=torch.long),
         }
+
+    def _compute_enemy_visibility(
+        self,
+        state_seq: np.ndarray,
+        meta,
+        static_condition: np.ndarray | None,
+    ) -> np.ndarray:
+        """Return a [T, n_enemies] boolean visibility matrix."""
+        steps = int(state_seq.shape[0])
+        if meta.n_enemies <= 0:
+            return np.zeros((steps, 0), dtype=bool)
+        if meta.n_agents <= 0:
+            return np.zeros((steps, meta.n_enemies), dtype=bool)
+
+        x_idx, y_idx = self.xy_indices
+        if (
+            meta.ally_state_feat_size <= max(x_idx, y_idx)
+            or meta.enemy_state_feat_size <= max(x_idx, y_idx)
+        ):
+            # Fall back conservatively when positions cannot be inferred.
+            ally_end = meta.n_agents * meta.ally_state_feat_size
+            enemy_end = (
+                ally_end + meta.n_enemies * meta.enemy_state_feat_size
+            )
+            enemies = state_seq[:, ally_end:enemy_end].reshape(
+                steps,
+                meta.n_enemies,
+                meta.enemy_state_feat_size,
+            )
+            return np.abs(enemies).sum(axis=-1) > 0
+
+        ally_end = meta.n_agents * meta.ally_state_feat_size
+        enemy_end = ally_end + meta.n_enemies * meta.enemy_state_feat_size
+        allies = state_seq[:, :ally_end].reshape(
+            steps, meta.n_agents, meta.ally_state_feat_size
+        )
+        enemies = state_seq[:, ally_end:enemy_end].reshape(
+            steps, meta.n_enemies, meta.enemy_state_feat_size
+        )
+
+        ally_present = np.abs(allies).sum(axis=-1) > 0
+        enemy_present = np.abs(enemies).sum(axis=-1) > 0
+        ally_alive = ally_present
+        if meta.ally_state_feat_size >= 1:
+            ally_alive = ally_alive & (allies[..., 0] > 0)
+
+        ally_xy = allies[..., [x_idx, y_idx]]
+        enemy_xy = enemies[..., [x_idx, y_idx]]
+        scale_x = 1.0
+        scale_y = 1.0
+
+        coords = np.concatenate(
+            [ally_xy.reshape(-1, 2), enemy_xy.reshape(-1, 2)], axis=0
+        )
+        finite_coords = coords[np.isfinite(coords).all(axis=1)]
+        looks_normalized = (
+            finite_coords.size > 0
+            and np.nanmax(np.abs(finite_coords)) <= 2.0
+        )
+        if (
+            looks_normalized
+            and static_condition is not None
+            and len(static_condition) >= 2
+        ):
+            sx = float(static_condition[0])
+            sy = float(static_condition[1])
+            if np.isfinite(sx) and sx > 0:
+                scale_x = sx
+            if np.isfinite(sy) and sy > 0:
+                scale_y = sy
+
+        visible = np.zeros((steps, meta.n_enemies), dtype=bool)
+        for timestep in range(steps):
+            alive_indices = np.flatnonzero(ally_alive[timestep])
+            if alive_indices.size == 0:
+                continue
+            ally_pos = ally_xy[timestep, alive_indices]
+            enemy_pos = enemy_xy[timestep]
+            dx = (
+                enemy_pos[:, None, 0] - ally_pos[None, :, 0]
+            ) * scale_x
+            dy = (
+                enemy_pos[:, None, 1] - ally_pos[None, :, 1]
+            ) * scale_y
+            distance = np.sqrt(dx * dx + dy * dy)
+            visible[timestep] = enemy_present[timestep] & (
+                distance.min(axis=1) <= self.enemy_sight_range
+            )
+        return visible
 
     def _apply_enemy_visibility_mask_to_states(
         self,

@@ -10,7 +10,7 @@ wandb/
 splits/
 eval_results/
 configs/
-data/
+/data/
 runs/
 reports/
 checkpoints/
