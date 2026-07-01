@@ -7,6 +7,10 @@ from typing import Any
 import torch
 
 import eval_jepa_exp31_exp33 as _base
+
+# Capture the unpatched function once. Calling _base.build_memory_module after
+# monkey-patching would recurse back into this wrapper.
+_BASE_BUILD_MEMORY_MODULE = _base.build_memory_module
 from smac_jepa.anchored_belief_memory import (
     AnchoredActionConditionedEntityRolloutGRUMemory,
 )
@@ -27,7 +31,7 @@ def build_memory_module(
         str(key).startswith("hidden_gate_net.") for key in memory_state
     )
     if not anchored:
-        return _base.build_memory_module(checkpoint, dataset, device)
+        return _BASE_BUILD_MEMORY_MODULE(checkpoint, dataset, device)
 
     metadata = checkpoint.get("metadata", {})
     latent_dim = int(cfg["latent_dim"])
@@ -62,8 +66,15 @@ def build_memory_module(
 
 
 def main() -> None:
+    # Patch only for the duration of this evaluator invocation and restore the
+    # original function even if evaluation raises. This prevents import-state
+    # leakage when the module is reused by another evaluator.
+    original = _base.build_memory_module
     _base.build_memory_module = build_memory_module
-    _base.main()
+    try:
+        _base.main()
+    finally:
+        _base.build_memory_module = original
 
 
 if __name__ == "__main__":
